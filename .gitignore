@@ -1,0 +1,7 @@
+$ cat .gitignore
+# Ignore node modules
+node_modules/
+# Ignore distribution directory
+www/
+# Ignore node link
+/Node.lnk
