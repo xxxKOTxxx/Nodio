@@ -14,6 +14,7 @@ module.exports = {
       ]
   },
   output: {
+      publicPath: '/',
       path: path.join(__dirname, "www"),
       filename: "build.js"
   },
@@ -29,8 +30,8 @@ module.exports = {
     })
   ],
   reslove: {
-    modulesDirectorises: ['node_modules'],
-    extensions: ['', '.js'],
+    modulesDirectorises: ['node_modules', 'src'],
+    extensions: ['', '.js', '.es6', '.styl'],
   },
   resloveLoader: {
     modulesDirectorises: ['node_modules'],
@@ -54,7 +55,7 @@ module.exports = {
         exclude: [
           path.resolve(__dirname, "src/*/variables.styl"),
         ],
-        loaders: ['style-loader', 'css-loader', 'stylus-loader'],
+        loaders: ['style-loader', 'css-loader?sourceMap', 'stylus-loader?resolve url'],
       },
       {
         test: /\.jade$/,
@@ -74,6 +75,11 @@ module.exports = {
   },
   stylus: {
     use: [koutoSwiss()],
+    // define: {
+    //   'inline-image': require('stylus-inline-webpack')({
+    //     limit: 50000
+    //   })
+    // }
   },
   watch: NODE_ENV == 'development',
   watchOptions: {

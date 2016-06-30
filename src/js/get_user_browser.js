@@ -1,11 +1,10 @@
 'use strict';
 export default function() {
-  var nVer = navigator.appVersion;
-  var nAgt = navigator.userAgent;
-  var browser = navigator.appName;
-  var version = '' + parseFloat(navigator.appVersion);
-  var majorVersion = parseInt(navigator.appVersion, 10);
-  var nameOffset, verOffset, ix;
+  let nAgt = navigator.userAgent;
+  let browser = navigator.appName;
+  let version = '' + parseFloat(navigator.appVersion);
+  let majorVersion = parseInt(navigator.appVersion, 10);
+  let nameOffset, verOffset, ix;
 
   // Opera
   if ((verOffset = nAgt.indexOf('Opera')) != -1) {

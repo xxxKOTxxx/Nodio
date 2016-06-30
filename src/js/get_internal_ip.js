@@ -2,11 +2,11 @@
 export default function(external_ip) {
   return new Promise( function(resolve, reject) {
     var ip_dups = {};
-    var PeerConnection = RTCPeerConnection || // 2013...
-                         mozRTCPeerConnection || // Mozilla FireFox
-                         webkitRTCPeerConnection; // WebKit
+    var RTCPeerConnection = window.RTCPeerConnection || // 2013...
+                            window.mozRTCPeerConnection || // Mozilla FireFox
+                            window.webkitRTCPeerConnection; // WebKit
                          
-    if (!PeerConnection) {
+    if (!RTCPeerConnection) {
       reject('unknown');
     };
 
