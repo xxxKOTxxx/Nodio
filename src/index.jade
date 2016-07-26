@@ -4,40 +4,41 @@ html
     meta(charset='UTF-8')
     title Nodio
   body
-    h1#test 
+    include /images/svg-sprite.jade
     header
       dl.progress
-        dt.progress Visitor info
-        dd.progress
+        dt.progress.print Visitor info
+        dd.progress.print
       dl.location
-        dt.location Location
-        dd.location
+        dt.location.print Location
+        dd.location.print
       dl.provider
-        dt.provider Provider
-        dd.provider
+        dt.provider.print Provider
+        dd.provider.print
       dl.global_ip
-        dt.global_ip Global ip
-        dd.global_ip
+        dt.global_ip.print Global ip
+        dd.global_ip.print
       dl.local_ip
-        dt.local_ip Local ip
-        dd.local_ip
+        dt.local_ip.print Local ip
+        dd.local_ip.print
       dl.device
-        dt.device Device
-        dd.device
+        dt.device.print Device
+        dd.device.print
       dl.os
-        dt.os OS
-        dd.os
+        dt.os.print OS
+        dd.os.print
       dl.browser
-        dt.browser Browser
-        dd.browser
+        dt.browser.print Browser
+        dd.browser.print
       dl.name
-        dt.name Name
-        dd.name
+        dt.name.print Name
+        dd.name.print
 
     .content
       .logo
+        include /images/logo.jade
+      .square
     
     footer
-      p Use audio for 
-      | the best expirience
-    script(src="build.js")
+      p.print Use audio for the best expirience
+    script(src="build.js")  

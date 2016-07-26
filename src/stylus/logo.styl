@@ -1,0 +1,142 @@
+.logo
+.square
+  absolute 50% false false 50%
+  transform: translate(-50%, -50%);
+  margin auto
+.logo
+  size 120px
+  z-index 1
+  svg
+    size 100%
+    display block
+    fill logo-color
+.square
+  size 81px
+  z-index 0
+  border 0px solid square-borser-color
+  transform-origin 85% -35%
+  transform rotate(45deg) translate3d(0, 0, 0)
+  &.go
+    size 80vmax
+    opacity 0
+    border-width 15px
+    transition width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
+               height square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
+               opacity square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
+               border-width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1)
+
+
+.logo-inner
+.logo-middle
+.logo-outer
+  transform scale(0)
+.logo-border
+  opacity 0
+.ready
+  .logo-inner
+    animation scale-in logo-transition-time linear forwards
+  .logo-middle
+    animation scale-in logo-transition-time linear forwards logo-transition-time
+  .logo-outer
+    animation scale-in logo-transition-time linear forwards logo-transition-time * 2
+  .logo-border
+    animation fade-in 0s linear forwards logo-transition-time * 3
+  .square
+    animation square-scale square-transition-time linear logo-transition-time * 3
+    
+  .logo-inner
+    &.item-1
+      transform-origin 50% 44% 0
+    &.item-2
+      transform-origin 56% 50% 0
+    &.item-3
+      transform-origin 50% 56% 0
+    &.item-4
+      transform-origin 44% 50% 0
+  .logo-middle
+    &.item-1
+      transform-origin 50% 30% 0
+    &.item-2
+      transform-origin 56% 36% 0
+    &.item-3
+      transform-origin 63% 44% 0
+    &.item-4
+      transform-origin 70% 50% 0
+    &.item-5
+      transform-origin 63% 56% 0
+    &.item-6
+      transform-origin 57% 63% 0
+    &.item-7
+      transform-origin 50% 70% 0
+    &.item-8
+      transform-origin 43% 63% 0
+    &.item-9
+      transform-origin 37% 56% 0
+    &.item-10
+      transform-origin 30% 50% 0
+    &.item-11
+      transform-origin 37% 44% 0
+    &.item-12
+      transform-origin 44% 36% 0
+  .logo-outer
+    &.item-1
+      transform-origin 50% 18% 0
+    &.item-2
+      transform-origin 56% 25% 0
+    &.item-3
+      transform-origin 63% 30% 0
+    &.item-4
+      transform-origin 70% 36% 0
+    &.item-5
+      transform-origin 77% 44% 0
+    &.item-6
+      transform-origin 82% 50% 0
+    &.item-7
+      transform-origin 77% 56% 0
+    &.item-8
+      transform-origin 70% 64% 0
+    &.item-9
+      transform-origin 63% 70% 0
+    &.item-10
+      transform-origin 56% 75% 0
+    &.item-11
+      transform-origin 50% 82% 0
+    &.item-12
+      transform-origin 44% 75% 0
+    &.item-13
+      transform-origin 37% 70% 0
+    &.item-14
+      transform-origin 30% 64% 0
+    &.item-15
+      transform-origin 25% 56% 0
+    &.item-16
+      transform-origin 18% 50% 0
+    &.item-17
+      transform-origin 23% 44% 0
+    &.item-18
+      transform-origin 30% 36% 0
+    &.item-19
+      transform-origin 37% 30% 0
+    &.item-20
+      transform-origin 44% 23% 0
+
+  @keyframes scale-in
+    0%
+      transform scale(0)
+    100%
+      transform scale(1)
+  @keyframes fade-in
+    0%
+      opacity 0
+    100%
+      opacity 1
+  @keyframes square-scale
+    to
+      size 80vmax
+      opacity 0
+      border-width 15px
+      transition width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
+                 height square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
+                 opacity square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
+                 border-width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1)
+      

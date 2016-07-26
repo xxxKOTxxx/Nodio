@@ -1,5 +1,5 @@
-'use strict';
 export default function() {
+  'use strict';
   let nAgt = navigator.userAgent;
   let browser = navigator.appName;
   let version = '' + parseFloat(navigator.appVersion);
@@ -65,5 +65,9 @@ export default function() {
       version = '' + parseFloat(navigator.appVersion);
       majorVersion = parseInt(navigator.appVersion, 10);
   }
-  return browser +' '+ majorVersion + ' (' + version + ')';
-};
+  return {
+    name: browser, 
+    version: majorVersion,
+    full_version: version
+  }
+}

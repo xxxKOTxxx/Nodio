@@ -3,31 +3,47 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const koutoSwiss = require('kouto-swiss');
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
+// const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
   context: path.resolve('src'),
-  entry: ["./js/script"],
+
+  path: path.resolve('./www'),
   resolve: {
-      modulesDirectories: [
-          "."
-      ]
+    modulesDirectories: [
+      ".",
+      'node_modules',
+      'bower_components'
+    ],
+    extensions: [
+      '',
+      '.js',
+      '.es6',
+      '.css',
+      '.styl'
+    ],
+  },
+  entry: {
+    build: "./js/index"
   },
   output: {
-      publicPath: '/',
-      path: path.join(__dirname, "www"),
-      filename: "build.js"
+    publicPath: './',
+    path: path.join(__dirname, "www"),
+    filename: '[name].js',
+    // chunkFilename: '[chunkhash].js',
+    pathinfo: true
   },
   plugins: [
-    new webpack.DefinePlugin({
-      NODE_ENV: JSON.stringify(NODE_ENV)
-    }),
+    // new webpack.DefinePlugin({
+    //   NODE_ENV: JSON.stringify(NODE_ENV)
+    // }),
     new HtmlWebpackPlugin({
       title: 'Title',
       chunks: ['application', 'vendors'],
       filename: 'index.html',
       template: path.join('index.jade')
-    })
+    }),
+    // new webpack.optimize.CommonsChunkPlugin({name: 'commons', minChunks: 2})
   ],
   reslove: {
     modulesDirectorises: ['node_modules', 'src'],
@@ -55,7 +71,7 @@ module.exports = {
         exclude: [
           path.resolve(__dirname, "src/*/variables.styl"),
         ],
-        loaders: ['style-loader', 'css-loader?sourceMap', 'stylus-loader?resolve url'],
+        loaders: ['style-loader', 'css-loader?sourceMap?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'stylus-loader?resolve url'],
       },
       {
         test: /\.jade$/,
@@ -64,8 +80,9 @@ module.exports = {
         ],
         loader: 'jade-loader'
       },
+
       {
-        test: /\.(png|jpg|jpeg|svg|ttf|eot|woff|woff2)$/,
+        test: /\.(png|jpg|jpeg|svg|ttf|otf|eot|woff|woff2)$/,
         include: [
           path.resolve(__dirname, "src"),
         ],
@@ -81,21 +98,31 @@ module.exports = {
     //   })
     // }
   },
-  watch: NODE_ENV == 'development',
+  watch: true,
   watchOptions: {
     aggregateTimeout: 100
   },
-  dewvtool: 'cheap-inline-module-source-map'
+  // devtool: 'source-map',
+  devtool: 'cheap-inline-module-source-map',
+  devServer: {
+    proxy: {
+      '*': 'http://localhost:8080'
+    },
+    contentBase: 'www',
+    hot: true,
+    colors: true,
+    progress: true
+  },
 };
 
-if(NODE_ENV == 'production') {
-  module.exports.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_console: true,
-        unsafe: true
-      }
-    })
-  )
-};
+// if(NODE_ENV == 'production') {
+//   module.exports.plugins.push(
+//     new webpack.optimize.UglifyJsPlugin({
+//       compress: {
+//         warnings: false,
+//         drop_console: true,
+//         unsafe: true
+//       }
+//     })
+//   )
+// };

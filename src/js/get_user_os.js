@@ -57,5 +57,8 @@ export default function() {
       osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
       break;
   }
-  return os + ' ' + osVersion;
+  return {
+    name: os,
+    version: osVersion
+  }
 };
