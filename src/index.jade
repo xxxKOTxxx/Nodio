@@ -7,32 +7,94 @@ html
     include /images/svg-sprite.jade
     header
       dl.progress
-        dt.progress.print Visitor info
-        dd.progress.print
+        dt.progress.print(
+          data-print-step="1"
+          data-print-setting="info"
+          ) Visitor info
+        dd.progress.print.percent(
+          data-print-step="1"
+          data-print-setting="info_repcent"
+          ) 0%
       dl.location
-        dt.location.print Location
-        dd.location.print
+        dt.location.print.statistics(
+          data-print-step="2"
+          data-print-setting="header_all"
+          ) Location:
+        dd.location.print.statistics(
+          data-print-step="3"
+          data-print-setting="header_string"
+          data-print-string="location"
+          )
       dl.provider
-        dt.provider.print Provider
-        dd.provider.print
+        dt.provider.print.statistics(
+          data-print-step="4"
+          data-print-setting="header_all"
+          ) Provider:
+        dd.provider.print.statistics(
+          data-print-step="5"
+          data-print-setting="header_string"
+          data-print-string="provider"
+          )
       dl.global_ip
-        dt.global_ip.print Global ip
-        dd.global_ip.print
+        dt.global_ip.print.statistics(
+          data-print-step="6"
+          data-print-setting="header_all"
+          ) Global ip:
+        dd.global_ip.print.statistics(
+          data-print-step="7"
+          data-print-setting="header_string"
+          data-print-string="global_ip"
+          )
       dl.local_ip
-        dt.local_ip.print Local ip
-        dd.local_ip.print
+        dt.local_ip.print.statistics(
+          data-print-step="8"
+          data-print-setting="header_all"
+          ) Local ip:
+        dd.local_ip.print.statistics(
+          data-print-step="9"
+          data-print-setting="header_string"
+          data-print-string="local_ip"
+          )
       dl.device
-        dt.device.print Device
-        dd.device.print
+        dt.device.print.statistics(
+          data-print-step="10"
+          data-print-setting="header_all"
+          ) Device:
+        dd.device.print.statistics(
+          data-print-step="11"
+          data-print-setting="header_string"
+          data-print-string="device"
+          )
       dl.os
-        dt.os.print OS
-        dd.os.print
+        dt.os.print.statistics(
+          data-print-step="12"
+          data-print-setting="header_all"
+          ) OS:
+        dd.os.print.statistics(
+          data-print-step="13"
+          data-print-setting="header_string"
+          data-print-string="os"
+          )
       dl.browser
-        dt.browser.print Browser
-        dd.browser.print
+        dt.browser.print.statistics(
+          data-print-step="14"
+          data-print-setting="header_all"
+          ) Browser:
+        dd.browser.print.statistics(
+          data-print-step="15"
+          data-print-setting="header_string"
+          data-print-string="browser"
+          )
       dl.name
-        dt.name.print Name
-        dd.name.print
+        dt.name.print.statistics(
+          data-print-step="16"
+          data-print-setting="header_all"
+          ) Name:
+        dd.name.print.statistics(
+          data-print-step="17"
+          data-print-setting="header_all"
+          data-print-string="name"
+          )
 
     .content
       .logo
@@ -40,5 +102,12 @@ html
       .square
     
     footer
-      p.print Use audio for the best expirience
+      p.print(
+        data-print-step="1"
+        data-print-setting="footer_top"
+        ) Use audio
+      p.print(
+        data-print-step="1"
+        data-print-setting="footer_bottom"
+        ) for the best expirience
     script(src="build.js")  

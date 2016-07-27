@@ -1,4 +1,18 @@
-export default function(element, string, options, callback_data) {
+
+  // let extend = function() {
+  //   for(var i=1; i<arguments.length; i++)
+  //     for(var key in arguments[i]) {
+  //       if(arguments[i].hasOwnProperty(key)) {
+  //         arguments[0][key] = arguments[i][key];
+  //       }
+  //     }
+  //   return arguments[0];
+  // };
+  // extend(settings, options); 
+
+
+
+  export default function(element, string, options, callback_data) {
   'use strict';
   /*** Default settings ***/
   let settings = {
@@ -77,7 +91,7 @@ export default function(element, string, options, callback_data) {
   /*** Set opacity ***/
   let setOpacity = function(element, timeout, placeholder_frames, opacity_frames) {
     let frames = placeholder_frames + opacity_frames;
-    for(var i = frames; i >= 1; i--) {
+    for(var i = frames - 1; i >= 0; i--) {
       (function(index) {
         setTimeout(function() {
           var min_opacity = 0;
@@ -88,6 +102,7 @@ export default function(element, string, options, callback_data) {
             if(max_opacity > settings.max_opacity) {
               max_opacity = settings.max_opacity;
             }
+
           }
           else {
             min_opacity = (((index + 1) / frames) * settings.min_opacity_multiplier).toFixed(2);
@@ -95,8 +110,8 @@ export default function(element, string, options, callback_data) {
           }
           let opacity_value = (randomizer(min_opacity * 100, max_opacity * 100) * 0.01).toFixed(2);
           element.style.opacity = opacity_value;
-        }, timeout * (frames - i - 1));
-      })((frames - i - 1));
+        }, timeout * (frames - i));
+      })(i);
     }
     setTimeout(function() {
       element.style.removeProperty("opacity");
@@ -115,7 +130,7 @@ export default function(element, string, options, callback_data) {
       return;
     }
     let placeholder_string = placeholders[data.type];
-    for(var i = frames; i >= 1; i--) {
+    for(var i = frames - 1; i >= 0; i--) {
       (function(index) {
         setTimeout(function() {
           let current_placeholder_index = getRandomCharacter(data);
@@ -124,7 +139,7 @@ export default function(element, string, options, callback_data) {
             current_placeholder = current_placeholder.toUpperCase();
           }
           placeholder.textContent = current_placeholder;
-        }, timeout * (frames - i - 1));
+        }, timeout * (frames - i));
       })(i);
     }
     setTimeout(function() {
@@ -141,13 +156,16 @@ export default function(element, string, options, callback_data) {
     if(0 > exceptions.indexOf(data.number)) {
       exceptions.push(data.number);
     }
+    if(exceptions.length >= placeholders_length) {
+      exceptions.shift();
+    }
     let result = exceptions[0];
     while(exceptions.indexOf(result) !== -1) {
-      result = randomizer(0, placeholders_length - 1);
+      result = randomizer(0, placeholders_length);
     }
     repeat_exceptions[data.type].push(result);
     let exceptions_length = repeat_exceptions[data.type].length;
-    if(exceptions_length > settings.no_repeat_length || exceptions_length >= placeholders_length / 2) {
+    if(exceptions_length > settings.no_repeat_length || exceptions_length >= placeholders_length) {
       repeat_exceptions[data.type].shift();
     }
     return result;
@@ -158,7 +176,7 @@ export default function(element, string, options, callback_data) {
     let result = Array();
     let char_array = string.split('');
     let string_length = string.length;
-    for (var i = string_length; i >= 1; i--) {
+    for (var i = string_length - 1; i >= 0; i--) {
       let char_el = document.createElement('span');
       char_el.className = 'print-character placeholder';
       char_el.innerHTML = string[string_length - i];
@@ -177,10 +195,9 @@ export default function(element, string, options, callback_data) {
   /*** Print  ***/
   let printTemplate = function(element, template, timeout) {
     element.innerHTML = '';
-    let template_length = template.length;
     if(timeout) {
       let spaces = 0;
-      for(var i = template_length; i >= 1; i--) {
+      for(var i = 0; i < template.length; i++) {
         (function(index) {
           if(JSON.parse(template[index].getElementsByClassName('placeholder')[0].getAttribute('data-character')).type == 'space') {
             spaces++;
@@ -189,28 +206,28 @@ export default function(element, string, options, callback_data) {
               space_element.className = 'print-character';
               space_element.textContent = ' ';
               element.appendChild(space_element);
-            }, timeout * (template_length - i - spaces));
+            }, timeout * (i - spaces));
             return;
           }
           setTimeout(function() {
             element.appendChild(template[index]);
             setPlaceholder(template[index], settings.frame_timeout, settings.placeholder_frames);
             callback('string_printed');
-          }, timeout * (template_length - i - spaces));
-        })(template_length - i);
+          }, timeout * (i - spaces));
+        })(i);
       }
     }
     else {
-      for(var i = template_length; i >= 1; i--) {
-        element.appendChild(template[template_length - i]);
-        setPlaceholder(template[template_length - i], settings.frame_timeout, settings.placeholder_frames);
+      for(var i = 0; i < template.length; i++) {
+        element.appendChild(template[i]);
+        setPlaceholder(template[i], settings.frame_timeout, settings.placeholder_frames);
         if(settings.opacity) {
-          setOpacity(template[template_length - i], settings.frame_timeout, settings.placeholder_frames, settings.opacity_frames);
+          setOpacity(template[i], settings.frame_timeout, settings.placeholder_frames, settings.opacity_frames);
         }
       }
       setTimeout(function() {
         callback('string_printed');
-      }, settings.frame_timeout * template_length);
+      }, settings.frame_timeout * template.length);
     }
   };
   printTemplate(element, template, settings.print_timeout);
@@ -224,3 +241,55 @@ export default function(element, string, options, callback_data) {
     document.dispatchEvent(new CustomEvent(event, data));
   }
 };
+
+
+// document.addEventListener('string_printed', function(event) {
+//   console.log('string_printed',event)
+// });
+// document.addEventListener('character_printed', function(event) {
+//   console.log('character_printed',event)
+// });
+
+
+
+
+
+//   let location = document.querySelector('dd.location');
+//   let provider = document.querySelector('dd.provider');
+//   let global_ip = document.querySelector('dd.global_ip');
+//   let local_ip = document.querySelector('dd.local_ip');
+//   let device = document.querySelector('dd.device');
+//   let os = document.querySelector('dd.os');
+//   let browser = document.querySelector('dd.browser');
+//   let name = document.querySelector('dd.name');
+
+// let printer = document.querySelector('footer p');
+// printString(printer, false, printer_settings.all);
+
+
+
+
+// let go = document.querySelector('footer');
+
+// let gogo = function() {
+//   let square = document.querySelector('.square');
+//   square.classList.toggle('go');
+
+// };
+// go.addEventListener('click', gogo);
+
+
+// for(var i = 0; i < 9; i++) {
+//   (function(index) {
+//     setTimeout(function() {
+//       console.log('++',index, i)
+//     }, 100 * i);
+//   })(i);
+// }
+// for (var i = 8; i >= 0; i--) {
+//   (function(index) {
+//     setTimeout(function() {
+//       console.log('--',index, i)
+//     }, 100 * i);
+//   })(i);
+// }

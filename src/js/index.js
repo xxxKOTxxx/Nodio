@@ -18,19 +18,26 @@ import getUserBrowser from './get_user_browser';
 import printString from './print_string';
 
 /*** Set default user data ***/
+let default_data_value = 'unknown';
 let user_data = {
-  global_ip: 'unknown',
-  local_ip: 'unknown',
-  provider: 'unknown',
-  location: 'unknown',
-  device: 'unknown',
-  os: 'unknown',
-  browser: 'unknown',
+  global_ip: default_data_value,
+  local_ip: default_data_value,
+  provider: default_data_value,
+  location: default_data_value,
+  device: default_data_value,
+  os: default_data_value,
+  browser: default_data_value,
 };
+let parsed_data = {};
+let printer_queue_data = {};
 
 let data_counter = 0;
 let data_ready = false;
 let statistic_symbols = 0;
+let printed_symbols = 0;
+let statistics_percent = 0;
+let statistic_interval = false;
+let statistic_animation_time = 250;
 
 let mobile_detect = new MobileDetect(navigator.userAgent);
 
@@ -44,7 +51,7 @@ let check_data = function() {
 
 /*** Assign user data ***/
 let assignUserData = function(data) {
-  Object.assign(user_data, data);
+  Object.assign(parsed_data, data);
   check_data();
 }
 
@@ -69,62 +76,215 @@ let getUserDevice = function() {
   }
   return nav_device || mobile_detect.mobile() || 'Computer';
 }
-user_data.device = getUserDevice();
+parsed_data.device = getUserDevice();
 
 /*** Grt user operation system ***/
 let getUserOperationSystem = function() {
   return getUserOS() || mobile_detect.os();
 }
-user_data.os = getUserOperationSystem();
+parsed_data.os = getUserOperationSystem();
 
 /*** Grt user browser ***/
-user_data.browser = getUserBrowser();
+parsed_data.browser = getUserBrowser();
 
-let getStatistics = function() {
-  let print = document.querySelectorAll('.print');
-  for(let i = print.length - 1; i >= 0; i--) {
-    statistic_symbols += print[i].textContent.length
+let setUserData = function() {
+  Object.assign(user_data, parsed_data);
+  if(user_data.location !== default_data_value) {
+    user_data.location = user_data.location.city + ', ' + user_data.location.country;
   }
-  let user_data_string = user_data.global_ip + user_data.local_ip + user_data.provider + user_data.location.city + user_data.location.country + user_data.device + user_data.os.name + user_data.os.version + user_data.browser.name + user_data.browser.version;
-  statistic_symbols += user_data_string.length;
+  if(user_data.os !== default_data_value) {
+    user_data.os = user_data.os.name + ' ' + user_data.os.version;
+  }
+  if(user_data.browser !== default_data_value) {
+    user_data.browser = user_data.browser.name + ' ' + user_data.browser.full_version;
+  }
+  user_data.name = '*#@~$&#^'
+  getStatistics();
 }
 
+let getStatistics = function() {
+  let print = document.querySelectorAll('.print.statistics');
+  for(let i = print.length - 1; i >= 0; i--) {
+    statistic_symbols += print[i].textContent.replace(' ', '').length
+  }
+  let user_data_length = Object.keys(user_data).reduce(function(sum, key) {
+    return sum + user_data[key].replace(' ', '').length;
+  }, 0);
+  statistic_symbols += user_data_length;
+  animate();
+}
 
 let initialize = function() {
   if(!data_ready) {
-    document.addEventListener('data_ready', getStatistics);
+    document.addEventListener('data_ready', setUserData);
   }
-  let body = document.querySelector('body');
-  let location = document.querySelector('dd.location');
-  let provider = document.querySelector('dd.provider');
-  let global_ip = document.querySelector('dd.global_ip');
-  let local_ip = document.querySelector('dd.local_ip');
-  let device = document.querySelector('dd.device');
-  let os = document.querySelector('dd.os');
-  let browser = document.querySelector('dd.browser');
-  let name = document.querySelector('dd.name');
-  body.className = 'ready';
+  else {
+    setUserData();
+  }
 }
 document.addEventListener('DOMContentLoaded', initialize);
 
+let frame_timeout = 100;
+let printer_settings = {
+  info: {
+    print_all: true,
+    frame_timeout: frame_timeout,
+    placeholder_frames: 9,
+    opacity_frames: 16,
+  },
+  info_repcent: {
+    print_all: true,
+    frame_timeout: frame_timeout,
+    placeholder_frames: 9,
+    opacity_frames: 7,
+  },
+  info_percent: {
+    print_all: true,
+    frame_timeout: frame_timeout,
+    placeholder_frames: 8,
+    opacity_frames: 18,
+  },
+  header_all: {
+    print_all: true,
+    frame_timeout: frame_timeout,
+    placeholder_frames: 5,
+    opacity_frames: 10,
+  },
+  header_string: {
+    placeholder_frames: 1,
+    frame_timeout: frame_timeout,
+  },
+  footer_top: {
+    print_all: true,
+    frame_timeout: frame_timeout,
+    placeholder_frames: 12,
+    opacity_frames: 7,
+  },
+  footer_bottom: {
+    print_all: true,
+    frame_timeout: frame_timeout,
+    placeholder_frames: 12,
+    opacity_frames: 16,
+    max_opacity: .75,
+  }
+}
 
+let getPrinterElements = function() {
+  let result = {};
+  let printer_elements = document.querySelectorAll('.print');
+  if(!printer_elements.length) {
+    return result;
+  }
+  for(let element of printer_elements) {
+    if(!result[element.getAttribute('data-print-step')]) {
+      result[element.getAttribute('data-print-step')] = [];
+    }
+    result[element.getAttribute('data-print-step')].push(element);
+  }
+  return result;
+}
+let printer_elements = getPrinterElements();
 
+let animate = function() {
+  let logo_animation_timeout = 320;
+  let print_timeout = 600;
+  let body = document.querySelector('body');
+  setTimeout(function() {
+    body.className = 'ready';
+  }, logo_animation_timeout);
+  printElements(1);
+}
 
+let printElements = function(step) {
+  for (var i = printer_elements[step].length - 1; i >= 0; i--) {
+    let settings = printer_settings[printer_elements[step][i].getAttribute('data-print-setting')];
+    let string = false;
+    if(printer_elements[step][i].getAttribute('data-print-string')) {
+      string = user_data[printer_elements[step][i].getAttribute('data-print-string')];
+    }
+    printString(printer_elements[step][i], string, settings, {step: step});
+  }
+}
 
-
-
-
-let printer = document.querySelector('footer p');
-printString(printer, false, {print_timeout: 0});
-
-
-
-
-let go = document.querySelector('footer');
-
-let gogo = function() {
+let squareAnimation = function() {
   let square = document.querySelector('.square');
-  square.classList.toggle('go');
+  square.classList.remove('animate');
+  setTimeout(function() {
+    square.classList.add('animate');
+  }, 10);
+}
 
-};
-go.addEventListener('click', gogo);
+let animateStatistic = function(element) {
+  let statistic_interval = setInterval(function(index) {
+    let current_percent = parseInt(element.textContent);
+    let inequality = statistics_percent - current_percent;
+    if(inequality > 0) {
+      element.textContent = current_percent + 1 + '%';
+    }
+    if(current_percent == 100) {
+      clearInterval(statistic_interval);
+    }
+  }, statistic_animation_time);
+}
+
+let setStatistic = function() {
+  printed_symbols++;
+  let current_percent = Math.round(100 * (printed_symbols / statistic_symbols));
+  if(current_percent != statistics_percent) {
+    statistics_percent = current_percent;
+    if(!statistic_interval) {
+      statistic_interval = true;
+      let statistic = document.querySelector('.percent');
+      animateStatistic(statistic);
+    }
+  }
+}
+
+let printer_queue_defaults = {
+  frames_delay: 15,
+  animation_count: false
+}
+let printer_queue_options = {
+  1: {
+    frames_delay: 0
+  },
+  2: {
+    animation_count: 1
+  },
+  4: {
+    animation_count: 1
+  },
+  6: {
+    animation_count: 1
+  },
+  8: {
+    animation_count: 1
+  }
+}
+
+let printerQueue = function(event) {
+  let step = event.detail.step;
+  if(!printer_queue_data[step]) {
+    printer_queue_data[step] = 1;
+  }
+  else {
+    printer_queue_data[step]++;
+  }
+  let queue_settings = Object.assign({}, printer_queue_defaults, printer_queue_options[step]);
+  if(queue_settings.animation_count == printer_queue_data[step]) {
+    squareAnimation();
+  }
+  if(printer_queue_data[step] == printer_elements[step].length) {
+    if(step == 1) {
+      document.addEventListener('character_printed', setStatistic);
+    }
+    let timeout = queue_settings.frames_delay * frame_timeout;
+    if(printer_elements[step + 1]) {
+      setTimeout(function() {
+        printElements(step + 1);
+      }, timeout);
+    }
+  }
+}
+
+document.addEventListener('string_printed', printerQueue);
