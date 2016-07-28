@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const koutoSwiss = require('kouto-swiss');
 
 // const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -37,6 +38,7 @@ module.exports = {
     // new webpack.DefinePlugin({
     //   NODE_ENV: JSON.stringify(NODE_ENV)
     // }),
+    new ExtractTextPlugin("css/styles.css"),
     new HtmlWebpackPlugin({
       title: 'Title',
       chunks: ['application', 'vendors'],
@@ -71,7 +73,7 @@ module.exports = {
         exclude: [
           path.resolve(__dirname, "src/*/variables.styl"),
         ],
-        loaders: ['style-loader', 'css-loader?sourceMap?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'stylus-loader?resolve url'],
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader?resolve url'),
       },
       {
         test: /\.jade$/,
