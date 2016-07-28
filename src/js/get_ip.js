@@ -33,7 +33,7 @@ export default function() {
         else {
           result.global_ip = ip_addr;
         }
-        if(Object.size(result) > 1) {
+        if(result.local_ip) {
           resolve(result);
         }
       }

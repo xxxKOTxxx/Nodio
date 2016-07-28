@@ -1,4 +1,11 @@
 'use strict';
+/*** Add fonts ***/
+require('../fonts/Proximanova-Light.eot');
+require('../fonts/Proximanova-Light.otf');
+require('../fonts/Proximanova-Light.ttf');
+require('../fonts/Proximanova-Light.svg');
+require('../fonts/Proximanova-Light.woff');
+require('../fonts/Proximanova-Light.woff2');
 /*** Add styles ***/
 require('../stylus/index');
 /*** Add template ***/

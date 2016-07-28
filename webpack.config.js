@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const koutoSwiss = require('kouto-swiss');
@@ -8,6 +9,17 @@ const koutoSwiss = require('kouto-swiss');
 
 module.exports = {
   context: path.resolve('src'),
+  entry: [
+    'babel-polyfill',
+    "./js/index"
+  ],
+  output: {
+    publicPath: './',
+    path: path.join(__dirname, "www"),
+    filename: 'build.js',
+    // chunkFilename: '[chunkhash].js',
+    pathinfo: true
+  },
 
   path: path.resolve('./www'),
   resolve: {
@@ -24,17 +36,13 @@ module.exports = {
       '.styl'
     ],
   },
-  entry: {
-    build: "./js/index"
-  },
-  output: {
-    publicPath: './',
-    path: path.join(__dirname, "www"),
-    filename: '[name].js',
-    // chunkFilename: '[chunkhash].js',
-    pathinfo: true
-  },
   plugins: [
+    new CleanWebpackPlugin(['www'], {
+      root: __dirname,
+      verbose: true, 
+      dry: false,
+      exclude: ['']
+    }),
     // new webpack.DefinePlugin({
     //   NODE_ENV: JSON.stringify(NODE_ENV)
     // }),
@@ -63,6 +71,9 @@ module.exports = {
         include: [
           path.resolve(__dirname, "src"),
         ],
+        exclude: [
+          path.resolve(__dirname, "node_modules"),
+        ],
         loader: "babel-loader"
       },
       {
@@ -73,7 +84,7 @@ module.exports = {
         exclude: [
           path.resolve(__dirname, "src/*/variables.styl"),
         ],
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader?resolve url'),
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader?resolve-url'),
       },
       {
         test: /\.jade$/,
@@ -84,11 +95,20 @@ module.exports = {
       },
 
       {
-        test: /\.(png|jpg|jpeg|svg|ttf|otf|eot|woff|woff2)$/,
+        test: /\.(png|jpg|jpeg)$/,
         include: [
           path.resolve(__dirname, "src"),
         ],
         loader: 'file?name=[path][name].[ext]'
+      },
+      {
+        test: /\.(svg|ttf|otf|eot|woff|woff2)$/,
+        include: [
+          path.resolve(__dirname, "src/fonts"),
+        ],
+        exclude: /node_modules/,
+        // loader: 'file?name=[path][name].[ext]'
+        loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
       }
     ]
   },
