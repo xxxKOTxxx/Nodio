@@ -1,5 +1,5 @@
-'use strict';
-export default function() {
+module.exports = function() {
+  'use strict';
   return new Promise( function(resolve, reject) {
     var XHR = ('onload' in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
 

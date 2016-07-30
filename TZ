@@ -4,5 +4,6 @@
 + set square animations
 + fix 1 frame animations
 + start screen bug
++ mozilla line heigth bug
 check opacity min/max calculation + fix it
 IE8 

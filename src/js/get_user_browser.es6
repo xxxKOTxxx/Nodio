@@ -1,4 +1,4 @@
-export default function() {
+module.exports = function() {
   'use strict';
   let nAgt = navigator.userAgent;
   let browser = navigator.appName;

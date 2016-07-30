@@ -994,12 +994,20 @@ define(function () {
 })((function (undefined) {
     if (typeof module !== 'undefined' && module.exports) {
         return function (factory) { module.exports = factory(); };
-    } else if (typeof define === 'function' && define.amd) {
-        return define;
-    } else if (typeof window !== 'undefined') {
-        return function (factory) { window.MobileDetect = factory(); };
     } else {
-        // please file a bug if you get this error!
-        throw new Error('unknown environment');
+        return define;
     }
 })());
+
+// ((function (undefined) {
+//     if (typeof module !== 'undefined' && module.exports) {
+//         return function (factory) { module.exports = factory(); };
+//     } else if (typeof define === 'function' && define.amd) {
+//         return define;
+//     } else if (typeof window !== 'undefined') {
+//         return function (factory) { window.MobileDetect = factory(); };
+//     } else {
+//         // please file a bug if you get this error!
+//         throw new Error('unknown environment');
+//     }
+// })());

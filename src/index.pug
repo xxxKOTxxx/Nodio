@@ -6,9 +6,7 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="description" content="Nodio")
     title Nodio
-    link(rel="stylesheet" href="css/styles.css")
   body
-    include /images/svg-sprite.jade
     header
       dl.progress
         dt.progress.print(
@@ -101,8 +99,7 @@ html
           )
 
     .content
-      .logo
-        include /images/logo.jade
+      include pug/logo.pug
       .square
     
     footer
@@ -114,4 +111,3 @@ html
         data-print-step="1"
         data-print-setting="footer_bottom"
         ) for the best expirience
-    script(src="build.js")  

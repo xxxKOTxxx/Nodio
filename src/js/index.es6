@@ -1,28 +1,21 @@
 'use strict';
-/*** Add fonts ***/
-require('../fonts/Proximanova-Light.eot');
-require('../fonts/Proximanova-Light.otf');
-require('../fonts/Proximanova-Light.ttf');
-require('../fonts/Proximanova-Light.svg');
-require('../fonts/Proximanova-Light.woff');
-require('../fonts/Proximanova-Light.woff2');
-/*** Add styles ***/
 require('../stylus/index');
-/*** Add template ***/
-require('../index.jade');
-/*** Add modules ***/
+
+import "babel-polyfill";
+
+require('ie_fixes');
 /* Detect user ip module */
-import getUserIPs from './get_ip';
+let getUserIPs = require('get_ip');
 /* Detect user data module */
-import getUserData from './get_user_data';
+let getUserData = require('get_user_data');
 /* Detect mobile module */
-import MobileDetect from './mobile-detect';
+let MobileDetect = require('mobile-detect');
 /* Detect OS module */
-import getUserOS from './get_user_os';
+let getUserOS = require('get_user_os');
 /* Detect browser module */
-import getUserBrowser from './get_user_browser';
+let getUserBrowser = require('get_user_browser');
 /* Print module */
-import printString from './print_string';
+let printString = require('print_string');
 
 /*** Set default user data ***/
 let default_data_value = 'unknown';
@@ -194,7 +187,6 @@ let printer_elements = getPrinterElements();
 
 let animate = function() {
   let logo_animation_timeout = 320;
-  let print_timeout = 600;
   let body = document.querySelector('body');
   setTimeout(function() {
     body.className = 'ready';

@@ -1,25 +1,163 @@
 @import "variables.styl"
-
+.logo-wrap
+  size 120px
+  absolute 50% false false 50%
+  transform: translate(-50%, -50%);
+  svg
+    fill #ff0
+  
 .logo
 .square
+  size logo-size
   absolute 50% false false 50%
   transform: translate(-50%, -50%);
   margin auto
-.logo
-  size 120px
-  z-index 1
-  svg
-    size 100%
-    display block
-    fill logo-color
-.square
-  size 81px
-  z-index 0
-  border 0px solid square-borser-color
   transform-origin 85% -35%
   transform rotate(45deg) translate3d(0, 0, 0)
+.logo
+  z-index 1
+  .inner
+  .middle
+  .outer
+    absolute 50% false false 50%
+    transform: translate(-50%, -50%);
+  .inner
+    size logo-inner-size
+    .item-1
+      top 0
+      left 0
+    .item-2
+      top 0
+      right 0
+    .item-3
+      bottom 0
+      right 0
+    .item-4
+      bottom 0
+      left 0
+  .middle
+    size logo-medium-size
+    .item-1
+      top 1px
+      left 1px
+    .item-2
+      top 0
+      left 11px
+    .item-3
+      top 0
+      right 11px
+    .item-4
+      top 1px
+      right 1px
+    .item-5
+      top 11px
+      right 0
+    .item-6
+      bottom 11px
+      right 0
+    .item-7
+      bottom 1px
+      right 1px
+    .item-8
+      bottom 0
+      right 11px
+    .item-9
+      bottom 0
+      left 11px
+    .item-10
+      bottom 1px
+      left 1px
+    .item-11
+      bottom 11px
+      left 0
+    .item-12
+      top 11px
+      left 0
+  .outer
+    size logo-outer-size
+    .item-1
+      top 1px
+      left 1px
+    .item-2
+      top 1px
+      left 12px
+    .item-3
+      top 0
+      left 23px
+    .item-4
+      top 0
+      right 23px
+    .item-5
+      top 1px
+      right 12px
+    .item-6
+      top 1px
+      right 1px
+    .item-7
+      top 12px
+      right 1px
+    .item-8
+      top 23px
+      right 0
+    .item-9
+      bottom 23px
+      right 0
+    .item-10
+      bottom 12px
+      right 1px
+    .item-11
+      bottom 1px
+      right 1px
+    .item-12
+      bottom 1px
+      right 12px
+    .item-13
+      bottom 0
+      right 23px
+    .item-14
+      bottom 0
+      left 23px
+    .item-15
+      bottom 1px
+      left 12px
+    .item-16
+      bottom 1px
+      left 1px
+    .item-17
+      bottom 12px
+      left 1px
+    .item-18
+      bottom 23px
+      left 0
+    .item-19
+      top 23px
+      left 0
+    .item-20
+      top 12px
+      left 1px
+  .border
+    size logo-size
+    box-sizing border-box
+    border logo-border-size solid logo-color
+    opacity 0
+.logo-point
+  absolute false
+  border-radius 50%
+  background-color logo-color
+  transform scale(0)
+  &.big
+    size logo-point-big
+  &.medium
+    size logo-point-medium
+  &.small
+    size logo-point-small
+
+.square
+  z-index 0
+  border 0px solid square-border-color
   &.animate
     size 80vmax
+    size 80vw
     opacity 0
     border-width 15px
     transition width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
@@ -27,100 +165,18 @@
                opacity square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
                border-width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1)
 
-
-.logo-inner
-.logo-middle
-.logo-outer
-  transform scale(0)
-.logo-border
-  opacity 0
 .ready
-  .logo-inner
-    animation scale-in logo-transition-time linear forwards
-  .logo-middle
-    animation scale-in logo-transition-time linear forwards logo-transition-time
-  .logo-outer
-    animation scale-in logo-transition-time linear forwards logo-transition-time * 2
-  .logo-border
-    animation fade-in 0s linear forwards logo-transition-time * 3
+  .logo 
+    .inner .logo-point
+      animation scale-in logo-transition-time linear forwards
+    .middle .logo-point
+      animation scale-in logo-transition-time linear forwards logo-transition-time
+    .outer .logo-point
+      animation scale-in logo-transition-time linear forwards logo-transition-time * 2
+    .border
+      animation fade-in 0s linear forwards logo-transition-time * 3
   .square
     animation square-scale square-transition-time linear logo-transition-time * 3
-    
-  .logo-inner
-    &.item-1
-      transform-origin 50% 44% 0
-    &.item-2
-      transform-origin 56% 50% 0
-    &.item-3
-      transform-origin 50% 56% 0
-    &.item-4
-      transform-origin 44% 50% 0
-  .logo-middle
-    &.item-1
-      transform-origin 50% 30% 0
-    &.item-2
-      transform-origin 56% 36% 0
-    &.item-3
-      transform-origin 63% 44% 0
-    &.item-4
-      transform-origin 70% 50% 0
-    &.item-5
-      transform-origin 63% 56% 0
-    &.item-6
-      transform-origin 57% 63% 0
-    &.item-7
-      transform-origin 50% 70% 0
-    &.item-8
-      transform-origin 43% 63% 0
-    &.item-9
-      transform-origin 37% 56% 0
-    &.item-10
-      transform-origin 30% 50% 0
-    &.item-11
-      transform-origin 37% 44% 0
-    &.item-12
-      transform-origin 44% 36% 0
-  .logo-outer
-    &.item-1
-      transform-origin 50% 18% 0
-    &.item-2
-      transform-origin 56% 25% 0
-    &.item-3
-      transform-origin 63% 30% 0
-    &.item-4
-      transform-origin 70% 36% 0
-    &.item-5
-      transform-origin 77% 44% 0
-    &.item-6
-      transform-origin 82% 50% 0
-    &.item-7
-      transform-origin 77% 56% 0
-    &.item-8
-      transform-origin 70% 64% 0
-    &.item-9
-      transform-origin 63% 70% 0
-    &.item-10
-      transform-origin 56% 75% 0
-    &.item-11
-      transform-origin 50% 82% 0
-    &.item-12
-      transform-origin 44% 75% 0
-    &.item-13
-      transform-origin 37% 70% 0
-    &.item-14
-      transform-origin 30% 64% 0
-    &.item-15
-      transform-origin 25% 56% 0
-    &.item-16
-      transform-origin 18% 50% 0
-    &.item-17
-      transform-origin 23% 44% 0
-    &.item-18
-      transform-origin 30% 36% 0
-    &.item-19
-      transform-origin 37% 30% 0
-    &.item-20
-      transform-origin 44% 23% 0
 
   @keyframes scale-in
     0%
@@ -135,6 +191,7 @@
   @keyframes square-scale
     to
       size 80vmax
+      size 80vw
       opacity 0
       border-width 15px
       transition width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),

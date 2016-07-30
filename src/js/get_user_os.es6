@@ -1,5 +1,5 @@
-'use strict';
-export default function() {
+module.exports = function() {
+  'use strict';
   let os = 'unknown';
   let nAgt = navigator.userAgent;
   let nVer = navigator.appVersion;

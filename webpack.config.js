@@ -10,105 +10,59 @@ const koutoSwiss = require('kouto-swiss');
 module.exports = {
   context: path.resolve('src'),
   entry: [
-    'babel-polyfill',
+    // 'babel-polyfill',
     "./js/index"
   ],
   output: {
     publicPath: './',
     path: path.join(__dirname, "www"),
     filename: 'build.js',
-    // chunkFilename: '[chunkhash].js',
-    pathinfo: true
   },
 
   path: path.resolve('./www'),
   resolve: {
     modulesDirectories: [
       ".",
+      "src",
       'node_modules',
       'bower_components'
     ],
     extensions: [
       '',
       '.js',
+      '.min.js',
       '.es6',
       '.css',
-      '.styl'
+      '.styl',
+      '.pug',
+      'otf',
+      'svg',
+      'ttf',
+      'woff',
+      'woff2'
     ],
-  },
-  plugins: [
-    new CleanWebpackPlugin(['www'], {
-      root: __dirname,
-      verbose: true, 
-      dry: false,
-      exclude: ['']
-    }),
-    // new webpack.DefinePlugin({
-    //   NODE_ENV: JSON.stringify(NODE_ENV)
-    // }),
-    new ExtractTextPlugin("css/styles.css"),
-    new HtmlWebpackPlugin({
-      title: 'Title',
-      chunks: ['application', 'vendors'],
-      filename: 'index.html',
-      template: path.join('index.jade')
-    }),
-    // new webpack.optimize.CommonsChunkPlugin({name: 'commons', minChunks: 2})
-  ],
-  reslove: {
-    modulesDirectorises: ['node_modules', 'src'],
-    extensions: ['', '.js', '.es6', '.styl'],
-  },
-  resloveLoader: {
-    modulesDirectorises: ['node_modules'],
-    modulesTemplates: ['*-loader', '*'],
-    extensions: ['', '.js'],
   },
   module: {
     loaders: [
       {
-        test: /\.js$/,
-        include: [
-          path.resolve(__dirname, "src"),
-        ],
-        exclude: [
-          path.resolve(__dirname, "node_modules"),
-        ],
-        loader: "babel-loader"
+        test: /\.(es6|js)$/,
+        exclude: /node_modules/,
+        loader: 'babel'
       },
       {
         test: /\.styl$/,
-        include: [
-          path.resolve(__dirname, "src"),
-        ],
-        exclude: [
-          path.resolve(__dirname, "src/*/variables.styl"),
-        ],
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus-loader?resolve-url'),
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader', {publicPath: '/'})
       },
       {
-        test: /\.jade$/,
+        test: /\.pug$/,
         include: [
           path.resolve(__dirname, "src"),
         ],
-        loader: 'jade-loader'
-      },
-
-      {
-        test: /\.(png|jpg|jpeg)$/,
-        include: [
-          path.resolve(__dirname, "src"),
-        ],
-        loader: 'file?name=[path][name].[ext]'
+        loader: 'pug-html-loader'
       },
       {
         test: /\.(svg|ttf|otf|eot|woff|woff2)$/,
-        include: [
-          path.resolve(__dirname, "src/fonts"),
-        ],
-        exclude: /node_modules/,
-        // loader: 'file?name=[path][name].[ext]'
-        loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
+        loader: 'file?name=[path][name].[ext]'
       }
     ]
   },
@@ -119,6 +73,44 @@ module.exports = {
     //     limit: 50000
     //   })
     // }
+  },
+  plugins: [
+  new webpack.optimize.UglifyJsPlugin(),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: true,
+    //   mangle: true,
+    //   comments: false,
+    //   sourceMap: false,
+    //   compressor: { warnings: false }
+    // }),
+
+    // new webpack.optimize.UglifyJsPlugin({
+    //     compress: {
+    //         warnings: false,
+    //     },
+    //     output: {
+    //         comments: false,
+    //     },
+    // }),
+    new CleanWebpackPlugin(['www'], {
+      root: __dirname,
+      verbose: true, 
+      dry: false,
+      exclude: ['']
+    }),
+    new ExtractTextPlugin("css/styles.css"),
+    new HtmlWebpackPlugin({
+      template: 'pug-html!src/index.pug'
+    }),
+  ],
+  reslove: {
+    modulesDirectorises: ['node_modules', 'src'],
+    extensions: ['', '.js', '.es6', '.styl'],
+  },
+  resloveLoader: {
+    modulesDirectorises: ['node_modules'],
+    modulesTemplates: ['*-loader', '*'],
+    extensions: ['', '.js'],
   },
   watch: true,
   watchOptions: {

@@ -1,5 +1,5 @@
-'use strict';
-export default function() {
+module.exports = function() {
+  'use strict';
   return new Promise( function(resolve, reject) {
     var result = {};
     var ip_dups = {};
@@ -8,7 +8,7 @@ export default function() {
                             window.webkitRTCPeerConnection; // WebKit
                          
     if (!RTCPeerConnection) {
-      reject('unknown');
+      reject('RTCPeerConnection not supported!');
     };
 
     Object.size = function(obj) {
