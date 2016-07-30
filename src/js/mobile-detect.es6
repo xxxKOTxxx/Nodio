@@ -154,7 +154,7 @@ define(function () {
         "SymbianOS": "Symbian|SymbOS|Series60|Series40|SYB-[0-9]+|\\bS60\\b",
         "WindowsMobileOS": "Windows CE.*(PPC|Smartphone|Mobile|[0-9]{3}x[0-9]{3})|Window Mobile|Windows Phone [0-9.]+|WCE;",
         "WindowsPhoneOS": "Windows Phone 8.1|Windows Phone 8.0|Windows Phone OS|XBLWP7|ZuneWP7|Windows NT 6.[23]; ARM;",
-        "iOS": "\\biPhone.*Mobile|\\biPod|\\biPad",
+        "iOS": "\\biPhone\\b|\\biPhone.*Mobile|\\biPod|\\biPad\\b|\\biPod",
         "MeeGoOS": "MeeGo",
         "MaemoOS": "Maemo",
         "JavaOS": "J2ME\/|\\bMIDP\\b|\\bCLDC\\b",
@@ -180,7 +180,6 @@ define(function () {
         "Open BSD": "\\bOpenBSD\\b",
         "Sun OS": "\\bSunOS\\b",
         "Linux": "\\bLinux\\b|\\bX11\\b",
-        "iOS": "\\biPhone\\b|\\biPad\\b|\\biPod\\b",
         "Mac OS X": "\\bMac OS X\\b",
         "Mac OS": "\\bMacPPC\\b|\\bMacIntel\\b|\\bMac_PowerPC\\b|\\bMacintosh\\b",
         "QNX": "\\bQNX\\b",
@@ -321,7 +320,7 @@ define(function () {
         Array.isArray : function (value) { return Object.prototype.toString.call(value) === '[object Array]'; };
  
     function equalIC(a, b) {
-        return a != null && b != null && a.toLowerCase() === b.toLowerCase();
+        return a !== null && b !== null && a.toLowerCase() === b.toLowerCase();
     }
  
     function containsIC(array, value) {
@@ -998,16 +997,3 @@ define(function () {
         return define;
     }
 })());
-
-// ((function (undefined) {
-//     if (typeof module !== 'undefined' && module.exports) {
-//         return function (factory) { module.exports = factory(); };
-//     } else if (typeof define === 'function' && define.amd) {
-//         return define;
-//     } else if (typeof window !== 'undefined') {
-//         return function (factory) { window.MobileDetect = factory(); };
-//     } else {
-//         // please file a bug if you get this error!
-//         throw new Error('unknown environment');
-//     }
-// })());

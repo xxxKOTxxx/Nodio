@@ -14,13 +14,13 @@ module.exports = function() {
           country: json.country
         },
         'provider': json.isp
-      }
+      };
       resolve(result);
-    }
+    };
 
     xhr.onerror = function() {
       reject('Ошибка ' + this.status);
-    }
+    };
 
     xhr.send();
   });

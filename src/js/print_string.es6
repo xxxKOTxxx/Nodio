@@ -31,7 +31,7 @@ module.exports = function(element, string, options, callback_data) {
     number: number,
     symbol: symbol,
     letter: letter
-  } 
+  };
 
   /*** Get print string ***/
   if(!string) {
@@ -77,11 +77,11 @@ module.exports = function(element, string, options, callback_data) {
   /*** Set opacity ***/
   let setOpacity = function(element, timeout, placeholder_frames, opacity_frames) {
     let frames = placeholder_frames + opacity_frames;
-    for(var i = frames; i >= 1; i--) {
+    for(let i = frames; i >= 1; i--) {
       (function(index) {
         setTimeout(function() {
-          var min_opacity = 0;
-          var max_opacity = 1;
+          let min_opacity = 0;
+          let max_opacity = 1;
           if(index < placeholder_frames) {
             min_opacity = settings.min_opacity;
             max_opacity = (((index + 1) / placeholder_frames) * settings.max_opacity_multiplier).toFixed(2);
@@ -101,7 +101,7 @@ module.exports = function(element, string, options, callback_data) {
     setTimeout(function() {
       element.style.removeProperty("opacity");
     }, timeout * frames);
-  }
+  };
 
   /*** Set placeholder ***/
   let setPlaceholder = function(element, timeout, frames) {
@@ -115,7 +115,7 @@ module.exports = function(element, string, options, callback_data) {
       return;
     }
     let placeholder_string = placeholders[data.type];
-    for(var i = frames; i >= 1; i--) {
+    for(let i = frames; i >= 1; i--) {
       (function(index) {
         setTimeout(function() {
           let current_placeholder_index = getRandomCharacter(data);
@@ -151,13 +151,13 @@ module.exports = function(element, string, options, callback_data) {
       repeat_exceptions[data.type].shift();
     }
     return result;
-  }
+  };
 
   /*** Get print template ***/
   let getTemplate = function(string) {
     let result = Array();
     let string_length = string.length;
-    for (var i = string_length; i >= 1; i--) {
+    for (let i = string_length; i >= 1; i--) {
       let char_el = document.createElement('span');
       char_el.className = 'print-character placeholder';
       char_el.innerHTML = string[string_length - i];
@@ -179,7 +179,7 @@ module.exports = function(element, string, options, callback_data) {
     let template_length = template.length;
     if(timeout) {
       let spaces = 0;
-      for(var i = template_length; i >= 1; i--) {
+      for(let i = template_length; i >= 1; i--) {
         (function(index) {
           if(JSON.parse(template[index].getElementsByClassName('placeholder')[0].getAttribute('data-character')).type == 'space') {
             spaces++;
@@ -200,7 +200,7 @@ module.exports = function(element, string, options, callback_data) {
       }
     }
     else {
-      for(var i = template_length; i >= 1; i--) {
+      for(let i = template_length; i >= 1; i--) {
         element.appendChild(template[template_length - i]);
         setPlaceholder(template[template_length - i], settings.frame_timeout, settings.placeholder_frames);
         if(settings.opacity) {
@@ -221,5 +221,5 @@ module.exports = function(element, string, options, callback_data) {
       data = {detail: callback_data};
     }
     document.dispatchEvent(new CustomEvent(event, data));
-  }
+  };
 };

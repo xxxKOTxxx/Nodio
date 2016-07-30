@@ -9,7 +9,7 @@ module.exports = function() {
                          
     if (!RTCPeerConnection) {
       reject('RTCPeerConnection not supported!');
-    };
+    }
 
     Object.size = function(obj) {
       var size = 0, key;
@@ -21,7 +21,7 @@ module.exports = function() {
 
     function handleCandidate(candidate) {
       // Match just the IP address
-      var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/
+      var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
       var ip_addr = ip_regex.exec(candidate)[1];
       // Remove duplicates
      

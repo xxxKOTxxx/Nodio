@@ -1,9 +1,8 @@
-'use strict';
 require('../stylus/index');
-
 import "babel-polyfill";
-
 require('ie_fixes');
+(function () {
+'use strict';
 /* Detect user ip module */
 let getUserIPs = require('get_ip');
 /* Detect user data module */
@@ -38,6 +37,7 @@ let printed_symbols = 0;
 let statistics_percent = 0;
 let statistic_interval = false;
 let statistic_animation_time = 250;
+let frame_timeout = 40;
 
 let mobile_detect = new MobileDetect(navigator.userAgent);
 
@@ -53,7 +53,7 @@ let check_data = function() {
 let assignUserData = function(data) {
   Object.assign(parsed_data, data);
   check_data();
-}
+};
 
 /*** Error handler ***/
 let errorHandler = function(error) {
@@ -75,13 +75,13 @@ let getUserDevice = function() {
     nav_device = false;
   }
   return nav_device || mobile_detect.mobile() || 'Computer';
-}
+};
 parsed_data.device = getUserDevice();
 
 /*** Grt user operation system ***/
 let getUserOperationSystem = function() {
   return getUserOS() || mobile_detect.os();
-}
+};
 parsed_data.os = getUserOperationSystem();
 
 /*** Grt user browser ***/
@@ -98,21 +98,21 @@ let setUserData = function() {
   if(user_data.browser !== default_data_value) {
     user_data.browser = user_data.browser.name + ' ' + user_data.browser.full_version;
   }
-  user_data.name = '*#@~$&#^'
+  user_data.name = '*#@~$&#^';
   getStatistics();
-}
+};
 
 let getStatistics = function() {
   let print = document.querySelectorAll('.print.statistics');
   for(let i = print.length - 1; i >= 0; i--) {
-    statistic_symbols += print[i].textContent.replace(' ', '').length
+    statistic_symbols += print[i].textContent.replace(' ', '').length;
   }
   let user_data_length = Object.keys(user_data).reduce(function(sum, key) {
     return sum + user_data[key].replace(' ', '').length;
   }, 0);
   statistic_symbols += user_data_length;
   animate();
-}
+};
 
 let initialize = function() {
   if(!data_ready) {
@@ -121,10 +121,9 @@ let initialize = function() {
   else {
     setUserData();
   }
-}
+};
 document.addEventListener('DOMContentLoaded', initialize);
 
-let frame_timeout = 100;
 let printer_settings = {
   info: {
     print_all: true,
@@ -165,9 +164,9 @@ let printer_settings = {
     frame_timeout: frame_timeout,
     placeholder_frames: 12,
     opacity_frames: 16,
-    max_opacity: .75,
+    max_opacity: 0.75,
   }
-}
+};
 
 let getPrinterElements = function() {
   let result = {};
@@ -182,7 +181,7 @@ let getPrinterElements = function() {
     result[element.getAttribute('data-print-step')].push(element);
   }
   return result;
-}
+};
 let printer_elements = getPrinterElements();
 
 let animate = function() {
@@ -192,7 +191,7 @@ let animate = function() {
     body.className = 'ready';
   }, logo_animation_timeout);
   printElements(1);
-}
+};
 
 let printElements = function(step) {
   for (var i = printer_elements[step].length - 1; i >= 0; i--) {
@@ -203,15 +202,15 @@ let printElements = function(step) {
     }
     printString(printer_elements[step][i], string, settings, {step: step});
   }
-}
+};
 
-let squareAnimation = function() {
-  let square = document.querySelector('.square');
-  square.classList.remove('animate');
-  setTimeout(function() {
-    square.classList.add('animate');
-  }, 10);
-}
+// let squareAnimation = function() {
+//   let square = document.querySelector('.square');
+//   square.classList.remove('animate');
+//   setTimeout(function() {
+//     square.classList.add('animate');
+//   }, 10);
+// };
 
 let animateStatistic = function(element) {
   let statistic_interval = setInterval(function(index) {
@@ -224,7 +223,7 @@ let animateStatistic = function(element) {
       clearInterval(statistic_interval);
     }
   }, statistic_animation_time);
-}
+};
 
 let setStatistic = function() {
   printed_symbols++;
@@ -237,29 +236,29 @@ let setStatistic = function() {
       animateStatistic(statistic);
     }
   }
-}
+};
 
 let printer_queue_defaults = {
   frames_delay: 15,
-  animation_count: false
-}
+  // animation_count: false
+};
 let printer_queue_options = {
   1: {
     frames_delay: 0
   },
-  2: {
-    animation_count: 1
-  },
-  4: {
-    animation_count: 1
-  },
-  6: {
-    animation_count: 1
-  },
-  8: {
-    animation_count: 1
-  }
-}
+  // 2: {
+  //   animation_count: 1
+  // },
+  // 4: {
+  //   animation_count: 1
+  // },
+  // 6: {
+  //   animation_count: 1
+  // },
+  // 8: {
+  //   animation_count: 1
+  // }
+};
 
 let printerQueue = function(event) {
   let step = event.detail.step;
@@ -270,9 +269,9 @@ let printerQueue = function(event) {
     printer_queue_data[step]++;
   }
   let queue_settings = Object.assign({}, printer_queue_defaults, printer_queue_options[step]);
-  if(queue_settings.animation_count == printer_queue_data[step]) {
-    squareAnimation();
-  }
+  // if(queue_settings.animation_count == printer_queue_data[step]) {
+  //   squareAnimation();
+  // }
   if(printer_queue_data[step] == printer_elements[step].length) {
     if(step == 1) {
       document.addEventListener('character_printed', setStatistic);
@@ -284,6 +283,7 @@ let printerQueue = function(event) {
       }, timeout);
     }
   }
-}
+};
 
 document.addEventListener('string_printed', printerQueue);
+})();

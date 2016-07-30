@@ -31,8 +31,9 @@ module.exports = function() {
     {s:'OS/2', r:/OS\/2/},
     {s:'Search Bot', r:/(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/}
   ];
-  for(let id in clientStrings) {
-    let cs = clientStrings[id];
+  let clientStrings_length = clientStrings.length
+  for (let i = clientStrings_length - 1; i >= 0; i--) {
+    let cs = clientStrings[clientStrings_length - i - 1];
     if (cs.r.test(nAgt)) {
       os = cs.s;
       break;
@@ -54,11 +55,11 @@ module.exports = function() {
       break;
     case 'iOS':
       osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
-      osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
+      osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] || 0);
       break;
   }
   return {
     name: os,
     version: osVersion
-  }
+  };
 };

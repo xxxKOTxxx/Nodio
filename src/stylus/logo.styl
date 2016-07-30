@@ -10,17 +10,17 @@
 .square
   size logo-size
   absolute 50% false false 50%
-  transform: translate(-50%, -50%);
   margin auto
   transform-origin 85% -35%
   transform rotate(45deg) translate3d(0, 0, 0)
 .logo
+  background-color background-color
   z-index 1
   .inner
   .middle
   .outer
     absolute 50% false false 50%
-    transform: translate(-50%, -50%);
+    transform translate(-50%, -50%) translate3d(0, 0, 0)
   .inner
     size logo-inner-size
     .item-1
@@ -144,7 +144,7 @@
   absolute false
   border-radius 50%
   background-color logo-color
-  transform scale(0)
+  transform scale(0) translate3d(0, 0, 0)
   &.big
     size logo-point-big
   &.medium
@@ -155,15 +155,15 @@
 .square
   z-index 0
   border 0px solid square-border-color
-  &.animate
-    size 80vmax
-    size 80vw
-    opacity 0
-    border-width 15px
-    transition width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
-               height square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
-               opacity square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
-               border-width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1)
+  // &.animate
+  //   size 80vmax
+  //   size 80vw
+  //   opacity 0
+  //   border-width 15px
+  //   transition width square-transition-time linear,
+  //              height square-transition-time linear,
+  //              opacity square-transition-time linear,
+  //              border-width square-transition-time linear
 
 .ready
   .logo 
@@ -176,7 +176,8 @@
     .border
       animation fade-in 0s linear forwards logo-transition-time * 3
   .square
-    animation square-scale square-transition-time linear logo-transition-time * 3
+    // animation square-start-scale square-transition-time normal linear logo-transition-time * 3,
+    animation square-scale 5s infinite linear
 
   @keyframes scale-in
     0%
@@ -188,14 +189,40 @@
       opacity 0
     100%
       opacity 1
+  // @keyframes square-start-scale
+  //   to
+  //     size 80vmax
+  //     size 80vw
+  //     opacity 0
+  //     border-width 15px
+  //     transition width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
+  //                height square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
+  //                opacity square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
+  //                border-width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1)
   @keyframes square-scale
-    to
+    18%
+      opacity 1
+      size logo-size
+      border-width 0
+      transition width 0 linear,
+                 height 0 linear,
+                 opacity 0 linear,
+                 border-width 0 linear
+    44%
       size 80vmax
       size 80vw
       opacity 0
       border-width 15px
-      transition width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
-                 height square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
-                 opacity square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1),
-                 border-width square-transition-time cubic-bezier(0.215, 0.61, 0.355, 1)
+      transition width square-transition-time linear,
+                 height square-transition-time linear,
+                 opacity square-transition-time linear,
+                 border-width square-transition-time linear
+    44.1%
+      opacity 1
+      size logo-size
+      border-width 0
+      transition width 0 linear,
+                 height 0 linear,
+                 opacity 0 linear,
+                 border-width 0 linear
       

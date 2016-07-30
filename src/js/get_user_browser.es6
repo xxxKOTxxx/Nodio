@@ -69,5 +69,5 @@ module.exports = function() {
     name: browser, 
     version: majorVersion,
     full_version: version
-  }
-}
+  };
+};
