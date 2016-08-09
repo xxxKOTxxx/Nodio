@@ -194,10 +194,12 @@ module.exports = function(element, string, options, callback_data) {
           setTimeout(function() {
             element.appendChild(template[index]);
             setPlaceholder(template[index], settings.frame_timeout, settings.placeholder_frames);
-            callback('string_printed');
           }, timeout * (template_length - i - spaces));
         })(template_length - i);
       }
+      setTimeout(function() {
+        callback('string_printed');
+      }, settings.frame_timeout * template_length);
     }
     else {
       for(let i = template_length; i >= 1; i--) {

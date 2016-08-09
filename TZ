@@ -1,9 +1,15 @@
-+ add print events
-+ add opacity
-+ set printers
-+ set square animations
-+ fix 1 frame animations
-+ start screen bug
-+ mozilla line heigth bug
 check opacity min/max calculation + fix it
 IE8 
+
+animations params to JS
+
+
+- check video size - use min
+
++ configs to file
++ add user data string delay config
++ square animation blink
++ add video Dropbox\Nodio\Site\images
++ get load percent
+mobile header scroll
+font bolder in chrome

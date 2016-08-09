@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const koutoSwiss = require('kouto-swiss');
@@ -98,6 +99,12 @@ module.exports = {
       dry: false,
       exclude: ['']
     }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve('src/media'),
+        to: path.resolve('www/media')
+      },
+    ]),
     new ExtractTextPlugin("css/styles.css"),
     new HtmlWebpackPlugin({
       template: 'pug-html!src/index.pug'

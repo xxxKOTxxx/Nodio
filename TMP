@@ -1,0 +1,29 @@
+
+  // if(queue_settings.animation_count == printer_queue_data[step]) {
+  //   squareAnimation();
+  // }
+
+  
+
+// let squareAnimation = function() {
+//   let square = document.querySelector('.square');
+//   square.classList.remove('animate');
+//   setTimeout(function() {
+//     square.classList.add('animate');
+//   }, 10);
+// };
+
+
+
+// let hideDefinition = function() {
+//   let definition = definitions_list[0];
+//   let i = 0;
+//   while(definition.getBoundingClientRect().height == 0) {
+//     definition = definitions_list[i];
+//     i++;
+//   }
+//   console.log('i',i);
+//   definition.style.height = '0px';
+//   definition.style.paddingTop = '0px';
+//   definition.style.paddingBottom = '0px';
+// };

@@ -2,23 +2,31 @@
 
 /* Header styles */
 header
-  absolute 30px false false 50px
+  absolute 30px 50px false
   z-index 3
+  overflow hidden
   
   dl
-    padding 14px 0
+    padding 10px 0
     font-size header-font-size
-    line-height header-font-size
+    line-height header-line-height
     text-transform uppercase
-    
+    &.progress
+      padding-bottom 30px
   dt
   dd
-    display inline-block
-    vertical-align top
+    vertical-align middle
     opacity 0.3
   dt
+    display inline-block
     width 110px
   dd
+    display inline
     &.percent
       opacity 0.7
-    
+
+.user-data-block
+  absolute 52px 0 0
+  overflow-y scroll
+  margin-right -17px
+  padding-right 17px
