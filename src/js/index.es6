@@ -1,9 +1,29 @@
 require('../stylus/index');
 
-import 'babel-polyfill';
+// import 'babel-polyfill';
 require('ie_fixes');
 (function () {
 'use strict';
+
+/*** Get video url ***/
+let GetVideoUrl = require('assets/get_video_url');
+let getVideoUrl = new GetVideoUrl();
+let video_url = getVideoUrl.url;
+console.log('video_url', video_url)
+
+/*** Set counter ***/
+let counter_config = require('configurations/counter');
+let counter_element = document.querySelector(counter_config.selector)
+let SetCounter = require('assets/set_counter');
+let setCounter = new SetCounter(counter_element, 'upload_progress', counter_config.options);
+
+/*** Upload video ***/
+let UploadVideo = require('assets/upload_video');
+let uploadVideo = new UploadVideo();
+uploadVideo.upload(video_url);
+
+
+
 /* Detect user ip module */
 let getUserIPs = require('get_ip');
 /* Detect user data module */
@@ -19,11 +39,16 @@ let printString = require('print_string');
 /* Settings module */
 let config = require('config');
 
+
+
+
+
+
+
 let parsed_data = {};
 let printer_queue_data = {};
 
 let data_ready = false;
-let statistic_interval = false;
 
 let data_counter = 0;
 let printed_symbols = 0;
@@ -65,7 +90,7 @@ let getUserDevice = function() {
   if(nav_device.length > 15) {
     nav_device = false;
   }
-  return nav_device || mobile_detect.mobile() || 'Computer';
+  return nav_device || mobile_detect.mobile() || 'PC';
 };
 parsed_data.device = getUserDevice();
 
@@ -153,16 +178,16 @@ let printElements = function(step) {
 };
 
 let animateStatistic = function(element) {
-  let statistic_interval = setInterval(function(index) {
-    let current_percent = parseInt(element.textContent);
-    let inequality = statistics_percent - current_percent;
-    if(inequality > 0) {
-      element.textContent = current_percent + 1 + '%';
-    }
-    if(current_percent == 100) {
-      clearInterval(statistic_interval);
-    }
-  }, config.statistic_animation_time);
+  // let statistic_interval = setInterval(function(index) {
+  //   let current_percent = parseInt(element.textContent);
+  //   let inequality = statistics_percent - current_percent;
+  //   if(inequality > 0) {
+  //     element.textContent = current_percent + 1 + '%';
+  //   }
+  //   if(current_percent == 100) {
+  //     clearInterval(statistic_interval);
+  //   }
+  // }, config.statistic_animation_time);
 };
 
 let setStatistic = function() {
@@ -170,11 +195,11 @@ let setStatistic = function() {
   let current_percent = Math.round(100 * (printed_symbols / statistic_symbols));
   if(current_percent != statistics_percent) {
     statistics_percent = current_percent;
-    if(!statistic_interval) {
-      statistic_interval = true;
-      let statistic = document.querySelector('.percent');
-      animateStatistic(statistic);
-    }
+    // if(!statistic_interval) {
+    //   statistic_interval = true;
+    //   let statistic = document.querySelector('.percent');
+    //   animateStatistic(statistic);
+    // }
   }
 };
 
@@ -237,52 +262,32 @@ let printerQueue = function(event) {
   }
 };
 
-let tst_start = null;
-let tst_end = null;
-let video = document.getElementById('video');
-let videoProgress = function(event) {
-    var percent = null;
-    if(!tst_start) {
-      tst_start = new Date().getTime();
-    }
-// console.log('event',event);
-// console.log('video',video);
-// console.log('video.buffered',video.buffered);
-// console.log('video.buffered.length',video.buffered.length);
-// console.log('video.buffered.end',video.buffered.end);
-// console.log('video.duration',video.duration);
-// console.log('video.readyState',video.readyState);
-    // FF4+, Chrome
-    if (video && video.buffered && video.buffered.length > 0 && video.buffered.end && video.duration) {
-        percent = video.buffered.end(0) / video.duration;
-// console.log('percent1',percent);
-    } 
-    // Some browsers (e.g., FF3.6 and Safari 5) cannot calculate target.bufferered.end()
-    // to be anything other than 0. If the byte count is available we use this instead.
-    // Browsers that support the else if do not seem to have the bufferedBytes value and
-    // should skip to there. Tested in Safari 5, Webkit head, FF3.6, Chrome 6, IE 7/8.
-    else if (video && video.bytesTotal != undefined && video.bytesTotal > 0 && myVideoTag.bufferedBytes != undefined) {
-        percent = video.bufferedBytes / video.bytesTotal;
-// console.log('percent2',percent);
-    }
+// let video = document.getElementById('video');
+// let video_source = new XMLHttpRequest();
+// video_source.onload = function() {
+//   console.log( 'Данные полностью загружены на сервер!' );
+//   video.src = URL.createObjectURL(video_source.response);
+//   video.play();
+// };
+// if (video.canPlayType('video/mp4;codecs="avc1.42E01E, mp4a.40.2"')) {
+//   video_source.open("GET", "media/1.mp4");
+// }
+// else {
+//   // r.open("GET", "slide.webm");
+//   console.error('Video not supported!')
+// }
+// video_source.onprogress = function(event) {
+//   console.log(event.loaded, event.total);
+//   console.log(Math.floor((event.loaded / event.total) * 100)+'%');
+// }
 
-    if (percent !== null) {
-        percent = Math.round(100 * Math.min(1, Math.max(0, percent)));
-  tst_end = new Date().getTime();
-  let res = (tst_end - tst_start) / 1000;
-        // console.log('percent',percent, res);
-    }
-};
-let videoMeta = function(event) {
-//   console.log('videoMeta',event);
-// console.log('video.duration',video.duration);
-};
-let videoReady = function(event) {
-  // console.log('videoReady',event);
-};
-video.addEventListener('progress', videoProgress);
-video.addEventListener('loadedmetadata', videoMeta);
-video.addEventListener('loadeddata', videoReady);
+
+// video_source.onerror = function() {
+//   console.log( 'Произошла ошибка при загрузке данных на сервер!' );
+// }
+
+// video_source.responseType = "blob";
+// video_source.send();
 
 document.addEventListener('string_printed', printerQueue);
 })();

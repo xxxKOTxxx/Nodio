@@ -1,5 +1,7 @@
+let video = require('configurations/video')
 let config = {};
-
+/*** Video config ***/
+config.video = video;
 
 
 /*** Set default user data ***/
@@ -13,7 +15,6 @@ config.user_data = {
   os:         config.default_data_value,
   browser:    config.default_data_value,
 };
-config.user_data.name = '*#@~$&#^';
 config.statistic_animation_time = 55;
 
 config.frame_timeout = 30;

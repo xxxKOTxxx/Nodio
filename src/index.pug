@@ -2,9 +2,26 @@ doctype html
 html
   head
     meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    meta(name="description" content="Nodio")
+    meta(
+      http-equiv="X-UA-Compatible"
+      content="IE=edge,chrome=1"
+    )
+    meta(
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    )
+    meta(
+      name="description"
+      content="Nodio"
+    )
+    meta(
+      http-equiv="x-dns-prefetch-control"
+      content="on"
+    )
+    link(
+      rel="dns-prefetch"
+      href="http://ip-api.com"
+    )
     title Nodio
   body
     header#header
@@ -88,22 +105,11 @@ html
             data-print-setting="header_string"
             data-print-string="browser"
           )
-        dl.definition.name
-          dt.name.print.statistics(
-            data-print-step="16"
-            data-print-setting="header_all"
-          ) Name:
-          dd.name.print.statistics(
-            data-print-step="17"
-            data-print-setting="header_all"
-            data-print-string="name"
-          )
 
     .content
       include pug/logo.pug
       .square
-      video#video(preload)
-        source(src="media/1.mp4" type="video/mp4")
+      video#video(preload="none")
 
     footer
       p.print(

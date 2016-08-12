@@ -27,3 +27,79 @@
 //   definition.style.paddingTop = '0px';
 //   definition.style.paddingBottom = '0px';
 // };
+
+
+
+
+
+let tst_start = null;
+let tst_end = null;
+let video = document.getElementById('video');
+video.load();
+let videoProgress = function(event) {
+    var percent = null;
+    if(!tst_start) {
+      tst_start = new Date().getTime();
+    }
+// console.log('event',event);
+// console.log('video',video);
+// console.log('video.buffered',video.buffered);
+// console.log('video.buffered.length',video.buffered.length);
+// console.log('video.buffered.end',video.buffered.end);
+// console.log('video.duration',video.duration);
+// console.log('video.readyState',video.readyState);
+    // FF4+, Chrome
+    if (video && video.buffered && video.buffered.length > 0 && video.buffered.end && video.duration) {
+        percent = video.buffered.end(0) / video.duration;
+// console.log('percent1',percent);
+    } 
+    // Some browsers (e.g., FF3.6 and Safari 5) cannot calculate target.bufferered.end()
+    // to be anything other than 0. If the byte count is available we use this instead.
+    // Browsers that support the else if do not seem to have the bufferedBytes value and
+    // should skip to there. Tested in Safari 5, Webkit head, FF3.6, Chrome 6, IE 7/8.
+    else if (video && video.bytesTotal != undefined && video.bytesTotal > 0 && myVideoTag.bufferedBytes != undefined) {
+        percent = video.bufferedBytes / video.bytesTotal;
+// console.log('percent2',percent);
+    }
+
+    if (percent !== null) {
+        percent = Math.round(100 * Math.min(1, Math.max(0, percent)));
+  tst_end = new Date().getTime();
+  let res = (tst_end - tst_start) / 1000;
+console.log('percent',percent, res);
+    }
+};
+let videoMeta = function(event) {
+//   console.log('videoMeta',event);
+// console.log('video.duration',video.duration);
+};
+let testEvent = function(event) {
+  console.log(event.type, event);
+};
+video.addEventListener('progress', videoProgress);
+video.addEventListener('progress', testEvent);
+video.addEventListener('loadedmetadata', testEvent);
+video.addEventListener('loadeddata', testEvent);
+video.addEventListener('canplay', testEvent);
+video.addEventListener('oncanplaythrough', testEvent);
+video.addEventListener('loadstart', testEvent);
+
+
+
+/* Test media module */
+let TestMedia = require('tests/test_media');
+let video_types = Object.keys(config.video).map(function(index, value) {
+  return config.video[index].type;
+});
+
+let testMedia = new TestMedia();
+let supported_video_type = testMedia.getStrictSupported(video_types);
+if(!supported_video_type) {
+  console.error('Supported video type not found!');
+}
+else {
+  let video_index = testMedia.getStrictSupported(video_types).index;
+  let video_url = config.video[Object.keys(config.video)[video_index]].url;
+console.log('video_url',video_url)
+}
+console.log('video_url',video_url)
