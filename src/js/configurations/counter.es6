@@ -1,9 +1,12 @@
-/*** Counter config ***/
+/***** Counter config *****/
 let counter = {
   selector: '.percent',
   options: {
     animation_time: 55,
-    suffix: ' %' 
+    suffix: ' %',
+    callback: function() {
+      document.dispatchEvent(new CustomEvent('countdown'));
+    }
   }
 };
 

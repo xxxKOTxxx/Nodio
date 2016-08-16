@@ -16,6 +16,7 @@ module.exports = class Counter {
     this.value = this.settings.initial_value;
     this.max_value = this.settings.max_value;
     this.count = count || this.value;
+    this.callback = this.settings.callback;
   }
   set (property, value) {
     return this[property] = value;

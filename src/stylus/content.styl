@@ -7,6 +7,127 @@
 video
   fixed 50% false false 50%
   size auto
+  min-width 0
+  min-height 0
   z-index -1
+  opacity 0
   transform translate(-50%, -50%)
   background-color #000
+  &.show
+    opacity 1
+    z-index 1000
+  &.full
+    min-width 100%
+    min-height 100%
+    transition min-width 0.5s linear,
+               min-height 0.5s linear
+
+.background
+.sidebar
+.page
+  display none
+  opacity 0
+  &.show
+    display block
+    opacity 1
+    transition opacity 0.5s linear
+
+.background
+  size 100%
+  background-image url('~images/grid_pattern.svg')
+  background-position 0 0
+  background-size 60px 60px
+  background-repeat repeat
+  .line
+    size 0 1px
+    max-width 0
+    margin auto
+    background-color rgba(255, 255, 255, 0.2)
+    border-left 1px solid #FFF
+    border-right 1px solid #FFF
+    transition max-width 1s linear
+    &.top
+      absolute 59px 50px false 250px
+    &.bottom
+      absolute false 50px 300px 250px
+      
+    &.show
+      width auto
+      max-width 1000px
+.sidebar
+  size 200px 100%
+  absolute 0 false 0 0
+.menu
+  margin-top 121px
+  margin-left 59px
+  .menu-item
+    height 29px
+    margin-top 31px
+  .menu-link
+    display inline-block
+    size auto 100%
+    min-width 10px
+    padding 0 10px
+    relative false
+    color #FFF
+    line-height 29px
+    text-decoration none
+    text-align left
+    transition width 0.2s linear,
+               background-color 0.2s linear
+    .line
+      absolute false 0 0
+      size 100% 1px
+      display block
+      background-color rgba(255, 255, 255, 0.2)
+      &:before
+      &:after
+        content ''
+        absolute 0 false
+        size 1px
+        background-color #fff
+      &:before
+        left 0
+      &:after
+        right 0
+    &.active
+      min-width 40px
+    &.active
+      color rgba(23, 229, 178, 1)
+      cursor default
+      .line
+        background-color rgba(23, 229, 178, 0.2)
+        &:before
+        &:after
+          background-color rgba(23, 229, 178, 1)
+          
+    &.join
+      relative false
+      size 60px 30px
+      padding 0
+      text-align center
+      text-transform uppercase
+      line-height 33px
+      color rgba(23, 229, 178, 1) !important
+      border 1px solid rgba(23, 229, 178, 0.2)
+      .point
+        absolute false
+        size 1px
+        background-color rgba(23, 229, 178, 1)
+        &.top
+          top -1px
+        &.bottom
+          bottom -1px
+        &.left
+          left -1px
+        &.right
+          right -1px
+      
+      
+.page
+
+  h1
+    text-transform 
+  
+  p
+    text-align left

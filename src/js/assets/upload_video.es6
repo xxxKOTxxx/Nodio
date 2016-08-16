@@ -1,4 +1,4 @@
-/* Get video url module */
+/* Video URL module */
 let Uploader = require('../utilities/uploader');
 module.exports = class VideoUrl {
   constructor() {
@@ -6,6 +6,7 @@ module.exports = class VideoUrl {
     this.uploader_options = {
       progressHandler: this.progressHandler,
       readystatechangeHandler: this.readystatechangeHandler,
+      loadHandler: this.loadHandler
     }
     this.uploader = new Uploader(this.uploader_options);
   }
@@ -21,12 +22,15 @@ module.exports = class VideoUrl {
   readystatechangeHandler(event) {
     if(event.target.readyState == 4) {
       if(event.target.status == 200) {
-        console.log('Upload complete!')
         document.dispatchEvent(new CustomEvent('upload_complete'));
       }
       else {
         throw new Error('Upload crashed with status ' + event.target.status + '!');
       }
     }
+  }
+  loadHandler(event) {
+    let source = URL.createObjectURL(event.target.response)
+    document.dispatchEvent(new CustomEvent('video_source', {detail: source}));
   }
 }

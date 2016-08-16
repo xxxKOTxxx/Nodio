@@ -104,6 +104,10 @@ module.exports = {
         from: path.resolve('src/media'),
         to: path.resolve('www/media')
       },
+      {
+        from: path.resolve('src/images'),
+        to: path.resolve('www/images')
+      },
     ]),
     new ExtractTextPlugin("css/styles.css"),
     new HtmlWebpackPlugin({

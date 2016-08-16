@@ -1,7 +1,7 @@
 check opacity min/max calculation + fix it
-IE8 
+- IE8 
 
-animations params to JS
++ animations params to JS
 
 
 - check video size - use min
@@ -11,5 +11,7 @@ animations params to JS
 + square animation blink
 + add video Dropbox\Nodio\Site\images
 + get load percent
-mobile header scroll
++ mobile header scroll
 font bolder in chrome
+
+animation config

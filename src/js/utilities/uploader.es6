@@ -43,9 +43,9 @@ module.exports = class Uploader {
     let type = this.settings.type;
     this.request.open(type, url);
     this.request.send();
+    return this.request;
   }
   abort() {
     this.request.abort();
-    console.log('abort')
   }
 }

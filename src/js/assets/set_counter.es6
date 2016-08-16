@@ -4,20 +4,17 @@ module.exports = class SetCounter {
   constructor(element, event_name, options = {}) {
     this.Counter = Counter;
     this.counter = new Counter(element, options);
+    document.addEventListener(event_name, event => this.update(event));
+  }
+  start() {
     this.counter.start();
-    document.addEventListener(event_name, this.update.bind(this));
   }
   update(event) {
     let percent = Math.floor((event.detail.loaded / event.detail.total) * 100);
     this.counter.count = percent;
   }
+  get (property) {
+    let result = this.counter[property];
+    return this.counter[property];
+  }
 }
-
-
-/* Counter module */
-// let Counter = require('counter');
-
-// let counter = new Counter(document.querySelector('.percent'), {suffix: ' %'});
-
-// console.log(counter.count);
-// counter.start();

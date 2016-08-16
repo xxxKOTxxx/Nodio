@@ -8,9 +8,10 @@ header
   
   dl
     padding 10px 0
-    font-size header-font-size
-    line-height header-line-height
+    font-size $header-font-size
+    line-height $header-line-height
     text-transform uppercase
+    transition margin-top 0.3s linear
     &.progress
       padding-bottom 30px
   dt
@@ -27,6 +28,4 @@ header
 
 .user-data-block
   absolute 52px 0 0
-  overflow-y scroll
-  margin-right -17px
-  padding-right 17px
+  overflow hidden

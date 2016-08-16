@@ -38,6 +38,6 @@ module.exports = class Counter {
     }
   }
   start() {
-    this.interval = setInterval(this.counter.bind(this), this.settings.animation_time);
+    this.interval = setInterval(() => {this.counter}, this.settings.animation_time);
   }
 }

@@ -15,6 +15,9 @@ let video = {
       width: 1920,
       height: 1080,
     }
+  },
+  timing: {
+    full_size: 2.7
   }
 };
 

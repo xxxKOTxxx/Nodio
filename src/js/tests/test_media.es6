@@ -1,3 +1,4 @@
+/***** Test media module *****/
 module.exports = class Counter {
   constructor() {
     this.MediaSource = window.MediaSource || window.WebKitMediaSource;
@@ -21,4 +22,4 @@ module.exports = class Counter {
     }
     return false;
   }
-}
+};
