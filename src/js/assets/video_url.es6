@@ -21,15 +21,15 @@ module.exports = class VideoUrl {
     return extention;
   }
   get name() {
-    let name = '';
     let sizes = this.config.sizes;
+    let name = Object.keys(sizes);
     let screen_width = window.screen.availWidth;
     let screen_height = window.screen.availHeight;
     let sizes_length = Object.keys(sizes).length;
     for (var i = sizes_length; i > 0; i--) {
       let index = sizes_length - i;
       let size = sizes[Object.keys(sizes)[index]];
-      if(size.width <= screen_width && size.height <= screen_height) {
+      if((size.width <= screen_width && size.height <= screen_height)) {
         name = Object.keys(sizes)[index];
       }
       else {

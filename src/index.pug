@@ -2,7 +2,13 @@ doctype html
 html
   head
     include pug/head.pug
-  body
+  body.preloader-mode
+    audio(
+      loop,
+      autoplay,
+      preload="auto",
+    )
+      source src="media/background.mp3" type="audio/mpeg"
     include pug/header.pug
     .content
       .background

@@ -10,12 +10,14 @@ body
   background-color $background-color
   text-shadow 0 0 #000
 body
-  overflow hidden
+  overflow auto
   text-rendering optimizeLegibility
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   -webkit-backface-visibility hidden
   letter-spacing $letter-spacing
+  &.preloader-mode
+    overflow hidden
   & > svg
     size 0
 

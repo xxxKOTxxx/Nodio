@@ -34,7 +34,6 @@ module.exports = class LogoAnimation {
         }
         else {
           let direction = (this.counter < 4) ? 'add' : 'remove'
-          console.log(item + ' ' +direction)
           this.elements[item - 1].classList[direction]('show');
         }
       }

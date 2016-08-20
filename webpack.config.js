@@ -36,11 +36,11 @@ module.exports = {
       '.css',
       '.styl',
       '.pug',
-      'otf',
-      'svg',
-      'ttf',
-      'woff',
-      'woff2'
+      '.otf',
+      '.svg',
+      '.ttf',
+      '.woff',
+      '.woff2'
     ],
   },
   module: {

@@ -66,9 +66,10 @@ module.exports = function() {
       version = '' + parseFloat(navigator.appVersion);
       majorVersion = parseInt(navigator.appVersion, 10);
   }
-  return {
+  let result = {
     name: browser, 
     version: majorVersion,
     full_version: version
   };
+  return result
 };

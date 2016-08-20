@@ -1,4 +1,4 @@
-/* Video URL module */
+/* Upload video module */
 let Uploader = require('../utilities/uploader');
 module.exports = class VideoUrl {
   constructor() {

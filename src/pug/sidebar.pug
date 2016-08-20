@@ -1,4 +1,8 @@
 .sidebar
+  .menu-logo
+    .logo-text(
+      data-text="Nodio"
+    )
   ul.menu
     li.menu-item
       a.menu-link(
@@ -20,6 +24,12 @@
         .line
     li.menu-item
       a.menu-link(
+        href="#xana"
+        data-text="Xana"
+      )
+        .line
+    //- li.menu-item
+      a.menu-link(
         href="#apps"
         data-text="Apps"
       )
@@ -31,8 +41,14 @@
       )
         .line
     li.menu-item
+      a.menu-link(
+        href="#contacts"
+        data-text="contacts"
+      )
+        .line
+    li.menu-item
       a.menu-link.join(
-        href="#join"
+        href="#contacts"
       ) Join
         .point.top.left
         .point.top.right

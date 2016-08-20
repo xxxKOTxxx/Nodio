@@ -4,6 +4,9 @@ require('utilities/ie_fixes');
 (function () {
 'use strict';
 
+let Router = require('assets/router');
+let router = new Router();
+
 /*** Animate logo ***/
 let initialize = function() {
   let logo_inner = document.querySelector('.logo .inner');
@@ -61,13 +64,6 @@ let startVideo = function(event) {
   video.play();
 }
 document.addEventListener('start_video', startVideo);
-
-// let showLines = function() {
-//   let lines = document.querySelectorAll('.line');
-//   let lines_length = lines.length;
-//   for (var i = lines_length - 1; i >= 0; i--) {
-//     lines[i].classList.add('show');
-//   }
 
 let startPage = function(event) {
   let video = event.detail;

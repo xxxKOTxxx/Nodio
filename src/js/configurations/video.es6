@@ -7,10 +7,10 @@ let video = {
     }
   },
   sizes: {
-    nodio_800x450: {
-      width: 800,
-      height: 450,
-    },
+    // nodio_800x450: {
+    //   width: 800,
+    //   height: 450,
+    // },
     nodio_1920x1080: {
       width: 1920,
       height: 1080,

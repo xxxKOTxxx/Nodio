@@ -7,6 +7,7 @@ module.exports = class Counter {
     return this.MediaSource.isTypeSupported(format);
   }
   getStrictSupported(formats) {
+    let result = false;
     if(formats.constructor !== Array) {
       formats = [formats];
     }
@@ -14,12 +15,13 @@ module.exports = class Counter {
     for(let i = formats_length; i > 0; i--) {
       let index = formats_length - i;
       if(this.getStrict(formats[index])) {
-        return {
+        result = {
           format: formats[index],
           index: index
         };
+        return result;
       }
     }
-    return false;
+    return result;
   }
 };
