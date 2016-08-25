@@ -1,0 +1,78 @@
+@import "../variables.styl"
+
+/* Sidebar styles */
+#sidebar
+  size 210px 100%
+  absolute 0 false 0 0
+  z-index 3
+.logo
+  size 60px
+  absolute 29px false false 29px
+  &:hover
+    svg
+      fill rgba(255, 255, 255, 1)
+    
+  svg
+    size 100%
+    fill rgba(255, 255, 255, 0.2)
+    transition fill 0.2s linear
+  .logo-text
+    absolute 0 false 0 90px
+    margin auto
+    text-transform uppercase
+    color #FFF
+    font-size 12px
+    line-height 60px
+    font-weight 600
+    
+.menu
+  margin-top 151px
+  margin-left 29px
+  .menu-item
+    height 29px
+    margin-top 31px
+    display none
+    &.show
+      display block
+  .menu-link
+    display inline-block
+    size auto 100%
+    min-width 10px
+    padding 0 10px
+    relative false
+    color #FFF
+    line-height 29px
+    font-size 12px
+    font-weight 600
+    text-decoration none
+    text-align left
+    text-transform uppercase
+    transition min-width $menu-transition-time linear,
+               color $menu-transition-time linear
+    .line
+      absolute false 0 0
+      size 100% 1px
+      display block
+      background-color rgba(255, 255, 255, 0.2)
+      transition background-color $menu-line-transition-time linear
+      &:before
+      &:after
+        content ''
+        absolute 0 false
+        size 1px
+        background-color #fff
+        transition background-color $menu-transition-time linear
+      &:before
+        left 0
+      &:after
+        right 0
+    &.active
+      min-width 40px
+      color rgba(23, 229, 178, 1)
+      cursor default
+      .line
+        background-color rgba(23, 229, 178, 0.2)
+        &:before
+        &:after
+          background-color rgba(23, 229, 178, 1)
+          

@@ -1,17 +1,35 @@
-check opacity min/max calculation + fix it
-- IE8 
+# Site
+  - add modals
+  - add down arrow + scroll handler
 
-+ animations params to JS
+#Product
+  - slides markup
+  - add slides animations
+  - add slides glow 
 
+#Xana
+  - add lines to image
 
-- check video size - use min
+#Apps
+  READY!
 
-+ configs to file
-+ add user data string delay config
-+ square animation blink
-+ add video Dropbox\Nodio\Site\images
-+ get load percent
-+ mobile header scroll
-font bolder in chrome
+#Team
+  READY!
 
-animation config
+# Contacts
+  - add form messages
+  - add form mailer
+  - add links
+  - add modal links
+
+#FAQ
+  - add 
+
+#Styles
+  - variables
+
+#OLD
+  - check opacity min/max calculation + fix it
+  - IE8 
+  - check video size - use min
+  - font bolder in chrome

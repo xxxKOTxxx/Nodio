@@ -1,0 +1,61 @@
+@import "../variables.styl"
+
+/* Audio styles */
+#audio-block
+  absolute 29px 60px false false
+  padding-right 5px
+  z-index 100
+  .audio_switcher
+    size 20px 18px
+    display inline-block
+    vertical-align top
+    margin-top 3px
+    margin-left 36px
+    line-height 20px
+    opacity 0.2
+    cursor pointer
+    transition opacity 0.2s linear
+    &:hover
+      opacity 1
+    // &.muted
+    //   .vizualizer-bar
+    //     background-color #FFF
+      
+    .vizualizer-bar
+      size 1px 10px
+      display inline-block
+      vertical-align bottom
+      margin-right 1px
+      background-color rgba(23, 229, 178, 1)
+      transition height 0.3s linear,
+                 background-color 1s linear
+      &:nth-child(1)
+        height 20%
+      &:nth-child(2)
+        height 60%
+      &:nth-child(3)
+        height 80%
+      &:nth-child(4)
+        height 40%
+      &:nth-child(5)
+        height 70%
+      &:nth-child(6)
+        height 30%
+      &:nth-child(7)
+        height 10%
+      &:nth-child(8)
+        height 60%
+
+  .join
+    display inline-block
+    relative false
+    size 60px 29px
+    padding 0
+    text-align center
+    text-transform uppercase
+    text-decoration none
+    font-size 12px
+    font-weight bold
+    line-height 31px
+    color rgba(23, 229, 178, 1) !important
+    border 1px solid rgba(23, 229, 178, 0.2)

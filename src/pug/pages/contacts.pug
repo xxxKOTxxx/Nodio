@@ -1,0 +1,111 @@
+#contacts.page(data-title="Contact us")
+  .page-content
+    h1.header Contact us
+    form.message(method="post" action="/send.php")
+      .input-wrap
+        input(
+          type="email"
+          name="email"
+          placeholder="E-mail"
+        )
+        .point.top.left
+        .point.top.right
+        .point.bottom.left
+        .point.bottom.right
+      textarea(
+        name="message"
+        placeholder="Message"
+      )
+      button(type="submit") Send
+        .point.top.left
+        .point.top.right
+        .point.bottom.left
+        .point.bottom.right
+
+    form.subscribe(method="post" action="/send.php")
+      .form-content-wrap
+        .point.top.left
+        .point.top.right
+        .point.bottom.left
+        .point.bottom.right
+        h2 Get Involved!
+        input(
+          type="hidden"
+          name="type"
+          value="subscribe"
+        )
+        .input-wrap
+          input(
+            type="email"
+            name="email"
+            placeholder="E-mail"
+          )
+        p.text Subscribe to receive an occasional newsletter about Nodio. We value your privacy and guarantee to keep your email address safe.
+
+      button(type="submit") SUBSCRIBE FOR A NEWSLETTER
+        .point.top.left
+        .point.top.right
+        .point.bottom.left
+        .point.bottom.right
+
+    .socials
+      .social.facebook
+        a.wrap(
+          href="http://facebook.com"
+          title="Facebook"
+        )
+          .point.top.left
+          .point.top.right
+          .point.bottom.left
+          .point.bottom.right
+      .social.twitter
+        a.wrap(
+          href="http://twitter.com"
+          title="Twitter"
+        )
+          .point.top.left
+          .point.top.right
+          .point.bottom.left
+          .point.bottom.right
+      .social.slack
+        a.wrap(
+          href="http://slack.com"
+          title="Slack"
+        )
+          .point.top.left
+          .point.top.right
+          .point.bottom.left
+          .point.bottom.right
+      .social.reddit
+        a.wrap(
+          href="http://reddit.com"
+          title="Reddit"
+        )
+          .point.top.left
+          .point.top.right
+          .point.bottom.left
+          .point.bottom.right
+      .social.github
+        a.wrap(
+          href="http://github.com"
+          title="Github"
+        )
+          .point.top.left
+          .point.top.right
+          .point.bottom.left
+          .point.bottom.right
+      .social.btt
+        a.wrap(
+          href="http://btt.com"
+          title="Btt"
+        )
+          .point.top.left
+          .point.top.right
+          .point.bottom.left
+          .point.bottom.right
+      .nodio nodioproject
+
+    .links
+      a.link(href="#whitepaper") Terms of Use
+      .delimiter
+      a.link(href="#specs") Private Policy

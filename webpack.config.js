@@ -64,6 +64,10 @@ module.exports = {
       {
         test: /\.(svg|ttf|otf|eot|woff|woff2)$/,
         loader: 'file?name=[path][name].[ext]'
+      },
+      {
+        test: /\.(png)$/,
+        loader: 'file?name=[path][name].[ext]'
       }
     ]
   },
@@ -111,7 +115,7 @@ module.exports = {
     ]),
     new ExtractTextPlugin("css/styles.css"),
     new HtmlWebpackPlugin({
-      template: 'pug-html!src/index.pug'
+      template: 'pug-html!src/pug/index.pug'
     }),
   ],
   reslove: {

@@ -1,0 +1,38 @@
+@import "../variables.styl"
+
+/* Pagination styles */
+#pagination
+  display none
+  width 30px
+  absolute 244px 5px false false
+  z-index 10
+  opacity 0
+  transition opacity 0.2s linear $product-text-delay
+  &.show
+    display block
+    opacity 1
+  .pagination-item
+    display block
+    relative false
+    size 9px
+    margin 20.5px 0 0 0
+    transform rotate(45deg)
+    background-color transparent
+    cursor pointer
+    &:hover
+      .point
+        background-color rgba(23, 229, 178, 1)
+    .point
+      display none
+      background-color #fff
+      transition background-color 0.2s linear
+      &.center
+        display block
+    &.active
+      border 1px solid rgba(23, 229, 178, 0.2)
+      cursor default
+      .point
+        background-color rgba(23, 229, 178, 1)
+        display block
+    &:nth-child(even)
+      margin-left 30px

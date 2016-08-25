@@ -1,0 +1,77 @@
+@import "../variables.styl"
+
+/* Content styles */
+.content
+  relative false
+  min-height 100%
+  padding-left 210px
+  background-image url('~images/grid_pattern.svg')
+  background-position 0 0
+  background-size 60px 60px
+  background-repeat repeat
+  .preloader-mode &
+    overflow hidden
+
+#sidebar
+.page
+  opacity 0
+  max-height 0
+  overflow hidden
+  transition opacity 0.3s linear,
+             max-height 0s linear 0.3s,
+             overflow 0s linear 0.3s
+  &.show
+    opacity 1
+    z-index 1
+    overflow initial
+    max-height 10000px
+    transition opacity 0.3s linear,
+               max-height 0s linear,
+               overflow 0s linear
+.page
+  relative false
+  box-sizing border-box
+  p
+    text-align left
+
+.background
+  absolute 0
+  z-index 0
+  .line
+    size auto 1px
+    margin auto
+    background-color rgba(255, 255, 255, 0.2)
+    border-left 1px solid #FFF
+    border-right 1px solid #FFF
+    opacity 0
+    &.top
+      absolute 59px false false 270px
+    &.bottom
+      absolute false false 300px 270px
+      
+    &.show
+      animation blink 0.5s linear forwards
+
+.blink.show
+  animation blink 0.5s linear forwards
+@keyframes blink
+  0%
+    opacity 0
+  20%
+    opacity .6
+  40%
+    opacity .2
+  60%
+    opacity .8
+  80%
+    opacity .4
+  100%
+    opacity 1
+      
+      
+.page
+  // absolute 0 false false 210px
+
+.slide
+  display none
+  

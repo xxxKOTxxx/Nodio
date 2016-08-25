@@ -1,0 +1,267 @@
+@import "variables.styl"
+
+/* Content styles */
+.content
+  // padding-top 95px
+  relative false
+  min-height 100%
+  padding-left 210px
+  background-image url('~images/grid_pattern.svg')
+  background-position 0 0
+  background-size 60px 60px
+  background-repeat repeat
+  // absolute 0 0 0
+  // overflow auto
+  .preloader-mode &
+    overflow hidden
+
+.faq
+  absolute false 0 35px false
+  margin-right -2px
+  z-index 100
+  display block
+  size 30px
+  line-height 30px
+  font-size 18px
+  font-weight 600
+  color rgba(23, 229, 178, 0.2)
+  text-decoration none
+  text-align center
+  transition color 0.2s linear
+  &:hover
+    color rgba(23, 229, 178, 1)
+ 
+video
+  fixed 50% false false 50%
+  size auto
+  min-width 0
+  min-height 0
+  z-index -1
+  opacity 0
+  transform translate(-50%, -50%)
+  background-color #000
+  &.show
+    opacity 1
+    z-index 1000
+  &.full
+    min-width 100%
+    min-height 100%
+    transition min-width 0.5s linear,
+               min-height 0.5s linear
+
+.sidebar
+.page
+  // display block
+  // z-index -1
+  opacity 0
+  max-height 0
+  overflow hidden
+  transition opacity 0.3s linear,
+             max-height 0s linear 0.3s,
+             overflow 0s linear 0.3s
+  // animation page-fade-out 1.5s linear forwards
+  &.show
+    // display block
+    opacity 1
+    z-index 1
+    overflow initial
+    max-height 10000px
+    transition opacity 0.3s linear,
+               max-height 0s linear,
+               overflow 0s linear
+    // transition opacity 0.5s linear
+    // animation page-fade-in 1.5s linear forwards 1.5s
+.page
+  relative false
+  box-sizing border-box
+
+.background
+  absolute 0
+  z-index 0
+  .line
+    size auto 1px
+    margin auto
+    background-color rgba(255, 255, 255, 0.2)
+    border-left 1px solid #FFF
+    border-right 1px solid #FFF
+    opacity 0
+    &.top
+      absolute 59px false false 270px
+    &.bottom
+      absolute false false 300px 270px
+      
+    &.show
+      animation blink 0.5s linear forwards
+
+.blink.show
+  animation blink 0.5s linear forwards
+@keyframes blink
+  0%
+    opacity 0
+  20%
+    opacity .6
+  40%
+    opacity .2
+  60%
+    opacity .8
+  80%
+    opacity .4
+  100%
+    opacity 1
+      
+      
+.page
+  // absolute 0 false false 210px
+  
+  h1
+    text-transform uppercase
+    .bold
+      font-weight 600
+  
+  p
+    text-align left
+// #apps
+//   h1
+//     margin 37px 70px 62px
+//     font-weight 600
+//     font-size 50px
+//     letter-spacing 4px
+//   .projects
+//     margin-left 29px
+//     text-align justify
+//     -ms-text-justify distribute-all-lines
+//     text-justify distribute-all-lines
+//     &:after
+//       content ''
+//       size 100% 0
+//       display inline-block
+//       font-size 0
+//       line-height 0
+//   .project
+//     size 119px 153px
+//     margin 0 61px 87px 60px
+//     vertical-align top
+//     display inline-block
+//     *display inline
+//     zoom 1
+//   .wrap
+//     size 119px
+//     relative false
+//     border 1px solid rgba(23, 229, 178, 0.2)
+//   .icon
+//     size 100%
+//     vertical-align middle
+//     border-radius 25px
+//     color rgba(23, 229, 178, 1)
+//     text-transform uppercase
+//     text-align center
+//     line-height 22px
+//     font-weight 300
+//     font-size 18px
+//     overflow hidden
+//     box-shadow 0 0 5px 0 rgba(23, 229, 178, 0.2)
+//     span
+//       size 100px 42px
+//       display block
+//       absolute 0
+//       margin auto
+//   .name
+//     padding-top 14px
+//     display block
+//     color #fff
+//     font-weight 300
+//     font-size 18px
+//     text-align center
+//   .text
+//     width 75%
+//     margin 40px auto 60px
+//     display table
+//     p
+//       display table-cell
+//       vertical-align top
+//       color rgba(255,255,255,0.5)
+//       font-weight 100
+//       font-size 18px
+//     a
+//       display table-cell
+//       vertical-align middle
+//       color #17e6b2
+//       text-decoration none
+//       text-transform uppercase
+//       font-weight 400
+//       font-size 18px
+//       white-space nowrap
+//       margin-right 200px
+// #team
+//   h1
+//     margin 115px 80px 0
+//     font-weight 300
+//     font-size 50px
+//     letter-spacing 4px
+//     text-align center
+//   .person
+//     absolute false
+//     display block
+//     size 85px
+//     margin -13px 0 0 46px
+//     border 1px solid rgba(23, 229, 178, 0.2)
+//     transform rotate(45deg)
+//     .data
+//       absolute 0
+//       margin 20px 0 0 20px
+//       text-align center
+//       line-height 17px
+//       font-size 12px
+//       transform rotate(-45deg)
+//       color #FFF
+//       &.long
+//         margin 14px 0 0 14px
+//     .name
+//       font-weight 200
+//     .position
+//       font-weight 600
+//     .name
+//     .position
+//       -webkit-font-smoothing none
+//       -webkit-backface-visibility hidden
+//       transform translate3d(0, 0, 0)
+
+.slide
+  display none
+  
+
+// @keyframes page-fade-in
+//   0%
+//     opacity 0
+//     max-height 0
+//     overflow hidden
+//     display none
+//   1%
+//     opacity 0
+//     max-height auto
+//     display block
+//   2%
+//     opacity 0
+//     max-height auto
+//     display block
+//   100%
+//     opacity 1
+//     display block
+
+// @keyframes page-fade-out
+//   0%
+//     opacity 1
+//     display block
+//   98%
+//     opacity 0
+//     display block
+//   99%
+//     opacity 0
+//     max-height 0
+//     overflow hidden
+//     display block
+//   100%
+//     opacity 0
+//     max-height 0
+//     overflow hidden
+//     display none

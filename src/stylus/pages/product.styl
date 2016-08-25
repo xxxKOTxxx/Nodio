@@ -1,0 +1,276 @@
+@import "../variables.styl"
+
+/* Product styles */
+#product
+  // absolute 0 0 false 210px
+  // min-height 100%
+  .step
+    // opacity 0
+    // animation page-fade-out 0.5s linear forwards
+    opacity 0
+    max-height 0
+    overflow hidden
+    transition opacity 0.3s linear,
+               max-height 0s linear 0.3s
+    &.show
+      opacity 1
+      z-index 1
+      overflow initial
+      max-height 10000px
+      transition opacity 0.3s linear,
+                 max-height 0s linear
+      // display block
+      // opacity 1
+      // transition opacity $step-transition-time linear
+      // animation page-fade-in 0.5s linear forwards
+.step
+  .glow
+    absolute 0
+    z-index 0
+    background-image radial-gradient(ellipse at center, rgba(23, 229, 178, 0.08) 0%, transparent 70%)
+    .square-glow
+      absolute 0
+      width 0
+      height 0
+      transform rotate(45deg)
+      margin auto
+      box-shadow 0 0 100px 200px rgba(23, 229, 178,  0.01)
+  .number
+    absolute 60px false false 0 
+    font-size 200px
+    font-weight bold
+    color rgba(23, 229, 178, 0.02)
+    
+  .illustrations
+    absolute 0
+    z-index 0
+    margin auto
+    transform-origin 50% 50%
+  .illustration
+    absolute 0
+    size 100%
+    background-position 50% 50%
+    background-size contain
+    background-repeat no-repeat
+    opacity 0
+    
+  h1
+    z-index 2
+    opacity 0
+    color #fff
+    text-align left
+    font-size 38px
+    font-weight 300
+    text-transform none
+    .bold
+      font-size 72px
+      font-weight 600
+  .text
+    font-size 16px
+    font-weight 100
+    line-height 18px
+.intro
+  h1
+    absolute 312px false false 0
+    transition opacity $product-title-transition-time linear
+  .illustrations
+    size 713px 634px
+    transform scale(0.8)
+    // &.show
+    //   opacity 1
+    //   transform scale(0.8)
+    // &.full
+    //   transform scale(1)
+    transition transform $product-illustrations-transform-time linear $product-text-delay,
+               opacity $product-illustrations-opacity-time linear $product-illustrations-delay
+      
+    .illustration
+      // background-size 713px 634px
+      transition opacity $product-illustration-1-opacity-time linear $product-illustration-1-delay
+      // &.show
+      //   opacity 1
+      &.slide-1
+        background-image url('~images/product-1.png')
+        // transition opacity 0.2s linear
+      &.slide-2
+        background-image url('~images/product-2.png')
+        // transition opacity 0.2s linear
+      &.slide-3
+        background-image url('~images/product-3.png')
+        // transition opacity 0.2s linear
+  .texts
+    opacity 0
+    absolute 430px 0 false
+  .subtitle
+    font-size 24px
+    font-weight 300
+    line-height 28px
+    margin-bottom 20px
+    text-align center
+  .text
+    text-align center
+    
+    // &.show
+    //   opacity 1
+  &.stage-0
+  &.stage-1
+  &.stage-2
+    .illustrations
+      opacity 1
+  &.stage-0
+  &.stage-1
+    h1
+      opacity 1
+  &.stage-0
+      .slide-1
+        opacity 1
+  &.stage-1
+    .illustrations
+      opacity 1
+      .slide-1
+        transition opacity $product-illustration-1-opacity-time linear
+      .slide-2
+        opacity 1
+        transition opacity $product-illustration-1-opacity-time linear
+  &.stage-2
+    h1
+    .illustrations
+      transform scale(1)
+      .slide-3
+        opacity 1
+        transition opacity $product-illustration-2-opacity-time linear $product-text-delay
+    .texts
+      opacity 1
+      transition opacity $product-text-opacity-time linear $product-text-delay
+    
+.router
+  .illustrations
+    size 520px 280px
+    .illustration
+      // background-size 520px 280px
+      background-image url('~images/router.png')
+  h1
+    absolute 450px false false 0
+    transition opacity $product-title-transition-time linear
+  .texts
+    text-align left
+    opacity 0
+    max-width 555px
+    absolute 477px false false 410px
+  .texts
+    opacity 0
+  &.show
+    h1
+    .illustrations
+      opacity 1
+      .illustration
+        opacity 1
+    .texts
+      opacity 1
+      transition opacity $product-text-opacity-time linear $product-text-delay
+      
+    
+.steady
+  .illustrations
+    size 547px 197px
+    .illustration
+      // background-size 520px 280px
+      background-image url('~images/steady.png')
+  h1
+    absolute 450px false false 0
+    transition opacity $product-title-transition-time linear
+  .texts
+    text-align left
+    opacity 0
+    max-width 555px
+    absolute 477px false false 410px
+  .texts
+    opacity 0
+  &.show
+    h1
+    .illustrations
+      opacity 1
+      .illustration
+        opacity 1
+    .texts
+      opacity 1
+      transition opacity $product-text-opacity-time linear $product-text-delay
+
+.open
+  .illustrations
+    size 540px 313px
+    .illustration
+      // background-size 520px 280px
+      background-image url('~images/open.png')
+  h1
+    absolute 450px false false 0
+    transition opacity $product-title-transition-time linear
+  .texts
+    text-align left
+    opacity 0
+    max-width 555px
+    absolute 477px false false 410px
+  .texts
+    opacity 0
+  &.show
+    h1
+    .illustrations
+      opacity 1
+      .illustration
+        opacity 1
+    .texts
+      opacity 1
+      transition opacity $product-text-opacity-time linear $product-text-delay
+.design
+  .illustrations
+    size 778px 378px
+    .illustration
+      // background-size 520px 280px
+      background-image url('~images/design.png')
+  h1
+    absolute 450px false false 0
+    transition opacity $product-title-transition-time linear
+  .texts
+    text-align left
+    opacity 0
+    max-width 555px
+    absolute 477px false false 410px
+  .texts
+    opacity 0
+  &.show
+    h1
+    .illustrations
+      opacity 1
+      .illustration
+        opacity 1
+    .texts
+      opacity 1
+      transition opacity $product-text-opacity-time linear $product-text-delay
+  
+.tech
+  .illustrations
+    right auto
+    size 413px 431px
+    .illustration
+      // background-size 520px 280px
+      background-image url('~images/tech.png')
+  h1
+    absolute 135px false false 510px
+    transition opacity $product-title-transition-time linear
+  .texts
+    text-align left
+    opacity 0
+    max-width 555px
+    absolute 365px false false 510px
+  .texts
+    opacity 0
+  &.show
+    h1
+    .illustrations
+      opacity 1
+      .illustration
+        opacity 1
+    .texts
+      opacity 1
+      transition opacity $product-text-opacity-time linear $product-text-delay
+        
