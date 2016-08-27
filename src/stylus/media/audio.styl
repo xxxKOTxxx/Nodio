@@ -6,11 +6,12 @@
   padding-right 5px
   z-index 100
   .audio_switcher
-    size 20px 18px
+    size 30px
+    padding 6px 5px
+    box-sizing border-box
     display inline-block
     vertical-align top
-    margin-top 3px
-    margin-left 36px
+    margin-left 26px
     line-height 20px
     opacity 0.2
     cursor pointer
@@ -59,3 +60,6 @@
     line-height 31px
     color rgba(23, 229, 178, 1) !important
     border 1px solid rgba(23, 229, 178, 0.2)
+    transition border-color 0.2s linear
+    &:hover
+      border-color rgba(23, 229, 178, 1)

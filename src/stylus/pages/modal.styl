@@ -1,0 +1,197 @@
+@import "../variables.styl"
+
+/* Modal styles */
+#modal
+  fixed 0
+  z-index -1
+  opacity 0
+  size 100%
+  background-color #000
+  transition opacity 0.3s linear
+  &.show
+    z-index 101
+    opacity 1
+    
+  #modal-close
+    absolute false 0 15px
+    margin auto
+    size 30px
+    cursor pointer
+    &:before
+    &:after
+      content ''
+      absolute 0
+      margin auto
+      size 1px 44px
+      background-color rgba(23, 229, 178, 0.2)
+      transform-origin 50% 50%
+      transition background-color 0.2s linear
+    &:before
+      transform rotate(45deg)
+    &:after
+      transform rotate(-45deg)
+    &:hover
+      &:before
+      &:after
+        background-color rgba(23, 229, 178, 1)
+      
+    
+  .modal
+    absolute 35px 0 70px
+    margin auto
+    display none
+    max-width 840px
+      
+    &.show
+      display block
+.modal-content
+  size 100%
+  overflow auto
+  letter-spacing 1.3px
+  .heading
+    padding-right 10px
+    margin-bottom 50px
+    font-size 36px
+    font-weight bold
+    letter-spacing 3px
+  .text
+    padding-right 10px
+    margin-bottom 45px
+    font-size 14px
+    font-weight 100
+    line-height 30px
+    color rgba(255, 255, 255, 0.5)
+  .link
+    color rgba(23, 229, 178, 0.5)
+    text-decoration none
+    &:hover
+      color rgba(23, 229, 178, 1)
+  ul
+    padding-right 10px
+    margin-bottom 45px
+    list-style-type: none;
+    li
+      font-size 14px
+      font-weight 100
+      line-height 30px
+      color rgba(255, 255, 255, 0.5)
+      &:before
+        content '-'
+        display inline-block
+        margin-right 35px
+  ol
+    padding-right 10px
+    counter-reset item
+    li
+      font-size 14px
+      font-weight 100
+      line-height 30px
+      text-transform none
+      color rgba(255, 255, 255, 0.5)
+      &:before
+        content counters(item, ".") "."
+        counter-increment item
+        display inline-block
+        margin-right 5px
+    &.alpha
+      padding-left 20px
+      margin-bottom 0
+      counter-reset alpha
+      li
+        &:before
+          content "(" counter(alpha, lower-alpha) ") "
+          counter-increment alpha
+        
+    #modal-policy &
+      margin-bottom 45px
+      li
+        &:before
+          margin-right 26px
+    #modal-terms &
+      &.article > li
+        margin-bottom 45px
+        text-transform uppercase
+        font-weight bold
+      
+  .subheading
+    padding-right 10px
+    margin 50px 0
+    font-size 18px
+    font-weight 600
+    letter-spacing 3px
+    text-transform uppercase
+    
+  .faq-block
+    padding-right 10px
+    margin-bottom 25px
+    cursor pointer
+    &:hover
+      .arrow
+        border-color rgba(23, 229, 178, 1)
+    &.open
+      .arrow
+        transform rotate(45deg)
+        border-color rgba(23, 229, 178, 1)
+      .answer
+        max-height 200px
+        transform rotateX(0deg)
+  .clicker
+    display block
+  .arrow
+    display inline-block
+    size 8px
+    margin-right 28px
+    transform rotate(-45deg)
+    border-right 1px solid rgba(23, 229, 178, 0.2)
+    border-bottom 1px solid rgba(23, 229, 178, 0.2)
+    cursor pointer
+    transform-origin 50% 100%
+    transition border-color 0.2s linear,
+               transform 0.2s linear
+  .question
+    display inline
+    font-size 18px
+    font-weight 100
+    line-height 24px
+    color rgba(255, 255, 255, 0.5)
+  .answer
+    font-size 14px
+    font-weight 100
+    line-height 18px
+    margin 10px 0 0 37px
+    color rgba(255, 255, 255, 0.5)
+    max-height 0
+    transform rotateX(-90deg)
+    transform-origin 0% 0%
+    transition transform 0.2s linear,
+               max-height 0.2s linear
+               
+  .specs-
+    &block
+      display inline-block
+      width 485px
+      padding-left 90px
+      box-sizing border-box
+      font-size 28px
+      font-weight 100
+      line-height 48px
+      &.common
+        width 750px
+        padding-left 0
+    &heading
+      margin 70px 0 22px
+      font-weight 700
+      text-transform uppercase 
+      letter-spacing 3px
+    &param
+      color rgba(255, 255, 255, 0.75)
+    &details
+      color rgba(255, 255, 255, 0.5)
+    &definition
+    &value
+      display inline-block
+      color rgba(255, 255, 255, 0.5)
+    &definition
+      width 250px
+    &value
+      width 150px

@@ -6,7 +6,6 @@ module.exports = class Menu {
     this.printString = printString;
     this.print_config = print_config;
     this.timeout = 500;
-    this.logo = false;
     this.active = null;
     this.printing = null;
     this.logo_printing = null;
@@ -17,6 +16,7 @@ module.exports = class Menu {
     this.elements_length = this.elements.length;
     this.links = document.querySelectorAll('.menu-link');
     this.links_length = this.links.length;
+    
     this.logo.addEventListener('mouseenter', this.logoMouseenterHandler.bind(this), false);
     this.logo.addEventListener('mouseleave', this.logoMouseleaveHandler.bind(this), false);
     for (var i = this.links_length - 1; i >= 0; i--) {

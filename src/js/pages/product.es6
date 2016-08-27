@@ -3,7 +3,7 @@ module.exports = class Router {
   constructor() {
     this.selector = '#product';
     this.page = document.querySelector(this.selector);
-    this.next = document.querySelector('#next');
+    // this.next = document.querySelector('#next');
     this.pagination = document.querySelector('#pagination');
     this.pagination_items = document.querySelectorAll('#pagination-item');
     this.pagination_items_length = this.pagination_items.length;
@@ -15,7 +15,7 @@ module.exports = class Router {
     this.timeouts = [];
     document.addEventListener('set_page', this.setPageHandler.bind(this));
     document.addEventListener('hide_page', this.hidePage.bind(this));
-    this.next.addEventListener('click', this.nextHandler.bind(this));
+    // this.next.addEventListener('click', this.nextHandler.bind(this));
     for(let i = this.pagination_items_length - 1; i >= 0; i--) {
       this.pagination_items[i].addEventListener('click', this.paginationItemsHandler.bind(this));
     }
@@ -63,22 +63,22 @@ console.log('setPage',this.slide_name)
       showed[i].classList.remove('.show');
     }
   }
-  nextHandler() {
-    if(this.slide_name == 'product' && this.stage < 2) {
-      this.stage++;
-      this.setPage();
-    }
-    else {
-      this.stage = -1;
-      if(this.slide.nextSibling == null) {
-        document.dispatchEvent(new CustomEvent('change_page', {detail: '#xana'}));
-      }
-      this.slide = this.slide.nextSibling;
-      this.slide_name = this.slide.getAttribute('data-slide');
-      let anchor = this.selector + '-' + this.slide_name;
-      document.dispatchEvent(new CustomEvent('change_page', {detail: anchor}));
-    }
-  }
+  // nextHandler() {
+  //   if(this.slide_name == 'product' && this.stage < 2) {
+  //     this.stage++;
+  //     this.setPage();
+  //   }
+  //   else {
+  //     this.stage = -1;
+  //     if(this.slide.nextSibling == null) {
+  //       document.dispatchEvent(new CustomEvent('change_page', {detail: '#xana'}));
+  //     }
+  //     this.slide = this.slide.nextSibling;
+  //     this.slide_name = this.slide.getAttribute('data-slide');
+  //     let anchor = this.selector + '-' + this.slide_name;
+  //     document.dispatchEvent(new CustomEvent('change_page', {detail: anchor}));
+  //   }
+  // }
   paginationItemsHandler(event) {
     event.preventDefault();
     if(event.target.classList.contains('active')) {

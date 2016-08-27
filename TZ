@@ -1,6 +1,6 @@
 # Site
-  - add modals
-  - add down arrow + scroll handler
+  -> add down arrow 
+  - add scroll handler
 
 #Product
   - slides markup
@@ -19,14 +19,22 @@
 # Contacts
   - add form messages
   - add form mailer
-  - add links
-  - add modal links
+  -> add links
+  -> add modal links
 
 #FAQ
-  - add 
+  + add 
+
+#Modals
+  + add modals
+  - fix lose animations
+  - fix text opacity
 
 #Styles
   - variables
+
+
+
 
 #OLD
   - check opacity min/max calculation + fix it

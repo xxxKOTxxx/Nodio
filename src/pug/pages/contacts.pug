@@ -26,8 +26,6 @@
       .form-content-wrap
         .point.top.left
         .point.top.right
-        .point.bottom.left
-        .point.bottom.right
         h2 Get Involved!
         input(
           type="hidden"
@@ -40,9 +38,13 @@
             name="email"
             placeholder="E-mail"
           )
+          .point.top.left
+          .point.top.right
+          .point.bottom.left
+          .point.bottom.right
         p.text Subscribe to receive an occasional newsletter about Nodio. We value your privacy and guarantee to keep your email address safe.
 
-      button(type="submit") SUBSCRIBE FOR A NEWSLETTER
+      button.subscribe(type="submit") SUBSCRIBE FOR A NEWSLETTER
         .point.top.left
         .point.top.right
         .point.bottom.left
@@ -106,6 +108,6 @@
       .nodio nodioproject
 
     .links
-      a.link(href="#whitepaper") Terms of Use
+      a.link.modal-link(href="#modal-terms") Terms of Use
       .delimiter
-      a.link(href="#specs") Private Policy
+      a.link.modal-link(href="#modal-policy") Private Policy

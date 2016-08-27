@@ -2,15 +2,21 @@
 
 /* Content styles */
 .content
-  relative false
   min-height 100%
   padding-left 210px
   background-image url('~images/grid_pattern.svg')
   background-position 0 0
   background-size 60px 60px
   background-repeat repeat
+  overflow-y hidden
   .preloader-mode &
     overflow hidden
+  
+  .container
+    size 100%
+    min-height 100vh
+    relative false
+    
 
 #sidebar
 .page

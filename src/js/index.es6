@@ -1,14 +1,20 @@
 require('../stylus/index');
-
 require('utilities/ie_fixes');
 (function () {
 'use strict';
 let initialize = function() {
+
   let Audio = require('assets/audio');
-  let audio = new Audio('#audio', '.audio_switcher');
+  let audio = new Audio();
 
   let Menu = require('assets/menu');
   let menu = new Menu();
+
+  let Faq = require('assets/faq');
+  let faq = new Faq();
+
+  let Modal = require('assets/modal');
+  let modal = new Modal();
 
   let Router = require('assets/router');
   let router = new Router();

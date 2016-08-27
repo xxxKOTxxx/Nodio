@@ -1,14 +1,14 @@
 /* Audio module */
 let Storage = require('../utilities/storage');
 module.exports = class Audio {
-  constructor(audio_selector, switcher_selector) {
+  constructor() {
     this.animation_time = 1000;
     this.counter = 0;
     this.interval = null;
     this.visuzlization_animation_time = 150;
     this.visuzlization_intervals = [];
-    this.audio = document.querySelector(audio_selector);
-    this.switcher = document.querySelector(switcher_selector);
+    this.audio = document.querySelector('#audio');
+    this.switcher = document.querySelector('.audio_switcher');
     this.visuzlization_bars = document.querySelectorAll('.vizualizer-bar');
     this.Storage = Storage;
     this.storage = new Storage();

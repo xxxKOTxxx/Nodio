@@ -1,0 +1,28 @@
+@import "../variables.styl"
+
+/* Product design styles */
+#product-design
+  .illustrations
+    size 778px 378px
+    .illustration
+      // background-size 520px 280px
+      background-image url('~images/design.png')
+  h1
+    absolute 450px false false 0
+    transition opacity $product-title-transition-time linear
+  .texts
+    text-align left
+    opacity 0
+    max-width 555px
+    absolute 477px false false 410px
+  .texts
+    opacity 0
+  &.show
+    h1
+    .illustrations
+      opacity 1
+      .illustration
+        opacity 1
+    .texts
+      opacity 1
+      transition opacity $product-text-opacity-time linear $product-text-delay

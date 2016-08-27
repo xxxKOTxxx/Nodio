@@ -1,0 +1,30 @@
+@import "../variables.styl"
+
+/* Product styles */
+#product-tech
+  .illustrations
+    right auto
+    size 413px 431px
+    .illustration
+      // background-size 520px 280px
+      background-image url('~images/tech.png')
+  h1
+    absolute 135px false false 510px
+    transition opacity $product-title-transition-time linear
+  .texts
+    text-align left
+    opacity 0
+    max-width 555px
+    absolute 365px false false 510px
+  .texts
+    opacity 0
+  &.show
+    h1
+    .illustrations
+      opacity 1
+      .illustration
+        opacity 1
+    .texts
+      opacity 1
+      transition opacity $product-text-opacity-time linear $product-text-delay
+        
