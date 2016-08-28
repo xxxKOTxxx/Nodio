@@ -19,14 +19,18 @@ module.exports = class Menu {
     
     this.logo.addEventListener('mouseenter', this.logoMouseenterHandler.bind(this), false);
     this.logo.addEventListener('mouseleave', this.logoMouseleaveHandler.bind(this), false);
-    for (var i = this.links_length - 1; i >= 0; i--) {
+    for(let i = this.links_length - 1; i >= 0; i--) {
       this.links[i].addEventListener('click', this.selectItemHandler.bind(this), false);
       this.links[i].addEventListener('mouseenter', this.mouseenterHandler.bind(this), false);
       this.links[i].addEventListener('mouseleave', this.mouseleaveHandler.bind(this), false);
     }
 
-    document.addEventListener('set_menu', this.selectItemAction.bind(this));
+    document.addEventListener('unset_menu', this.unsetMenu.bind(this));
+    document.addEventListener('set_navigation', this.selectItemAction.bind(this));
     document.addEventListener('show_menu', this.showMenu.bind(this));
+  }
+  getCurrent() {
+    return this.active;
   }
   showMenu(event) {
     this.sidebar.classList.add('show');
@@ -39,32 +43,47 @@ module.exports = class Menu {
   showItem(item) {
     item.classList.add('blink', 'show');
   }
+  checkActive(page) {
+    if(document.querySelector(page).classList.contains('show')) {
+      return false;
+    }
+    return true;
+  }
   selectItemHandler(event) {
     event.preventDefault();
-    let active = event.target.closest('.menu-link').getAttribute('href');
-console.log('selectItemHandler',active)
-    if(this.active !== active) {
-      document.dispatchEvent(new CustomEvent('change_page', {detail: active}));
+    let page = event.target.closest('.menu-link').getAttribute('href');
+    if(this.checkActive(page)) {
+      let event_detail = {
+        detail: {
+          page: page,
+          source: 'menu'
+        }
+      };
+      document.dispatchEvent(new CustomEvent('change_page', event_detail));
     }
   }
   selectItemAction(event) {
-    let active = event.detail.page;
-    if(active == '#video') {
-      active += '-' + event.detail.step;
-    }
-console.log('selectItemAction',active)
-    this.selectItem(active);
+    let page = event.detail.page.split('-')[0];
+    this.selectItem(page);
+  }
+  unsetMenu() {
+    for(let i = this.links_length - 1; i >= 0; i--) {
+      this.links[i].classList.remove('active');
+    } 
   }
   selectItem(active) {
     this.active = active;
     for(let i = this.links_length - 1; i >= 0; i--) {
       let href = this.links[i].getAttribute('href');
-      this.links[i].classList.remove('active');
       if(active == href) {     
         this.links[i].classList.add('active');
       }
+      else {
+        this.links[i].classList.remove('active');
+      }
     }
   }
+
   mouseenterHandler(event) {
     if(!this.printing) {
       let target = event.target;
@@ -83,6 +102,7 @@ console.log('selectItemAction',active)
       this.printing = null;
     }
   }
+
   logoMouseenterHandler(event) {
     if(!this.logo_printing) {
       let text = this.logo_text.getAttribute('data-text');

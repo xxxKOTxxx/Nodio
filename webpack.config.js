@@ -131,7 +131,7 @@ module.exports = {
   watchOptions: {
     aggregateTimeout: 100
   },
-  // devtool: 'source-map',
+  devtool: 'source-map',
   devtool: 'cheap-inline-module-source-map',
   devServer: {
     proxy: {

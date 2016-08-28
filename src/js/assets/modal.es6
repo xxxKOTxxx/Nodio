@@ -24,7 +24,6 @@ module.exports = class Modal {
     let active = event.target.getAttribute('href').substr(1);
     let modal = null;
     for(let i = this.modals_length - 1; i >= 0; i--) {
-    console.log('???',this.modals[i].id, active)
       if(this.modals[i].id == active) {
         this.modals[i].classList.add('show');
         modal = this.modals[i];

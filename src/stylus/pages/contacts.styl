@@ -7,7 +7,7 @@
   .header
     font-size 60px
     font-weight bold
-    color #fff
+    color $contacts-header-color
     margin-bottom 48px
     
   form
@@ -19,30 +19,31 @@
       width 360px
       margin-right 59px
     &.subscribe
-      width 480px
-      border 1px solid rgba(23, 229, 178, 0.2)
+      width 420px
+      border 1px solid $contacts-button-border-color
   .form-content-wrap
     relative false
-    padding 30px
+    padding 30px 30px 21px
   .input-wrap
     size 100% 60px
     relative false
     box-sizing border-box
-    border 1px solid rgba(255, 255, 255, 0.2)
+    border 1px solid $contacts-input-border-color
     .point
-      background-color #fff
+      background-color $contacts-input-point-color
     
   input
   textarea
     font-size 18px
     font-weight 100
-    padding 23px 29px
+    padding 23px 27px
     box-sizing border-box
     outline none
     background-color transparent
-    color #fff
+    color $contacts-input-color
+    letter-spacing 1.3px
     +placeholder()
-      color rgba(255, 255, 255, 0.2)
+      color $contacts-input-placeholder-color
   input
     size 100% 60px
     border 0px none
@@ -51,8 +52,8 @@
     border-top 0 none
     border-bottom 0 none
     resize none
-    border-left 1px solid rgba(255, 255, 255, 0.2)
-    border-right 1px solid rgba(255, 255, 255, 0.2)
+    border-left 1px solid $contacts-input-border-color
+    border-right 1px solid $contacts-input-border-color
     
   button
     relative false
@@ -63,12 +64,12 @@
     outline none
     font-size 18px
     font-weight 600
-    letter-spacing 2px
-    color rgba(23, 229, 178, 1)
+    letter-spacing 3px
+    color $contacts-button-color
     text-align left
     text-transform uppercase
     background-color transparent
-    border 1px solid rgba(23, 229, 178, 0.2)
+    border 1px solid $contacts-button-border-color
     cursor pointer
     &.subscribe
       border-left 0 none
@@ -78,15 +79,15 @@
   h2
     font-size 30px
     font-weight bold
-    color #fff
     margin-bottom 29px
     
   .text
+    padding-right 40px
     font-size 12px
     font-weight 100
     line-height 17px
     letter-spacing 0.5px
-    margin-top 28px
+    margin-top 20px
     
 
   .socials
@@ -96,38 +97,32 @@
       display block
       size 42px
       margin-left 7px
-      border 1px solid rgba(23, 229, 178, 0.2)
+      border 1px solid $contacts-button-border-color
       transform rotate(45deg);
       transform-origin 50% 50%
+      transition background-color 0.2s linear
       &:after
         content ''
         size 59px 1px
         margin auto
         absolute -86px false 0 35px
         transform rotate(-45deg);
-        background-color rgba(23, 229, 178, 0.2)
+        background-color $contacts-button-border-color
+      &:hover
+        background-color $contacts-button-border-color
     .social
       relative false
       size 57px 43px
       margin-right 63px
       display inline-block
       vertical-align middle
-      background-position 50% 50%
-      background-repeat no-repeat
-      &.facebook
-        background-image url('~images/socials/facebook.png')
-      &.twitter
-        background-image url('~images/socials/twitter.png')
-      &.slack
-        background-image url('~images/socials/slack.png')
-      &.reddit
-        background-image url('~images/socials/reddit.png')
-      &.github
-        background-image url('~images/socials/github.png')
-      &.btt
-        background-image url('~images/socials/btt.png')
+      fill #fff
+      svg
+        absolute 0
+        margin auto
+        size 49%
     .nodio
-      font-size 18px
+      font-size 16px
       font-weight 300
       margin-left 18px
       display inline-block

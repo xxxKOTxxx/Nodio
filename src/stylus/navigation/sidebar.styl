@@ -6,7 +6,7 @@
   absolute 0 false 0 0
   z-index 3
 .logo
-  size 60px
+  size 61px
   absolute 29px false false 29px
   &:hover
     svg
@@ -47,21 +47,21 @@
     text-decoration none
     text-align left
     text-transform uppercase
-    transition min-width $menu-transition-time linear,
-               color $menu-transition-time linear
+    transition min-width $sidebar-out-transition-time linear,
+               color $sidebar-transition-time linear
     .line
       absolute false 0 0
       size 100% 1px
       display block
       background-color rgba(255, 255, 255, 0.2)
-      transition background-color $menu-line-transition-time linear
+      transition background-color $sidebar-line-transition-time linear
       &:before
       &:after
         content ''
         absolute 0 false
         size 1px
         background-color #fff
-        transition background-color $menu-transition-time linear
+        transition background-color $sidebar-line-transition-time linear
       &:before
         left 0
       &:after
@@ -70,6 +70,7 @@
       min-width 40px
       color rgba(23, 229, 178, 1)
       cursor default
+      transition min-width $sidebar-transition-time linear
       .line
         background-color rgba(23, 229, 178, 0.2)
         &:before

@@ -1,149 +1,134 @@
 /* Router module */
 let config = require('../configurations/router');
-let Product = require('../pages/product');
-let Xana = require('../pages/xana');
-let Apps = require('../pages/apps');
-let Team = require('../pages/team');
-let Contacts = require('../pages/contacts');
+let Menu = require('menu');
+let Pagination = require('pagination');
+let History = require('history');
 let GeminiScrollbar = require('lib/gemini-scrollbar.js');
 module.exports = class Router {
   constructor() {
-    this.title = 'Nodio'
     this.config = config;
+    this.default_page = config.default.page;
+    this.default_slide = config.default.slide;
+    this.page_fade_time = config.page_fade_time;
     this.active = null;
-    this.states = [];
-    this.state = 0
-    this.page_fade_time = 500;
+    this.menu_value = null;
 
-    this.cell_width = 30;
-    this.audio_block = document.querySelector('#audio-block');
-    this.next = document.querySelector('#next');
-    this.faq = document.querySelector('#faq');
-    this.pagination = document.querySelector('#pagination');
-    this.content = document.querySelector('.content');
-    this.sidebar = document.querySelector('#sidebar');
+    this.menu = new Menu();
+    this.menu_visible = false;
+
+    this.history = new History();
+
     this.pages = document.querySelectorAll('.page');
     this.pages_length = this.pages.length;
 
+    this.body = document.querySelector('body');
+    this.scrollbar = new GeminiScrollbar({element: this.body}).create();
 
-  
-    this.scrollbar = new GeminiScrollbar(
-      {
-        element: document.querySelector('body')
-      }
-    ).create();
-    this.video = true;
-    this.product = new Product();
-    this.xana = new Xana();
-    this.apps = new Apps();
-    this.team = new Team();
-    this.contacts = new Contacts();
+    this.slide = this.default_slide;
+    this.product = document.querySelector('#product');
+    this.pagination = new Pagination();
 
-    this.next.addEventListener('click', this.nextHandler.bind(this));
-    window.addEventListener('resize', this.resizeHandler.bind(this));
-    window.addEventListener('popstate', this.popstateHandler.bind(this));
     document.addEventListener('change_page', this.changePage.bind(this));
-    let anchor = window.location.hash;
-    document.dispatchEvent(new CustomEvent('change_page', {detail: anchor}));
-    this.resizeHandler();
-  }
-  resizeHandler() {
-    let window_width = window.innerWidth;
-    let sidebar_width = this.sidebar.clientWidth;
-    let space_width = window_width - sidebar_width;
-    let content_width = Math.floor(space_width / (this.cell_width * 2) - 1) * this.cell_width * 2;
-    let rigth_padding = space_width - content_width;
-    let window_height = window.innerHeight;
-    let padding_top = 95;
-    let space_height = window_height - padding_top;
-    let content_height = Math.floor(space_height / (this.cell_width * 2)) * this.cell_width * 2;
-    let bottom_padding = space_height - content_height;
-// console.log('window_width',window_width)
-// console.log('sidebar_width',sidebar_width)
-// console.log('content_width',content_width)
-// console.log('rigth_padding',rigth_padding)
-// console.log('window_height',window_height,Math.floor(window_height / this.cell_width * 2))
-    for(let i = this.pages_length - 1; i >= 0; i--) {
-      this.pages[i].style.width = content_width + 'px';
-      // this.pages[i].style.height = content_height + 'px';
-    }
-    this.content.style.paddingRight = rigth_padding + 'px';
-    // this.audio_block.style.right = rigth_padding + 'px';
-    // this.faq.style.right = rigth_padding + 'px';
-    // this.pagination.style.right = rigth_padding + 'px';
-    // this.faq.style.bottom = bottom_padding + 'px';
-  }
-  nextHandler() {
-    let active = '#' + document.querySelector('.page.show').nextSibling.id;
-    console.log('nextHandler',active)
-    document.dispatchEvent(new CustomEvent('change_page', {detail: active}));
-  }
-  getAnchorData(anchor) {
-    let anchor_array = anchor.split('-');
-    this.page = anchor_array[0] || this.config.default.page;
-    this.step = anchor_array[1] || this.config.default.step;
-    if(!this[this.page.substr(1)]) {
-      this.page = config.default.page;
-      this.step = config.default.step;
-    }
-  }
-  getStateData() {
-    let state = {};
-    state.data = {
-      page: this.page,
-      step: this.step,
-    }
-    state.title = this.title;
-    let item = document.querySelector(this.page);
-    let subtitle = false;
-    if(item) {
-      subtitle = item.getAttribute('data-title');
-    }
-    if(this.page == '#video') {
-      subtitle = this.step.charAt(0).toUpperCase() + this.step.slice(1);
-    }
+    
+    let start_page = window.location.hash;
 
-    if(subtitle) {
-      state.title += ' - ' + subtitle;
-    }
-    state.url = window.location.origin + this.page;
-    if(this.step) {
-      state.url += '-' + this.step;
-    }
-    return state;
-  }
-  popstateHandler(event) {
-    if(this.states !== event.state) {
-      this.page = event.state.page;
-      this.step = event.state.step;
-      this.setPage(true);
-    }
-  }
-  setPage(replace) {
-    this.active = this.page;
-    let state = this.getStateData();
-    this.states[this.states.length] = state.data;
-    if(history && history.pushState) {
-      if(history.state == null || replace) {
-        history.replaceState(state.data, state.title, state.url);
+    let event_detail = {
+      detail: {
+        page: window.location.hash,
+        source: 'init'
       }
-      else {
-        history.pushState(state.data, state.title, state.url);
-      }
+    };
+    document.dispatchEvent(new CustomEvent('change_page', event_detail));
+  }
+
+  checkPage(page) {
+    if(!document.querySelector(page)) {
+      this.slide = this.default_slide;
+      return this.default_page;
     }
-    document.title = state.title;
-console.log('setPage',state.data)
-    document.dispatchEvent(new CustomEvent('set_menu', {detail: state.data}));
-    document.dispatchEvent(new CustomEvent('set_page', {detail: state.data}));
+    return page;
+  }
+
+  setPage() {
+    this.history.setState(this.active);
+    let event_detail = {
+      detail: {
+        page: this.active,
+        slide: this.slide
+      }
+    };
+console.log('set_navigation',event_detail)
+    document.dispatchEvent(new CustomEvent('set_navigation', event_detail));
+    document.querySelector(this.active).classList.add('show');
     this.scrollbar.update();
   }
+
+  hidePages() {
+    for(let i = this.pages_length - 1; i >= 0; i--) {
+      this.pages[i].classList.remove('show');
+    }
+  }
+
   changePage(event) {
-    let anchor = event.detail;
-console.log('changePage',anchor)
-    this.getAnchorData(anchor);
-    document.dispatchEvent(new CustomEvent('hide_page'));
-    document.dispatchEvent(new CustomEvent('set_menu', {detail: {page: false}}));
-    document.dispatchEvent(new CustomEvent('show_menu'));
+console.log('changePage', event.detail)
+    let page = event.detail.page;
+    if(this.active == page) {
+      return false;
+    }
+
+    if(page == '#product') {
+      if(event.detail.source == 'menu' || event.detail.source == 'init') {
+console.log('event.detail.source',event.detail.source)
+        this.setSlide(this.default_slide);
+      }
+    }
+    if(page == '#product-router') {
+      if(event.detail.source == 'next') {
+        this.setSlide();
+        return false;
+      }
+    }
+
+    this.active = this.checkPage(page);
+    this.hidePages();
+
+    if(!this.menu_visible) {
+      this.menu_visible = true;
+      document.dispatchEvent(new CustomEvent('show_menu'));
+    }
+
+    this.menu_value = page.split('-')[0];
+    if(this.menu.getCurrent() !== this.menu_value) {
+      document.dispatchEvent(new CustomEvent('unset_menu'));
+    }
+
     setTimeout(this.setPage.bind(this), this.page_fade_time);
+  }
+
+  setSlide(slide = false) {
+console.log('setSlide0',slide,this.slide)
+    if(!slide) {
+      this.slide++;
+      slide = this.slide;
+    }
+    else {
+      this.slide = slide;
+    }
+console.log('setSlide1',slide,this.slide)
+    if(slide > 3) {
+console.log('setSlide2?',slide,this.slide)
+      this.slide = 3;
+      let page = '#' + document.querySelector('.page.show').nextSibling.id;
+      let event_detail = {
+        detail: {
+          page: page,
+          source: 'slide'
+        }
+      };
+      document.dispatchEvent(new CustomEvent('change_page', event_detail));
+    }
+    this.product.classList.remove('slide-1','slide-2','slide-3');
+    this.product.classList.add('slide-'+this.slide);
+console.log('setSlide3',slide,this.slide)
   }
 }

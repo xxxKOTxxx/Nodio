@@ -12,47 +12,50 @@
   .header
     font-size 60px
     font-weight bold
-    color #fff
+    color $white
     margin 0 70px 89px 0
   .text
     margin-bottom 30px
-    font-size 18px
+    font-size 16px
     font-weight 100
     line-height 30px
-    color rgba(255, 255, 255, 0.2)
+    color $white-50
   
   .link
     text-decoration none
-    color rgba(23, 229, 178, 1)
-    border-bottom 1px solid rgba(23, 229, 178, 0.2)
+    color $turquoise
+    border-bottom 1px solid $turquoise-50
+    transition border-color $transition-time linear
+    &:hover
+      border-color $turquoise
     
   .illustration
     relative false
     display inline-block
     vertical-align top
-    size 482px 490px
-    margin-top 47px
-    background-image url('~images/apps.png')
-    background-size 482px 440px
+    size 482px 482px
+    margin-top 53px
+    retina-image('~images/pages/apps.png', 482px 440px, "@2x")
     background-position 50% 50%
     background-repeat no-repeat
     
-  .exchange
-  .messenger
-  .wallet
+  .left
+  .center
+  .right
     absolute false
     font-size 12px
     font-weight 100
     text-align center
-  .exchange
-  .wallet
+    letter-spacing 1.3px
+  .left
+  .right
     top 40px
     width 28%
-  .exchange
+  .left
     left 0
-  .wallet
+  .right
     right 0
-  .messenger
+  .center
     top 0
     width 44%
     left 0

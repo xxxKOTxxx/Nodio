@@ -7,8 +7,8 @@ let initialize = function() {
   let Audio = require('assets/audio');
   let audio = new Audio();
 
-  let Menu = require('assets/menu');
-  let menu = new Menu();
+  let Next = require('assets/next');
+  let next = new Next();
 
   let Faq = require('assets/faq');
   let faq = new Faq();

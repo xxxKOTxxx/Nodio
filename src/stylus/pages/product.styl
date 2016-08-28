@@ -63,19 +63,18 @@
                opacity $product-illustrations-opacity-time linear $product-illustrations-delay
       
     .illustration
-      // background-size 713px 634px
       transition opacity $product-illustration-1-opacity-time linear $product-illustration-1-delay
-      // &.show
-      //   opacity 1
+      &.show
+        opacity 1
       &.slide-1
-        background-image url('~images/product-1.png')
-        // transition opacity 0.2s linear
+        retina-image('~images/pages/product-0.png', 641px 622px, "@2x")
+        transition opacity 0.2s linear
       &.slide-2
-        background-image url('~images/product-2.png')
-        // transition opacity 0.2s linear
+        retina-image('~images/pages/product-1.png', 830px 635px, "@2x")
+        transition opacity 0.2s linear
       &.slide-3
-        background-image url('~images/product-3.png')
-        // transition opacity 0.2s linear
+        retina-image('~images/pages/product-2.png', 1080px 852px, "@2x")
+        transition opacity 0.2s linear
   .texts
     opacity 0
     absolute 430px 0 false
@@ -90,19 +89,19 @@
     
     // &.show
     //   opacity 1
-  &.stage-0
-  &.stage-1
-  &.stage-2
+  &.slide-0
+  &.slide-1
+  &.slide-2
     .illustrations
       opacity 1
-  &.stage-0
-  &.stage-1
+  &.slide-0
+  &.slide-1
     h1
       opacity 1
-  &.stage-0
+  &.slide-0
       .slide-1
         opacity 1
-  &.stage-1
+  &.slide-1
     .illustrations
       opacity 1
       .slide-1
@@ -110,7 +109,7 @@
       .slide-2
         opacity 1
         transition opacity $product-illustration-1-opacity-time linear
-  &.stage-2
+  &.slide-2
     h1
     .illustrations
       transform scale(1)
