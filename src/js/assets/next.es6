@@ -23,7 +23,6 @@ module.exports = class Next {
   nextHandler() {
   let current = document.querySelector('.page.show');
     let page = '#' + current.nextSibling.id;
-    console.log('nextHandler',page)
     let event_detail = {
       detail: {
         page: page,

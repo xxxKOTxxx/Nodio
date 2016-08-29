@@ -42,7 +42,7 @@ module.exports = class Router {
   }
 
   checkPage(page) {
-    if(!document.querySelector(page)) {
+    if(!page || !document.querySelector(page)) {
       this.slide = this.default_slide;
       return this.default_page;
     }
@@ -57,7 +57,6 @@ module.exports = class Router {
         slide: this.slide
       }
     };
-console.log('set_navigation',event_detail)
     document.dispatchEvent(new CustomEvent('set_navigation', event_detail));
     document.querySelector(this.active).classList.add('show');
     this.scrollbar.update();
@@ -70,7 +69,6 @@ console.log('set_navigation',event_detail)
   }
 
   changePage(event) {
-console.log('changePage', event.detail)
     let page = event.detail.page;
     if(this.active == page) {
       return false;
@@ -78,7 +76,6 @@ console.log('changePage', event.detail)
 
     if(page == '#product') {
       if(event.detail.source == 'menu' || event.detail.source == 'init') {
-console.log('event.detail.source',event.detail.source)
         this.setSlide(this.default_slide);
       }
     }
@@ -106,7 +103,6 @@ console.log('event.detail.source',event.detail.source)
   }
 
   setSlide(slide = false) {
-console.log('setSlide0',slide,this.slide)
     if(!slide) {
       this.slide++;
       slide = this.slide;
@@ -114,9 +110,7 @@ console.log('setSlide0',slide,this.slide)
     else {
       this.slide = slide;
     }
-console.log('setSlide1',slide,this.slide)
     if(slide > 3) {
-console.log('setSlide2?',slide,this.slide)
       this.slide = 3;
       let page = '#' + document.querySelector('.page.show').nextSibling.id;
       let event_detail = {
@@ -129,6 +123,5 @@ console.log('setSlide2?',slide,this.slide)
     }
     this.product.classList.remove('slide-1','slide-2','slide-3');
     this.product.classList.add('slide-'+this.slide);
-console.log('setSlide3',slide,this.slide)
   }
 }

@@ -36,7 +36,6 @@ module.exports = function() {
         // else {
         //   result.global_ip = ip_addr;
         // }
-        // console.log('result',Object.size(result),result)
         // if(Object.size(result) == 2) {
         //   resolve(result);
         // }
