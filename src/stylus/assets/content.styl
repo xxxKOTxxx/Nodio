@@ -1,14 +1,20 @@
 @import "../variables.styl"
 
 /* Content styles */
-.content
-  min-height 100%
-  padding-left 210px
+.background
+  size 100%
   background-image url('~images/background.svg')
-  background-position 0 0
+  background-position 50% 0
   background-size 60px 60px
   background-repeat repeat
-  overflow-y hidden
+  
+.content
+  relative false
+  max-width 1320px
+  margin auto
+  min-height 100%
+  padding-left 210px
+  box-sizing border-box
   .preloader-mode &
     overflow hidden
   
