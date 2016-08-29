@@ -3,6 +3,8 @@ $ cat .gitignore
 node_modules/
 # Ignore temporary directory
 TMP/
+# Ignore JetBrains directory
+.idea/
 # Ignore distribution directory
 www/
 # Ignore node link
