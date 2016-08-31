@@ -1,0 +1,50 @@
+@import "../variables.styl"
+
+/* Products common styles */
+.product
+  .glow
+    absolute 0
+    z-index 0
+    background-image radial-gradient(ellipse at center, rgba(23, 229, 178, 0.08) 0%, transparent 70%)
+    .square-glow
+      absolute 0
+      width 0
+      height 0
+      transform rotate(45deg)
+      margin auto
+      box-shadow 0 0 100px 200px rgba(23, 229, 178,  0.01)
+  .number
+    absolute 60px false false 0 
+    font-size 200px
+    font-weight bold
+    color rgba(23, 229, 178, 0.02)
+    
+  .illustrations
+    absolute 0
+    z-index 0
+    margin 0 auto
+    transform-origin 50% 50%
+  .illustration
+    absolute 0
+    margin auto
+    size 100%
+    background-position 50% 50%
+    background-size contain
+    background-repeat no-repeat
+    opacity 0
+    
+  h1
+    z-index 2
+    opacity 0
+    color #fff
+    text-align left
+    font-size 38px
+    font-weight 300
+    text-transform none
+    .bold
+      font-size 72px
+      font-weight 600
+  .text
+    font-size 16px
+    font-weight 100
+    line-height 18px

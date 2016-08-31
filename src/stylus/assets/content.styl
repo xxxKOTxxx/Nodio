@@ -2,7 +2,8 @@
 
 /* Content styles */
 .background
-  size 100%
+  relative false
+  width 100%
   background-image url('~images/background.svg')
   background-position 50% 0
   background-size 60px 60px
@@ -10,11 +11,11 @@
   
 .content
   relative false
-  max-width 1320px
+  width 841px
   margin auto
   min-height 100%
-  padding-left 210px
-  box-sizing border-box
+  padding 0 60px 0 119px
+  transition padding 0.3s linear
   .preloader-mode &
     overflow hidden
   

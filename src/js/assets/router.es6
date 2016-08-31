@@ -3,6 +3,7 @@ let config = require('../configurations/router');
 let Menu = require('menu');
 let Pagination = require('pagination');
 let History = require('history');
+let Resize = require('resize');
 let GeminiScrollbar = require('lib/gemini-scrollbar.js');
 module.exports = class Router {
   constructor() {
@@ -12,6 +13,8 @@ module.exports = class Router {
     this.page_fade_time = config.page_fade_time;
     this.active = null;
     this.menu_value = null;
+
+    this.resize = new Resize();
 
     this.menu = new Menu();
     this.menu_visible = false;
@@ -42,7 +45,7 @@ module.exports = class Router {
   }
 
   checkPage(page) {
-    if(!page || !document.querySelector(page)) {
+    if(!page || page == '/' || !document.querySelector(page)) {
       this.slide = this.default_slide;
       return this.default_page;
     }
@@ -76,6 +79,7 @@ module.exports = class Router {
 
     if(page == '#product') {
       if(event.detail.source == 'menu' || event.detail.source == 'init') {
+        this.active = this.default_page;
         this.setSlide(this.default_slide);
       }
     }
@@ -123,5 +127,12 @@ module.exports = class Router {
     }
     this.product.classList.remove('slide-1','slide-2','slide-3');
     this.product.classList.add('slide-'+this.slide);
+    let event_detail = {
+      detail: {
+        page: this.active,
+        slide: this.slide
+      }
+    };
+    document.dispatchEvent(new CustomEvent('set_navigation', event_detail));
   }
 }

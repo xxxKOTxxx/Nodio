@@ -2,78 +2,31 @@
 
 /* Product styles */
 #product
-  .glow
-    absolute 0
-    z-index 0
-    background-image radial-gradient(ellipse at center, rgba(23, 229, 178, 0.08) 0%, transparent 70%)
-    .square-glow
-      absolute 0
-      width 0
-      height 0
-      transform rotate(45deg)
-      margin auto
-      box-shadow 0 0 100px 200px rgba(23, 229, 178,  0.01)
-  .number
-    absolute 60px false false 0 
-    font-size 200px
-    font-weight bold
-    color rgba(23, 229, 178, 0.02)
-    
-  .illustrations
-    absolute 0
-    z-index 0
-    margin auto
-    transform-origin 50% 50%
-  .illustration
-    absolute 0
-    size 100%
-    background-position 50% 50%
-    background-size contain
-    background-repeat no-repeat
-    opacity 0
-    
-  h1
-    z-index 2
-    opacity 0
-    color #fff
-    text-align left
-    font-size 38px
-    font-weight 300
-    text-transform none
-    .bold
-      font-size 72px
-      font-weight 600
-  .text
-    font-size 16px
-    font-weight 100
-    line-height 18px
-.intro
   h1
     absolute 312px false false 0
     transition opacity $product-title-transition-time linear
   .illustrations
     size 713px 634px
     transform scale(0.8)
+    transition opacity $product-illustrations-opacity-time linear $product-illustrations-delay
     // &.show
     //   opacity 1
     //   transform scale(0.8)
     // &.full
     //   transform scale(1)
-    transition transform $product-illustrations-transform-time linear $product-text-delay,
-               opacity $product-illustrations-opacity-time linear $product-illustrations-delay
       
     .illustration
       transition opacity $product-illustration-1-opacity-time linear $product-illustration-1-delay
       &.show
         opacity 1
       &.slide-1
-        retina-image('~images/pages/product-0.png', 641px 622px, "@2x")
+        retina-image('~images/pages/product-1.png', 641px 622px, "@2x")
         transition opacity 0.2s linear
       &.slide-2
-        retina-image('~images/pages/product-1.png', 830px 635px, "@2x")
+        retina-image('~images/pages/product-2.png', 1004px 1006px, "@2x")
         transition opacity 0.2s linear
       &.slide-3
-        retina-image('~images/pages/product-2.png', 1080px 852px, "@2x")
+        retina-image('~images/pages/product-3.png', 1004px 1006px, "@2x")
         transition opacity 0.2s linear
   .texts
     opacity 0
@@ -89,33 +42,35 @@
     
     // &.show
     //   opacity 1
-  &.slide-0
   &.slide-1
   &.slide-2
+  &.slide-3
     .illustrations
       opacity 1
-  &.slide-0
   &.slide-1
+  &.slide-2
     h1
       opacity 1
-  &.slide-0
-      .slide-1
-        opacity 1
   &.slide-1
-    .illustrations
+    .slide-1
       opacity 1
-      .slide-1
-        transition opacity $product-illustration-1-opacity-time linear
-      .slide-2
-        opacity 1
-        transition opacity $product-illustration-1-opacity-time linear
   &.slide-2
+    // .slide-1
+    // .slide-2
+    //   transition opacity $product-illustration-1-opacity-time linear
+    .slide-2
+      opacity 1
+  &.slide-3
     h1
     .illustrations
       transform scale(1)
+      transition transform $product-illustrations-transform-time linear $product-text-delay,
+                 opacity $product-illustrations-opacity-time linear $product-illustrations-delay
+      .slide-2
+      .slide-3
+        transition opacity $product-illustration-2-opacity-time linear $product-text-delay
       .slide-3
         opacity 1
-        transition opacity $product-illustration-2-opacity-time linear $product-text-delay
     .texts
       opacity 1
       transition opacity $product-text-opacity-time linear $product-text-delay

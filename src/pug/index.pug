@@ -5,15 +5,14 @@ html
   body
     include ../images/svg-sprite.pug
     .background
+      include pages/modal/modal.pug
       .content
+        include media/audio.pug
+        include media/video.pug
         include navigation/sidebar.pug
-        include pages/modal/modal.pug
+        include navigation/pagination.pug
+        include navigation/faq.pug
         .container
-          include media/audio.pug
-          include media/video.pug
-          include navigation/pagination.pug
-          include navigation/next.pug
-          include navigation/faq.pug
           include pages/product.pug
           include pages/product-router.pug
           include pages/product-steady.pug
@@ -24,3 +23,4 @@ html
           include pages/apps.pug
           include pages/team.pug
           include pages/contacts.pug
+          include navigation/next.pug

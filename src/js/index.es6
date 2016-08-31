@@ -18,6 +18,9 @@ let initialize = function() {
 
   let Router = require('assets/router');
   let router = new Router();
+
+  let Mail = require('assets/mail');
+  let mail = new Mail();
 }
 document.addEventListener('DOMContentLoaded', initialize);
 

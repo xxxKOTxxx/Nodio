@@ -112,6 +112,10 @@ module.exports = {
         from: path.resolve('src/images'),
         to: path.resolve('www/images')
       },
+      {
+        from: path.resolve('src/php'),
+        to: path.resolve('www/php')
+      },
     ]),
     new ExtractTextPlugin("css/styles.css"),
     new HtmlWebpackPlugin({

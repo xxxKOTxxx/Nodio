@@ -44,6 +44,9 @@ module.exports = class Menu {
     item.classList.add('blink', 'show');
   }
   checkActive(page) {
+    if(page == '/') {
+      return true;
+    }
     if(document.querySelector(page).classList.contains('show')) {
       return false;
     }

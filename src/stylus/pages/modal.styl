@@ -169,20 +169,22 @@
   .specs-
     &block
       display inline-block
-      width 485px
-      padding-left 90px
+      vertical-align top
+      width 230px
+      padding-left 30px
       box-sizing border-box
-      font-size 28px
+      font-size 14px
       font-weight 100
-      line-height 48px
+      line-height 24px
+      letter-spacing 0.7px
       &.common
-        width 750px
+        width 380px
         padding-left 0
     &heading
-      margin 70px 0 22px
+      margin 23px 0 0
       font-weight 700
       text-transform uppercase 
-      letter-spacing 3px
+      letter-spacing 1.5px
     &param
       color rgba(255, 255, 255, 0.75)
     &details
@@ -192,6 +194,35 @@
       display inline-block
       color rgba(255, 255, 255, 0.5)
     &definition
-      width 250px
+      width 125px
     &value
-      width 150px
+      width 75px
+    &tips
+      relative false
+    &tip
+      absolute 24px false false
+      color $white-50
+      border 1px solid $white-20
+      padding 7px
+      white-space nowrap
+      line-height 14px
+      &:before
+        content ''
+        size 7px
+        display block
+        absolute -5px false false
+        text-align center
+        transform rotate(45deg)
+        background-color $black
+        border-top 1px solid $white-20
+        border-left 1px solid $white-20
+      &.left
+        width 103px
+        right 58px
+        &:before
+          left 71px
+      &.right
+        width 92px
+        left 62px
+        &:before
+          left 7px

@@ -1,7 +1,7 @@
 #contacts.page(data-title="Contact us")
   .page-content
     h1.header Contact us
-    form.message(method="post" action="/send.php")
+    form.message.send-form(name="message" action="/php/send.php" method="post")
       .input-wrap
         input(
           type="email"
@@ -22,16 +22,11 @@
         .point.bottom.left
         .point.bottom.right
 
-    form.subscribe(method="post" action="/send.php")
+    form.subscribe.send-form(name="subscribe" method="post" action="/php/send.php")
       .form-content-wrap
         .point.top.left
         .point.top.right
         h2 Get Involved!
-        input(
-          type="hidden"
-          name="type"
-          value="subscribe"
-        )
         .input-wrap
           input(
             type="email"
