@@ -41,6 +41,13 @@ module.exports = class Modal {
   }
   closeModal() {
     this.modal.classList.remove('show');
-    this.scroll.destroy();
+    // this.scroll.destroy();
+    let scroll = this.scroll;
+    function destroy() {
+      scroll.destroy();
+    }
+    setTimeout(function() {
+      destroy();
+    }, 300);
   }
 }

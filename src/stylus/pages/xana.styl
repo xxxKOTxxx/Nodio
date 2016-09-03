@@ -3,26 +3,27 @@
 /* Xana styles */
 #xana
   .page-content
-    padding 73px 0 80px
+    padding 68px 0 75px
   .header
   .text-right
     display inline-block
     vertical-align middle
   .header
-    size 275px 50px
+    size 255px 45px
     fill $white
-    margin-right 10px
+    margin-right 45px
   .text-right
-    width 555px
+    width 540px
     font-size 12px
-    font-weight 100
-    line-height 17px
-    letter-spacing 1px
+    font-weight 300
+    line-height 24px
+    letter-spacing 0.75px
     color $white-50
   .subheader
-    margin 72px 0 54px
+    margin 54px 0
     font-size 18px
-    font-weight 100
+    font-weight 300
+    letter-spacing 1px
     .bold
       font-weight bold
   .features
@@ -30,33 +31,33 @@
   .feature
     display inline-block
     vertical-align top
-    width 240px
-    margin 0 60px 30px 0
+    width 241px
+    margin 0 59px 28px 0
     &:nth-of-type(3n)
       margin-right 0
     .title
-      margin-bottom 13px
+      margin-bottom 8px
       font-size 30px
-      font-weight bold
+      font-weight 700
       text-align center
     .text
-      padding 0 5px
       font-size 12px
-      font-weight 100
-      line-height 23px
-      letter-spacing 0.5px
+      font-weight 300
+      line-height 24px
+      letter-spacing 0.25px
       color $white-50
       text-align justify
       -moz-text-align-last center
       text-align-last center
     &.illustration
       relative false
-      height 152px
+      height 96px
       .illustration
         absolute 50% false false 50%
-        margin auto
-        size 420px 211px
-        retina-image('~images/pages/xana.png', 420px 211px, "@2x")
+        transform translate(-50%, -50%)
+        margin-left: -1px;
+        size 421px 211px
+        retina-image('~images/pages/xana.png', 100% auto, "@2x")
+        background-size 100% auto
         background-position 50% 50%
         background-repeat no-repeat
-        transform translate(-50%, -50%)

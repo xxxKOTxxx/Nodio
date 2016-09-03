@@ -1,23 +1,19 @@
 @import "../variables.styl"
 
 /* Next styles */
-#next
-  absolute false false 60px 440px
+.next-link
+  absolute false false 38px 404px
   z-index 5
-  margin auto 
-  size 18px
+  size 33px
   opacity 0
-  transform rotate(45deg) translate(-19px,24px)
-  border-right 1px solid rgba(23, 229, 178, 0.2)
-  border-bottom 1px solid rgba(23, 229, 178, 0.2)
   cursor pointer
-  transition border-color 0.2s linear
+  fill rgba(23, 229, 178, 0.2)
+  transition fill 0.2s linear
   animation next-out 0.2s linear forwards
   &:hover
-    border-color rgba(23, 229, 178, 1)
-  &.show
+    fill rgba(23, 229, 178, 1)
+  .show &
     animation next-in 0.2s linear forwards
-    
 
 @keyframes next-in
   0%

@@ -12,9 +12,9 @@ body
   color $common-body-text-color
   background-color $common-body-background-color
 body
-  text-rendering optimizeLegibility
+  // text-rendering optimizeLegibility
   -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
+  // -moz-osx-font-smoothing grayscale
   -webkit-backface-visibility hidden
   letter-spacing $common-body-letter-spacing
   &.preloader-mode
@@ -66,6 +66,7 @@ textarea
   .link
     font-size $common-link-font-size
     font-weight 300
+    letter-spacing 1px
     text-decoration none
     color $common-link-color
     border-bottom 1px solid $contacts-button-border-color
@@ -77,3 +78,20 @@ textarea
     margin 0 50px
     background-color $common-delimiter-background-color
     display inline-block
+
+
+.glow
+  overflow hidden
+  &:after
+  &:before
+    content ''
+    absolute 0
+    margin auto
+  &:after
+    size 100vmax
+    background-image radial-gradient(circle at center, rgba(23, 230, 178, 0.08) 0%, transparent 100%)
+  &:before
+    size 70.8vmax
+    transform rotate(45deg)
+    box-shadow inset 0 0 25vmax 6vmax #000
+    background-color rgba(23, 230, 178, 0.05)

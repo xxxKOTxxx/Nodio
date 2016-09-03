@@ -21,6 +21,7 @@ module.exports = class Router {
 
     this.history = new History();
 
+    this.content = document.querySelectorAll('.content');
     this.pages = document.querySelectorAll('.page');
     this.pages_length = this.pages.length;
 
@@ -32,8 +33,6 @@ module.exports = class Router {
     this.pagination = new Pagination();
 
     document.addEventListener('change_page', this.changePage.bind(this));
-    
-    let start_page = window.location.hash;
 
     let event_detail = {
       detail: {
@@ -76,8 +75,8 @@ module.exports = class Router {
     if(this.active == page) {
       return false;
     }
-
-    if(page == '#product') {
+console.log('page',!page)
+    if(page == '#product' || !page) {
       if(event.detail.source == 'menu' || event.detail.source == 'init') {
         this.active = this.default_page;
         this.setSlide(this.default_slide);
@@ -114,8 +113,8 @@ module.exports = class Router {
     else {
       this.slide = slide;
     }
-    if(slide > 3) {
-      this.slide = 3;
+    if(slide > 2) {
+      this.slide = 2;
       let page = '#' + document.querySelector('.page.show').nextSibling.id;
       let event_detail = {
         detail: {
@@ -125,7 +124,7 @@ module.exports = class Router {
       };
       document.dispatchEvent(new CustomEvent('change_page', event_detail));
     }
-    this.product.classList.remove('slide-1','slide-2','slide-3');
+    this.product.classList.remove('slide-1','slide-2');
     this.product.classList.add('slide-'+this.slide);
     let event_detail = {
       detail: {

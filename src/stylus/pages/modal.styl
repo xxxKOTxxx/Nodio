@@ -7,33 +7,24 @@
   opacity 0
   size 100%
   background-color #000
-  transition opacity 0.3s linear
+  transition opacity 0.3s linear,
+             z-index 0s linear 0.3s
   &.show
     z-index 101
     opacity 1
+    transition opacity 0.3s linear,
+               z-index 0s linear
     
   #modal-close
     absolute false 0 15px
     margin auto
-    size 30px
+    size 31px
+    transform translateX(400px)
     cursor pointer
-    &:before
-    &:after
-      content ''
-      absolute 0
-      margin auto
-      size 1px 44px
-      background-color rgba(23, 229, 178, 0.2)
-      transform-origin 50% 50%
-      transition background-color 0.2s linear
-    &:before
-      transform rotate(45deg)
-    &:after
-      transform rotate(-45deg)
+    fill rgba(23, 229, 178, 0.2)
+    transition fill 0.2s linear
     &:hover
-      &:before
-      &:after
-        background-color rgba(23, 229, 178, 1)
+      fill rgba(23, 229, 178, 1)
       
     
   .modal
@@ -127,11 +118,11 @@
     cursor pointer
     &:hover
       .arrow
-        border-color rgba(23, 229, 178, 1)
+        fill rgba(23, 229, 178, 1)
     &.open
       .arrow
-        transform rotate(45deg)
-        border-color rgba(23, 229, 178, 1)
+        transform rotate(90deg)
+        fill rgba(23, 229, 178, 1)
       .answer
         max-height 200px
         transform rotateX(0deg)
@@ -139,14 +130,12 @@
     display block
   .arrow
     display inline-block
-    size 8px
+    size 6px 11px
     margin-right 28px
-    transform rotate(-45deg)
-    border-right 1px solid rgba(23, 229, 178, 0.2)
-    border-bottom 1px solid rgba(23, 229, 178, 0.2)
+    fill rgba(23, 229, 178, 0.2)
     cursor pointer
     transform-origin 50% 100%
-    transition border-color 0.2s linear,
+    transition fill 0.2s linear,
                transform 0.2s linear
   .question
     display inline

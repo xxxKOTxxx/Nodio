@@ -1,7 +1,7 @@
 <?php
-  $username = 'kotboriska@gmail.com';
-  $password = 'bondexkot1984';
-  $admin = 'kotboriska@gmail.com';
+  $username = 'sayhello@nodio.net';
+  $password = ']TSCfMyuYv!2i';
+  $admin = 'sayhello@nodio.net';
 
   if(!isset($_POST)) {
     exit();
@@ -79,18 +79,18 @@
 
   $mail = new PHPMailer;
 
-  $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+  $mail->SMTPDebug = 3;                                 // Enable verbose debug output
 
   $mail->isSMTP();                                      // Set mailer to use SMTP
-  $mail->Host = 'smtp.gmail.com';                       // Specify main and backup SMTP servers
+  $mail->Host = 'mail.privateemail.com';                       // Specify main and backup SMTP servers
   $mail->SMTPAuth = true;                               // Enable SMTP authentication
   $mail->Username = $username;                          // SMTP username
   $mail->Password = $password;                          // SMTP password
   $mail->SMTPSecure = 'ssl';                            // Enable SSL encryption, `tsl` also accepted
   $mail->Port = 465;                                    // TCP port to connect to
 
-  $mail->setFrom($email);
-  $mail->addAddress($admin);     // Add a recipient
+  $mail->setFrom($admin);
+  $mail->addAddress($admin);                            // Add a recipient
   $mail->addReplyTo($email);
 
   $mail->isHTML(true);                                  // Set email format to HTML
