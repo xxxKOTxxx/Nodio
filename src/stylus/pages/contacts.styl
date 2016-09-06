@@ -33,9 +33,16 @@
     size 100% 61px
     relative false
     box-sizing border-box
-    border 1px solid $contacts-input-border-color
     .point
       background-color $contacts-input-point-color
+      &.top
+        top 0
+      &.left
+        left 0
+      &.right
+        right 0
+      &.bottom
+        bottom 0
     
   input
   textarea
@@ -47,20 +54,27 @@
     background-color transparent
     color $contacts-input-color
     letter-spacing 1px
+    border 1px solid $contacts-input-border-color
+    transition border-color 0.2s linear
     +placeholder()
       color $contacts-input-placeholder-color
+      opacity 1 !important
+    &:hover
+    &:focus
+      border-color $white
+    
+      
   input
-    size 100% 60px
-    border 0px none
+    size 100% 61px
   textarea
     display block
-    size 100% 179px
-    margin 0
+    size 100% 180px
+    margin -1px 0 0
     border-top 0 none
     border-bottom 0 none
     resize none
-    border-left 1px solid $contacts-input-border-color
-    border-right 1px solid $contacts-input-border-color
+    border-top 1px solid transparent
+    border-bottom 1px solid transparent
     
   button
     relative false
