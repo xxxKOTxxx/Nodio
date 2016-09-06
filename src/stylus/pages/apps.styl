@@ -2,19 +2,22 @@
 
 /* Apps styles */
 #apps
+  .page-header
+    padding-top 71px
   .page-content
-    padding 71px 0 69px
-  .left-side
-    width 320px
-    display inline-block
-    vertical-align top
-    margin-right 38px
+    padding-bottom 65px
+    
   .header
     font-size 60px
     font-weight 700
     color $white
-    margin 0 72px 88px 0
     letter-spacing 4px
+    
+  .left-side
+    width 320px
+    display inline-block
+    vertical-align top
+    margin 88px 38px 0 0
   .text
     margin-bottom 30px
     font-size 16px
@@ -35,8 +38,7 @@
     relative false
     display inline-block
     vertical-align top
-    size 483px
-    margin-top 53px
+    size 483px 470px
     retina-image('~images/pages/apps.png', 100% auto, "@2x")
     background-size 100% auto
     background-position 50% 50%
@@ -52,15 +54,33 @@
     letter-spacing 0.5px
   .left-capture
   .right-capture
-    top 40px
+    top 33px
     width 30%
   .left-capture
     left 0
   .right-capture
     right 0
   .center-capture
-    top 0
+    top -7px
     width 44%
     left 0
     right 0
     margin auto
+    
+$start = 720px
+$step = 60px
+for $i in 0..30
+  $height = $start + $i * $step
+  if $i < 3
+    $before = 0 * $step
+    $after = $i * $step
+  else 
+    $before = floor(($i - 1) / 2) * $step
+    $after = floor(($i + 2) / 2) * $step
+    
+  +media-query(only screen, min-height $height)
+    #apps .page-content
+      &:before
+        height $before
+      &:after
+        height $after

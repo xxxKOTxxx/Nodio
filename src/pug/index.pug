@@ -4,14 +4,15 @@ html
     include assets/head.pug
   body
     include ../images/svg-sprite.pug
-    .background.glow
-      .content
+    #glow
+    #background
+      .container
         include media/audio.pug
         include media/video.pug
         include navigation/sidebar.pug
         include navigation/pagination.pug
         include navigation/faq.pug
-        .container
+        .pages
           include pages/product.pug
           include pages/product-router.pug
           include pages/product-steady.pug

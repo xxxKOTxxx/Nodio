@@ -1,13 +1,15 @@
 #xana.page(data-title="Xana")
-  .page-content
+  .page-header
     h1.header
       svg
         use(xlink:href="#xana-title")
     p.text-right Xana is a revolutionary platform for decentralized blockchain-based applications brought to your phone by Nodio. From now on every application can be based on Bitcoin blockchain, Ethereum, Ethereum classic or any other blockchain. Digital safety has never been closer.
+
+  .page-content
     p.subheader See the 
       span.bold variety of possibilities
       |  open for Xana apps:
-    .features
+    .features.center-block
       .feature
         h2.title Finance
         p.text Endless possibilities for a financial sector with P2P lending services and transactions. Create a custom wallet and use it on your phone, while the funds are safely stored in your Nodio.
@@ -26,4 +28,5 @@
         h2.title Personal ID
         p.text Unlimited opportunities for the most precise personal identification. Its level of security is so advanced that it can serve as an ID at elections, not to mention digital documentation signature and user ID.
 
+  .page-footer
     include ../navigation/next.pug

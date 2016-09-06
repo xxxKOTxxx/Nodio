@@ -47,7 +47,7 @@ module.exports = class Pagination {
     document.dispatchEvent(new CustomEvent('change_page', event_detail));
   }
   selectItemAction(event) {
-console.log('Pagination',event.detail)
+// console.log('Pagination',event.detail)
     let page = event.detail.page;
     if(page.split('-')[0] !== '#product') {
       this.hidePagination();

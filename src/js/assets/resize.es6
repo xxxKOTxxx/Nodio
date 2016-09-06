@@ -3,36 +3,37 @@ module.exports = class Router {
   constructor() {
     this.cell_size = 60;
     this.left_delta = 1;
-    this.content = document.querySelector('.content');
+    this.container = document.querySelector('.container');
     this.resizeHandler();
     window.addEventListener('resize', this.resizeHandler.bind(this));
   }
   resizeHandler() {
     this.widthHandler();
-    this.heightHandler();
+    // this.heightHandler();
   }
   heightHandler() {
     let window_height = window.innerHeight;
-    let content_height = this.content.clientHeight;
-    let height = Math.max(window_height, content_height);
-    let space = height % this.cell_size + 'px';
-    this.content.style.paddingBottom = space;
+    let container_height = this.container.clientHeight;
+    let bottom = '0px';
+    if(window_height > container_height) {
+      bottom = window_height % this.cell_size + 'px';
+    }
+    this.container.style.paddingBottom = bottom;
 console.log('window_height',window_height)
-console.log('content_height',content_height)
-console.log('height',height)
-console.log('space',space)
+console.log('container_height',container_height)
+console.log('bottom',bottom)
   }
   widthHandler() {
     let window_width = window.innerWidth;
     let window_cells = Math.floor(window_width / this.cell_size);
-    let content_width = this.content.clientWidth;
-    let content_style = window.getComputedStyle ? getComputedStyle(this.content, null) : this.content.currentStyle;
+    let container_width = this.container.clientWidth;
+    let container_style = window.getComputedStyle ? getComputedStyle(this.container, null) : this.container.currentStyle;
 
-    let content_left = parseInt(content_style.paddingLeft) || 0;
-    let content_right = parseInt(content_style.paddingRight) || 0;
-    let content_inner_width = content_width - content_left - content_right;
-    let content_cells = Math.floor(content_inner_width / this.cell_size);
-    let free_cells = window_cells - content_cells;
+    let container_left = parseInt(container_style.paddingLeft) || 0;
+    let container_right = parseInt(container_style.paddingRight) || 0;
+    let container_inner_width = container_width - container_left - container_right;
+    let container_cells = Math.floor(container_inner_width / this.cell_size);
+    let free_cells = window_cells - container_cells;
     let left = 2;
     let right = 1;
     free_cells = free_cells - left - right;
@@ -47,11 +48,11 @@ console.log('space',space)
     }
     left = (left * this.cell_size) - this.left_delta + 'px';
     right = (right * this.cell_size) + 'px';
-    if(left !== content_left) {
-      this.content.style.paddingLeft = left;
+    if(left !== container_left) {
+      this.container.style.paddingLeft = left;
     }
-    if(right !== content_right) {
-      this.content.style.paddingRight = right;
+    if(right !== container_right) {
+      this.container.style.paddingRight = right;
     }
   }
 }

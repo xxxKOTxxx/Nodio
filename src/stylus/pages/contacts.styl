@@ -2,13 +2,15 @@
 
 /* Contacts styles */
 #contacts
-  .page-content
-    padding 71px 0 55px
+  // .page-wrap
+  //   padding 71px 0 55px
+          
+  .page-header
+    padding 71px 0 78px
   .header
     font-size 60px
     font-weight 700
     color $contacts-header-color
-    margin-bottom 78px
     letter-spacing 4px
     
   form
@@ -137,5 +139,19 @@
       display inline-block
       vertical-align middle
   .links
-    padding-left 5px
+    padding 10px 0 20px 5px
     text-align center
+    
+
+$start = 720px
+$step = 60px
+for $i in 0..30
+  $height = $start + $i * $step
+  $before = floor($i / 2) * $step
+  $after = floor(($i + 1) / 2) * $step
+  +media-query(only screen, min-height $height)
+    #contacts .page-content
+      &:before
+        height $before
+      &:after
+        height $after

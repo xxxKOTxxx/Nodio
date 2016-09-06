@@ -17,6 +17,7 @@ body
   // -moz-osx-font-smoothing grayscale
   -webkit-backface-visibility hidden
   letter-spacing $common-body-letter-spacing
+  text-size-adjust none
   &.preloader-mode
     overflow hidden
 svg
@@ -79,9 +80,20 @@ textarea
     background-color $common-delimiter-background-color
     display inline-block
 
+#background
+  relative false
+  width 100%
+  background-image url('~images/background.svg')
+  background-position 50% 0
+  background-size 60px 60px
+  background-repeat repeat
 
-.glow
+#glow
   overflow hidden
+  size false
+  width 100%
+  opacity 0
+  transition opacity 0.5s linear
   &:after
   &:before
     content ''
@@ -95,3 +107,5 @@ textarea
     transform rotate(45deg)
     box-shadow inset 0 0 25vmax 6vmax #000
     background-color rgba(23, 230, 178, 0.05)
+  &.show
+    opacity 1

@@ -1,29 +1,111 @@
 @import "../variables.styl"
 
 /* Content styles */
-.background
-  relative false
-  width 100%
-  background-image url('~images/background.svg')
-  background-position 50% 0
-  background-size 60px 60px
-  background-repeat repeat
   
-.content
+.container
   relative false
   width 841px
   margin auto
   min-height 100%
   padding 0 60px 0 119px
-  transition padding 0.3s linear
+  transition padding-left 0.3s linear,
+             padding-right 0.3s linear
   .preloader-mode &
     overflow hidden
   
-  .container
+  .pages
     size 100%
     min-height 100vh
     relative false
-    
+.page-footer
+  padding-bottom 37px
+  
+.page-content
+  &:before
+  &:after
+    content ''
+    display block
+    size 100% 0
+    transition height 0.2s linear
+// +media-query(only screen, min-height 780px)
+//   .page-content
+//     &:after
+//       size 100% 60px
+      
+// +media-query(only screen, min-height 840px)
+//   .page-content
+//     &:before
+//     &:after
+//       size 100% 60px
+
+// +media-query(only screen, min-height 900px)
+//   .page-content
+//     &:before
+//       size 100% 120px
+//     &:after
+//       size 100% 60px
+
+// +media-query(only screen, min-height 960px)
+//   .page-content
+//     &:before
+//     &:after
+//       size 100% 120px
+
+// +media-query(only screen, min-height 1020px)
+//   .page-content
+//     &:before
+//       size 100% 180px
+//     &:after
+//       size 100% 120px
+
+// +media-query(only screen, min-height 1080px)
+//   .page-content
+//     &:before
+//     &:after
+//       content ''
+//       display block
+//       size 100% 180px
+
+// +media-query(only screen, min-height 1140px)
+//   .page-content
+//     &:before
+//       size 100% 180px
+//     &:after
+//       size 100% 240px
+
+// +media-query(only screen, min-height 1200px)
+//   .page-content
+//     &:before
+//     &:after
+//       content ''
+//       display block
+//       size 100% 240px
+
+// +media-query(only screen, min-height 1260px)
+//   .page-content
+//     &:before
+//       size 100% 240px
+//     &:after
+//       size 100% 300px
+
+// +media-query(only screen, min-height 1320px)
+//   .page-content
+//     &:before
+//     &:after
+//       size 100% 300px
+
+// +media-query(only screen, min-height 1380px)
+//   .center-block
+//     &:before
+//       size 100% 300px
+//     &:after
+//       size 100% 360px
+
+// +media-query(only screen, min-height 1440px)
+//   .page-content
+//     &:before
+//     &:after
+//       size 100% 360px
 
 #sidebar
 .page

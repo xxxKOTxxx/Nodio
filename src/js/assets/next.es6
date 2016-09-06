@@ -27,7 +27,7 @@ module.exports = class Next {
   // }
   nextHandler(current = false) {
     if(!current) {
-      let current = document.querySelector('.page.show');
+      current = document.querySelector('.page.show');
     }
     let next = current.nextSibling;
     if(next) {

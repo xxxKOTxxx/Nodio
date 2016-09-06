@@ -2,8 +2,12 @@
 
 /* Xana styles */
 #xana
+  // .page-wrap
+  //   padding 68px 0 75px
+  .page-header
+    padding 68px 0 54px 
   .page-content
-    padding 68px 0 75px
+    padding-bottom 3px
   .header
   .text-right
     display inline-block
@@ -20,7 +24,7 @@
     letter-spacing 0.75px
     color $white-50
   .subheader
-    margin 54px 0
+    margin-bottom 54px
     font-size 18px
     font-weight 300
     letter-spacing 1px
@@ -61,3 +65,21 @@
         background-size 100% auto
         background-position 50% 50%
         background-repeat no-repeat
+    
+$start = 720px
+$step = 60px
+for $i in 0..30
+  $height = $start + $i * $step
+  if $i < 3
+    $before = 0 * $step
+    $after = $i * $step
+  else 
+    $before = floor(($i - 1) / 2) * $step
+    $after = floor(($i + 2) / 2) * $step
+    
+  +media-query(only screen, min-height $height)
+    #xana .page-content
+      &:before
+        height $before
+      &:after
+        height $after

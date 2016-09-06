@@ -1,6 +1,8 @@
 #contacts.page(data-title="Contact us")
-  .page-content
+  .page-header
     h1.header Contact us
+
+  .page-content
     form.message.send-form(name="message" action="/php/send.php" method="post")
       .input-wrap
         input(
@@ -45,6 +47,7 @@
         .point.bottom.left
         .point.bottom.right
 
+  .page-footer
     .socials
       a.social.facebook(
         href="http://facebook.com"

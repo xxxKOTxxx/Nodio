@@ -21,7 +21,8 @@ module.exports = class Router {
 
     this.history = new History();
 
-    this.content = document.querySelectorAll('.content');
+    this.glow = document.querySelector('#glow');
+
     this.pages = document.querySelectorAll('.page');
     this.pages_length = this.pages.length;
 
@@ -72,21 +73,25 @@ module.exports = class Router {
 
   changePage(event) {
     let page = event.detail.page;
+console.log('changePage', page, this.active)
     if(this.active == page) {
       return false;
-    }
-console.log('page',!page)
-    if(page == '#product' || !page) {
-      if(event.detail.source == 'menu' || event.detail.source == 'init') {
-        this.active = this.default_page;
-        this.setSlide(this.default_slide);
-      }
     }
     if(page == '#product-router') {
       if(event.detail.source == 'next') {
         this.setSlide();
         return false;
       }
+    }
+    if(page == '#product' || !page) {
+      if(event.detail.source == 'menu' || event.detail.source == 'init' || event.detail.source == 'history') {
+        this.active = this.default_page;
+        this.setSlide(this.default_slide);
+      }
+    }
+    else {
+      this.glow.classList.add('show');
+console.log('changePage glow show')
     }
 
     this.active = this.checkPage(page);
@@ -106,6 +111,7 @@ console.log('page',!page)
   }
 
   setSlide(slide = false) {
+console.log('setSlide',slide)
     if(!slide) {
       this.slide++;
       slide = this.slide;
@@ -116,6 +122,8 @@ console.log('page',!page)
     if(slide > 2) {
       this.slide = 2;
       let page = '#' + document.querySelector('.page.show').nextSibling.id;
+      this.glow.classList.add('show');
+console.log('setSlide glow show')
       let event_detail = {
         detail: {
           page: page,
@@ -123,9 +131,12 @@ console.log('page',!page)
         }
       };
       document.dispatchEvent(new CustomEvent('change_page', event_detail));
+      return false;
     }
     this.product.classList.remove('slide-1','slide-2');
     this.product.classList.add('slide-'+this.slide);
+    this.glow.classList.remove('show');
+console.log('setSlide glow hide')
     let event_detail = {
       detail: {
         page: this.active,

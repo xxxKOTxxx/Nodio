@@ -2,35 +2,36 @@
 
 /* Product styles */
 #product
-  h1
+  .page-content
+    relative false
+    height 425px
+  .title
     absolute 312px false false 0
-    transition opacity $product-title-transition-time linear
+    opacity 0
+    // transition opacity $product-title-transition-time linear
   .illustrations
     size 713px 634px
-    transform scale(0.8)
-    transition opacity $product-illustrations-opacity-time linear $product-illustrations-delay
-    // &.show
-    //   opacity 1
-    //   transform scale(0.8)
-    // &.full
-    //   transform scale(1)
+    opacity 0
+    // transform scale(0.8)
+    // transition opacity $product-illustrations-opacity-time linear $product-illustrations-delay
+    transition opacity 1.5s linear 2s
       
     .illustration
       transition opacity $product-illustration-1-opacity-time linear $product-illustration-1-delay
       &.show
         opacity 1
-      &.slide-1
+      &.image-1
         retina-image('~images/pages/product-1.png', 1004px 1006px, "@2x")
-        transition opacity 0.2s linear
-      &.slide-2
+        // transition opacity 0.2s linear
+      &.image-2
         retina-image('~images/pages/product-2.png', 1004px 1006px, "@2x")
-        transition opacity 0.2s linear
-      &.slide-3
+        // transition opacity 0.2s linear
+      &.image-3
         retina-image('~images/pages/product-3.png', 1004px 1006px, "@2x")
-        transition opacity 0.2s linear
+        // transition opacity 0.2s linear
   .texts
     opacity 0
-    absolute 430px 0 false
+    margin-bottom 31px
   .subtitle
     font-size 24px
     font-weight 300
@@ -39,38 +40,81 @@
     text-align center
   .text
     text-align center
-    
-    // &.show
-    //   opacity 1
+  // .next-link
+  //   opacity 0
+
   &.slide-1
   &.slide-2
-  &.slide-3
     .illustrations
       opacity 1
   &.slide-1
+    .title
+      opacity 1
+      transition opacity 1s linear 0.5s
+    .image-1
+      opacity 1
+      transition opacity 1.5s linear 1s
+    // .page-footer
+    //   padding-top 32px
+    .next-link
+      // opacity 1
+      animation next-in 1s linear 3s forwards
+      
   &.slide-2
-    h1
-      opacity 1
-  &.slide-1
-    .slide-1
-      opacity 1
-  &.slide-2
-    // .slide-1
-    // .slide-2
-    //   transition opacity $product-illustration-1-opacity-time linear
-    .slide-2
-      opacity 1
-  &.slide-3
-    h1
+    .title
+      opacity 0
+      transition opacity 1s linear
     .illustrations
-      transform scale(1)
-      transition transform $product-illustrations-transform-time linear $product-text-delay,
-                 opacity $product-illustrations-opacity-time linear $product-illustrations-delay
-      .slide-2
-      .slide-3
-        transition opacity $product-illustration-2-opacity-time linear $product-text-delay
-      .slide-3
-        opacity 1
+      transform scale(1.2)
+      transition transform 1s linear 1s
+    .image-1
+      opacity 0
+      transition opacity 1s linear
+    .image-2
+      opacity 1
+      transition opacity 1s linear
+    .image-3
+      opacity 1
+      transition opacity 1s linear 1s
     .texts
       opacity 1
-      transition opacity $product-text-opacity-time linear $product-text-delay
+      transition opacity 1s linear 1s
+    .next-link
+      // opacity 1
+      animation next-out 0.5s linear forwards
+      animation next-in 1s linear 2s forwards
+    
+  //   // &.show
+  //   //   opacity 1
+  // &.slide-1
+  // &.slide-2
+  // &.slide-3
+  //   .illustrations
+  //     opacity 1
+  // &.slide-1
+  // &.slide-2
+  //   h1
+  //     opacity 1
+  // &.slide-1
+  //   .slide-1
+  //     opacity 1
+  // &.slide-2
+  //   // .slide-1
+  //   // .slide-2
+  //   //   transition opacity $product-illustration-1-opacity-time linear
+  //   .slide-2
+  //     opacity 1
+  // &.slide-3
+  //   h1
+  //   .illustrations
+  //     transform scale(1)
+  //     transition transform $product-illustrations-transform-time linear $product-text-delay,
+  //                opacity $product-illustrations-opacity-time linear $product-illustrations-delay
+  //     .slide-2
+  //     .slide-3
+  //       transition opacity $product-illustration-2-opacity-time linear $product-text-delay
+  //     .slide-3
+  //       opacity 1
+  //   .texts
+  //     opacity 1
+  //     transition opacity $product-text-opacity-time linear $product-text-delay

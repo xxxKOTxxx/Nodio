@@ -2,8 +2,12 @@
 
 /* Team styles */
 #team
+  // .page-wrap
+  //   padding 68px 0 46px
+  .page-header
+    padding 68px 0 9px
   .page-content
-    padding 68px 0 46px
+    padding-bottom 35px
   .header
   .text-right
     display inline-block
@@ -23,16 +27,16 @@
     letter-spacing 0.75px
     color $white-50
   
-  .persons
-    margin 70px 0 0
+  // .persons
   
   .person
     relative false
     display inline-block
     vertical-align top
-    size 178px 59px
-    margin 0 61px 61px 0
+    size 179px 59px
+    margin 61px 61px 0 0
     border-left 1px solid $white-20
+    box-sizing border-box
     transition border-color $transition-time linear
     cursor pointer
     &:nth-of-type(4n)
@@ -60,3 +64,20 @@
       background-color $white
       transition background-color $transition-time linear
     
+$start = 720px
+$step = 60px
+for $i in 0..30
+  $height = $start + $i * $step
+  if $i < 4
+    $before = 0 * $step
+    $after = $i * $step
+  else 
+    $before = floor(($i - 2) / 2) * $step
+    $after = floor(($i + 3) / 2) * $step
+    
+  +media-query(only screen, min-height $height)
+    #team .page-content
+      &:before
+        height $before
+      &:after
+        height $after
