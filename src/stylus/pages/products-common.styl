@@ -2,49 +2,72 @@
 
 /* Products common styles */
 .product
-  .glow
-    absolute 0
-    z-index 0
-    background-image radial-gradient(ellipse at center, rgba(23, 229, 178, 0.08) 0%, transparent 70%)
-    .square-glow
-      absolute 0
-      width 0
-      height 0
-      transform rotate(45deg)
-      margin auto
-      box-shadow 0 0 100px 200px rgba(23, 229, 178,  0.01)
-  .number
-    absolute 60px false false 0 
-    font-size 200px
-    font-weight bold
-    color rgba(23, 229, 178, 0.02)
+  .page-header
+    relative false
+    height 150px
+    margin 60px 0 -18px
+    .number
+      absolute -3px false false -4px
+      z-index -1
+      font-size 200px
+      line-height 150px
+      font-weight 700
+      color rgba(23, 229, 178, 0.1)
+      letter-spacing 15px
+      opacity 0
+    
+  .page-content
+    relative false
+    min-height 330px
+    padding-bottom 5px
     
   .illustrations
-    absolute 0
+    size 901px
+    absolute -1px 0 0 -31px
     z-index -1
-    margin 0 auto
-    transform-origin 50% 50%
-  .illustration
-    absolute 0
     margin auto
-    size 100%
+    transform-origin 50% 50%
+    overflow hidden
+  .illustration
+    absolute 50% false false 50%
+    transform translate(-50%, -50%)
+    transform-origin 50% 50%
+    margin auto
+    size 901px
     background-position 50% 50%
-    background-size contain
+    background-size 100% auto
     background-repeat no-repeat
     opacity 0
     
-  h1
-    z-index 2
+  .title
+  .text
+    display inline-block
+    vertical-align middle
     opacity 0
-    color #fff
+    color $white
+  .title
+    width 390px
     text-align left
     font-size 38px
     font-weight 300
-    text-transform none
     .bold
-      font-size 72px
-      font-weight 600
+      font-size 66px
+      font-weight 700
+      line-height 68px
+  // .texts
+  //   text-align right
+
+  .dot
+    display inline-block
+    size 9px
+    margin 0 0 2px 6px
+    background-color $common-dot-background-color
+    transform rotate(45deg)
+    
   .text
-    font-size 16px
-    font-weight 100
-    line-height 18px
+    width 450px
+    text-align left
+    font-size 14px
+    font-weight 300
+    line-height 30px
+    letter-spacing 0.5px

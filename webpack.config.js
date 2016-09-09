@@ -136,7 +136,7 @@ module.exports = {
     aggregateTimeout: 100
   },
   devtool: 'source-map',
-  devtool: 'cheap-inline-module-source-map',
+  // devtool: 'cheap-inline-module-source-map',
   devServer: {
     proxy: {
       '*': 'http://localhost:8080'

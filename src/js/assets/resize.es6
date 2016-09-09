@@ -27,7 +27,7 @@ console.log('bottom',bottom)
     let window_width = window.innerWidth;
     let window_cells = Math.floor(window_width / this.cell_size);
     let container_width = this.container.clientWidth;
-    let container_style = window.getComputedStyle ? getComputedStyle(this.container, null) : this.container.currentStyle;
+    let container_style = this.container.currentStyle || window.getComputedStyle(this.container, false);
 
     let container_left = parseInt(container_style.paddingLeft) || 0;
     let container_right = parseInt(container_style.paddingRight) || 0;

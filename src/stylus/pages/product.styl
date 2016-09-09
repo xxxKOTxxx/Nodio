@@ -4,44 +4,51 @@
 #product
   .page-content
     relative false
-    height 425px
+    min-height 660px
+    padding-bottom 5px
   .title
-    absolute 312px false false 0
-    opacity 0
-    // transition opacity $product-title-transition-time linear
+    height 110px
+    absolute 50px 0 0
+    z-index 1
+    margin auto 0
+    .bold
+      font-size 75px
   .illustrations
-    size 713px 634px
+    left -1px
+    size 700px 760px
     opacity 0
-    // transform scale(0.8)
-    // transition opacity $product-illustrations-opacity-time linear $product-illustrations-delay
+    overflow hidden
     transition opacity 1.5s linear 2s
       
     .illustration
+      overflow hidden
+      size 100%
       transition opacity $product-illustration-1-opacity-time linear $product-illustration-1-delay
       &.show
         opacity 1
       &.image-1
-        retina-image('~images/pages/product-1.png', 1004px 1006px, "@2x")
-        // transition opacity 0.2s linear
+      &.hover-1
+        retina-image('~images/pages/product-1.png', 100% auto, "@2x")
       &.image-2
-        retina-image('~images/pages/product-2.png', 1004px 1006px, "@2x")
-        // transition opacity 0.2s linear
+        retina-image('~images/pages/product-2.png', 100% auto, "@2x")
       &.image-3
-        retina-image('~images/pages/product-3.png', 1004px 1006px, "@2x")
-        // transition opacity 0.2s linear
+        retina-image('~images/pages/product-3.png', 100% auto, "@2x")
   .texts
     opacity 0
-    margin-bottom 31px
+    absolute 415px 0 0
+    margin auto
+    display table
   .subtitle
-    font-size 24px
+    font-size 26px
     font-weight 300
-    line-height 28px
-    margin-bottom 20px
+    line-height 42px
+    letter-spacing 1px
+    margin-bottom 10px
     text-align center
   .text
+    width 100%
+    font-size 16px
     text-align center
-  // .next-link
-  //   opacity 0
 
   &.slide-1
   &.slide-2
@@ -54,19 +61,22 @@
     .image-1
       opacity 1
       transition opacity 1.5s linear 1s
-    // .page-footer
-    //   padding-top 32px
+    .hover-1
+      transition opacity 0.5s linear
+      &.hover
+        opacity 1
+    .image-2
+    .image-3
+      opacity 0
+      transition opacity 0s linear
     .next-link
-      // opacity 1
-      animation next-in 1s linear 3s forwards
+      animation fade-in 1s linear 3s forwards
       
   &.slide-2
     .title
       opacity 0
       transition opacity 1s linear
-    .illustrations
-      transform scale(1.2)
-      transition transform 1s linear 1s
+    // .illustrations
     .image-1
       opacity 0
       transition opacity 1s linear
@@ -75,46 +85,24 @@
       transition opacity 1s linear
     .image-3
       opacity 1
-      transition opacity 1s linear 1s
+      // transition opacity 1s linear 1s
+      transform scale(1.44)
+      transition transform 1s linear 1s,
+                opacity 1s linear 1s
     .texts
+    .text
       opacity 1
       transition opacity 1s linear 1s
     .next-link
-      // opacity 1
-      animation next-out 0.5s linear forwards
-      animation next-in 1s linear 2s forwards
+      animation fade-in 0.2s linear reverse forwards,
+                fade-in 1s linear 2s forwards
     
-  //   // &.show
-  //   //   opacity 1
-  // &.slide-1
-  // &.slide-2
-  // &.slide-3
-  //   .illustrations
-  //     opacity 1
-  // &.slide-1
-  // &.slide-2
-  //   h1
-  //     opacity 1
-  // &.slide-1
-  //   .slide-1
-  //     opacity 1
-  // &.slide-2
-  //   // .slide-1
-  //   // .slide-2
-  //   //   transition opacity $product-illustration-1-opacity-time linear
-  //   .slide-2
-  //     opacity 1
-  // &.slide-3
-  //   h1
-  //   .illustrations
-  //     transform scale(1)
-  //     transition transform $product-illustrations-transform-time linear $product-text-delay,
-  //                opacity $product-illustrations-opacity-time linear $product-illustrations-delay
-  //     .slide-2
-  //     .slide-3
-  //       transition opacity $product-illustration-2-opacity-time linear $product-text-delay
-  //     .slide-3
-  //       opacity 1
-  //   .texts
-  //     opacity 1
-  //     transition opacity $product-text-opacity-time linear $product-text-delay
+$start = 720px
+$step = 60px
+for $i in 0..30
+  $height = $start + $i * $step
+  $before = $height - $step
+  +media-query(only screen, min-height $height)
+    #product .page-content
+      &:before
+        height $before

@@ -3,24 +3,30 @@ require('utilities/ie_fixes');
 (function () {
 'use strict';
 let initialize = function() {
+  let ImageHover = require('assets/image_hover');
+  new ImageHover('#hoverable', '.hover-1');
+
+  let Hotkeys = require('assets/hotkeys');
+  new Hotkeys();
 
   let Audio = require('assets/audio');
-  let audio = new Audio();
+  new Audio();
 
   let Next = require('assets/next');
-  let next = new Next();
+  new Next();
 
   let Faq = require('assets/faq');
-  let faq = new Faq();
+  new Faq();
 
   let Modal = require('assets/modal');
-  let modal = new Modal();
+  new Modal();
 
   let Router = require('assets/router');
-  let router = new Router();
+  new Router();
 
   let Mail = require('assets/mail');
-  let mail = new Mail();
+  new Mail();
+
 }
 document.addEventListener('DOMContentLoaded', initialize);
 

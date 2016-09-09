@@ -2,37 +2,40 @@
 
 /* Pagination styles */
 #pagination
-  display none
   width 30px
-  absolute 244px 5px false false
-  z-index 10
+  absolute 244px 35px false false
   opacity 0
-  transition opacity 0.2s linear $product-text-delay
+  visibility hidden
   &.show
-    display block
-    opacity 1
+    animation fade-in 1s linear 2s forwards
+    &.fast
+      animation fade-in 1s linear forwards
   .pagination-item
     display block
     relative false
-    size 9px
-    margin 20.5px 0 0 0
-    transform rotate(45deg)
+    size 11px
+    margin 19px 0 0 0
+    fill $white
     background-color transparent
+    transition fill 0.2s linear
     cursor pointer
+    .active
+    .inactive
+      fill inherit
+      absolute 0
+      transition opacity 0.2s linear
+    .active
+      opacity 0
+    .inactive
+      opacity 1
     &:hover
-      .point
-        background-color rgba(23, 229, 178, 1)
-    .point
-      display none
-      background-color #fff
-      transition background-color 0.2s linear
-      &.center
-        display block
+      fill rgba(23, 229, 178, 1)
     &.active
-      border 1px solid rgba(23, 229, 178, 0.2)
       cursor default
-      .point
-        background-color rgba(23, 229, 178, 1)
-        display block
+      .active
+        opacity 1
+      .inactive
+        opacity 0
     &:nth-child(even)
       margin-left 30px
+      

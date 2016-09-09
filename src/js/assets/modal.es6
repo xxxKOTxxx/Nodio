@@ -18,6 +18,7 @@ module.exports = class Modal {
       this.close_links[i].addEventListener('click', this.closeModal.bind(this), false);
     }
     this.close.addEventListener('click', this.closeModal.bind(this), false);
+    document.addEventListener('close_modal', this.closeModal.bind(this), false);
   }
   setModal(event) {
     event.preventDefault();
@@ -44,7 +45,9 @@ module.exports = class Modal {
     // this.scroll.destroy();
     let scroll = this.scroll;
     function destroy() {
-      scroll.destroy();
+      if(scroll) {
+        scroll.destroy();
+      }
     }
     setTimeout(function() {
       destroy();

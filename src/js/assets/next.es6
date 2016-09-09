@@ -4,32 +4,31 @@ module.exports = class Next {
     this.next_links = document.querySelectorAll('.next-link');
     this.next_links_length = this.next_links.length;
     for(let i = this.next_links_length - 1; i >= 0; i--) {
-      this.next_links[i].addEventListener('click', this.nextHandler.bind(this));
+      this.next_links[i].addEventListener('click', ()=> {this.pageHandler(true);});
     }
+    document.addEventListener('change_page_key', this.keyHandler.bind(this));
     this.setMousewheelHandler();
-    // this.next.addEventListener('click', this.nextHandler.bind(this));
-    // document.addEventListener('set_navigation', this.setNext.bind(this));
   }
-  // showNext() {
-  //   this.next.classList.add('show');
-  // }
-  // hideNext() {
-  //   this.next.classList.remove('show');
-  // }
-  // setNext(event) {
-  //   let page = event.detail.page;
-  //   if(page == '#contacts') {
-  //     this.hideNext();
-  //   }
-  //   else {
-  //     this.showNext();
-  //   }
-  // }
-  nextHandler(current = false) {
+  pageHandler(direction = true) {
+    let current = document.querySelector('.page.show');
     if(!current) {
-      current = document.querySelector('.page.show');
+      return false;
     }
-    let next = current.nextSibling;
+    let next = false;
+    if(current.id == 'product') {
+      if(!direction) {
+        return false;
+      }
+      next = current;
+    }
+    else {
+      if(direction) {
+        next = current.nextSibling;
+      }
+      else {
+        next = current.previousSibling;
+      }
+    }
     if(next) {
       let page = '#' + next.id;
       let event_detail = {
@@ -61,16 +60,41 @@ module.exports = class Next {
     }
   }
   mousewheelHandler(event) {
+    let delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
+    this.switchHandler(delta);
+  }
+  keyHandler(event) {
+    let direction = event.detail.direction;
+    this.switchHandler(direction);
+  }
+  switchHandler(direction) {
     let modal = document.querySelector('#modal.show');
     let current = document.querySelector('.page.show');
-    let delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
-    if(delta < 0 && current && !modal) {
+    if(modal || !current) {
+      return false;
+    }
+    let next_link = document.querySelector('.page.show .next-link');
+    if(next_link) {
+      let next_link_style = next_link.currentStyle || window.getComputedStyle(next_link, false);
+      let opacity = next_link_style.opacity;
+      if(opacity < 1) {
+        return false;
+      }
+    }
+    if(direction > 0) {
+      let scroll = document.querySelector('body > .gm-scroll-view');
+      let scrollTop = scroll.scrollTop;
+      if(scrollTop === 0) {
+        this.pageHandler(false);
+      }
+    }
+    if(direction < 0) {
       let scroll = document.querySelector('body > .gm-scroll-view');
       let scrollTop = scroll.scrollTop;
       let scrollHeight = scroll.scrollHeight;
       let offsetHeight  = scroll.offsetHeight ;
-      if (scrollTop + offsetHeight === scrollHeight) {
-        this.nextHandler(current);
+      if(scrollTop + offsetHeight === scrollHeight) {
+        this.pageHandler();
       }
     }
   }

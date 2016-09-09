@@ -2,26 +2,43 @@
 
 /* Product router styles */
 #product-router
+  .page-content
+    relative false
+    min-height 330px
+    padding-bottom 5px
   .illustrations
-    size 661px 441px
     .illustration
-      retina-image('~images/pages/product-router.png', 661px 441px, "@2x")
-  h1
-    absolute 450px false false 0
-    transition opacity $product-title-transition-time linear
-  .texts
-    text-align left
-    opacity 0
-    max-width 555px
-    absolute 477px false false 410px
-  .texts
-    opacity 0
+      &.device
+        retina-image('~images/pages/product-router.png', 100% auto, "@2x")
+      &.border
+        retina-image('~images/pages/product-router-border.png', 100% auto, "@2x")
+  .next-link
+    margin-top 32px
+    
   &.show
-    h1
+    .number
+      animation slide-right 0.5s linear forwards
     .illustrations
       opacity 1
       .illustration
-        opacity 1
-    .texts
-      opacity 1
-      transition opacity $product-text-opacity-time linear $product-text-delay
+        &.device
+          animation slide-down-centered 0.7s linear 0.5s forwards
+        &.border
+          animation blink $content-blink-animation-time linear 1s forwards
+    .title
+      animation slide-right 0.5s linear 2.5s forwards
+    .text
+      animation slide-left 0.5s linear 3s forwards
+    .next-link
+      animation fade-in 1s linear 3.5s forwards
+
+$start = 720px
+$step = 60px
+$delta = 390px
+for $i in 0..30
+  $height = $start + $i * $step
+  $before = $height - $delta
+  +media-query(only screen, min-height $height)
+    #product-router .page-content
+      &:before
+        height $before

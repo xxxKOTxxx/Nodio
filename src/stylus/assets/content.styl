@@ -27,85 +27,6 @@
     display block
     size 100% 0
     transition height 0.2s linear
-// +media-query(only screen, min-height 780px)
-//   .page-content
-//     &:after
-//       size 100% 60px
-      
-// +media-query(only screen, min-height 840px)
-//   .page-content
-//     &:before
-//     &:after
-//       size 100% 60px
-
-// +media-query(only screen, min-height 900px)
-//   .page-content
-//     &:before
-//       size 100% 120px
-//     &:after
-//       size 100% 60px
-
-// +media-query(only screen, min-height 960px)
-//   .page-content
-//     &:before
-//     &:after
-//       size 100% 120px
-
-// +media-query(only screen, min-height 1020px)
-//   .page-content
-//     &:before
-//       size 100% 180px
-//     &:after
-//       size 100% 120px
-
-// +media-query(only screen, min-height 1080px)
-//   .page-content
-//     &:before
-//     &:after
-//       content ''
-//       display block
-//       size 100% 180px
-
-// +media-query(only screen, min-height 1140px)
-//   .page-content
-//     &:before
-//       size 100% 180px
-//     &:after
-//       size 100% 240px
-
-// +media-query(only screen, min-height 1200px)
-//   .page-content
-//     &:before
-//     &:after
-//       content ''
-//       display block
-//       size 100% 240px
-
-// +media-query(only screen, min-height 1260px)
-//   .page-content
-//     &:before
-//       size 100% 240px
-//     &:after
-//       size 100% 300px
-
-// +media-query(only screen, min-height 1320px)
-//   .page-content
-//     &:before
-//     &:after
-//       size 100% 300px
-
-// +media-query(only screen, min-height 1380px)
-//   .center-block
-//     &:before
-//       size 100% 300px
-//     &:after
-//       size 100% 360px
-
-// +media-query(only screen, min-height 1440px)
-//   .page-content
-//     &:before
-//     &:after
-//       size 100% 360px
 
 #sidebar
 .page
@@ -124,6 +45,8 @@
                max-height 0s linear,
                overflow 0s linear
 .page
+  overflow-y hidden
+  // overflow-x hidden !important
   relative false
   box-sizing border-box
   p
@@ -131,17 +54,3 @@
 
 .blink.show
   animation blink $content-blink-animation-time linear forwards
-
-@keyframes blink
-  0%
-    opacity 0
-  20%
-    opacity .6
-  40%
-    opacity .2
-  60%
-    opacity .8
-  80%
-    opacity .4
-  100%
-    opacity 1

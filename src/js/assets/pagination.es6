@@ -13,6 +13,7 @@ module.exports = class Pagination {
     }
     document.addEventListener('set_navigation', this.selectItemAction.bind(this));
   }
+
   showPagination() {
     this.pagination.classList.add('show');
   }
@@ -47,20 +48,25 @@ module.exports = class Pagination {
     document.dispatchEvent(new CustomEvent('change_page', event_detail));
   }
   selectItemAction(event) {
-// console.log('Pagination',event.detail)
+    this.pagination.classList.add('fast');
     let page = event.detail.page;
     if(page.split('-')[0] !== '#product') {
       this.hidePagination();
       return false;
     }
-    else {
-      if(page == '#product' && event.detail.slide < 3) {
+    let slide = event.detail.slide;
+    if(page == '#product') {
+      if(slide < 2) {
         this.hidePagination();
       }
       else {
+        this.pagination.classList.remove('fast');
         this.showPagination();
       }
-      this.setItem(page);
     }
+    else {
+      this.showPagination();
+    }
+    this.setItem(page);
   }
 }

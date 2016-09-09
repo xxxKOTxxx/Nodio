@@ -4,8 +4,10 @@ html
     include assets/head.pug
   body
     include ../images/svg-sprite.pug
-    #glow
     #background
+      #glow
+        svg
+          use(xlink:href="#glow-svg")
       .container
         include media/audio.pug
         include media/video.pug
