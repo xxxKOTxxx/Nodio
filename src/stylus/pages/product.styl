@@ -2,6 +2,7 @@
 
 /* Product styles */
 #product
+  overflow visible
   .page-content
     relative false
     min-height 660px
@@ -15,23 +16,27 @@
       font-size 75px
   .illustrations
     left -1px
+    z-index 0
     size 700px 760px
     opacity 0
-    overflow hidden
+    overflow visible
     transition opacity 1.5s linear 2s
       
     .illustration
       overflow hidden
       size 100%
-      transition opacity $product-illustration-1-opacity-time linear $product-illustration-1-delay
+      // transition opacity $product-illustration-1-opacity-time linear $product-illustration-1-delay
       &.show
         opacity 1
+      &.hover-1
+        max-height 0
       &.image-1
       &.hover-1
         retina-image('~images/pages/product-1.png', 100% auto, "@2x")
       &.image-2
         retina-image('~images/pages/product-2.png', 100% auto, "@2x")
       &.image-3
+        transform-origin 50% 50%
         retina-image('~images/pages/product-3.png', 100% auto, "@2x")
   .texts
     opacity 0
@@ -49,6 +54,8 @@
     width 100%
     font-size 16px
     text-align center
+  .next-link
+    animation fade-in 0.2s linear reverse forwards
 
   &.slide-1
   &.slide-2
@@ -58,17 +65,23 @@
     .title
       opacity 1
       transition opacity 1s linear 0.5s
-    .image-1
-      opacity 1
-      transition opacity 1.5s linear 1s
-    .hover-1
-      transition opacity 0.5s linear
-      &.hover
+    .illustrations 
+      .image-1
         opacity 1
-    .image-2
-    .image-3
-      opacity 0
-      transition opacity 0s linear
+        transition opacity 1.5s linear 1s
+      .hover-1
+        max-height 901px
+        transition opacity 0.5s linear,
+                   max-height 0s linear 2.5s
+        &.hover
+          cursor pointer
+          &:hover
+            opacity 1
+      .image-2
+      .image-3
+        opacity 0
+        transition opacity 0s linear
+        transform translate3d(-50%, -50%, 0) scale(1)
     .next-link
       animation fade-in 1s linear 3s forwards
       
@@ -76,19 +89,23 @@
     .title
       opacity 0
       transition opacity 1s linear
-    // .illustrations
-    .image-1
-      opacity 0
-      transition opacity 1s linear
-    .image-2
-      opacity 1
-      transition opacity 1s linear
-    .image-3
-      opacity 1
-      // transition opacity 1s linear 1s
-      transform scale(1.44)
-      transition transform 1s linear 1s,
-                opacity 1s linear 1s
+    .illustrations
+      .image-1
+        opacity 0
+        transition opacity 1s linear
+      .image-2
+      .image-3
+        height 660px
+        opacity 1
+        transform translate3d(-50%, -50%, 0) scale(1.434)
+      .image-2
+        transition transform 0.5s linear 1s,
+                   opacity 0.5s linear,
+                   height 0.5s linear 1s
+      .image-3
+        transition transform 0.5s linear 1s,
+                   opacity 0.5s linear 1s,
+                   height 0.5s linear 1s
     .texts
     .text
       opacity 1

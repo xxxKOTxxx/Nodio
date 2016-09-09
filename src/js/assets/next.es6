@@ -1,7 +1,7 @@
 /* Next module */
 module.exports = class Next {
   constructor() {
-    this.next_links = document.querySelectorAll('.next-link');
+    this.next_links = document.querySelectorAll('.next-link, .next-link-additional');
     this.next_links_length = this.next_links.length;
     for(let i = this.next_links_length - 1; i >= 0; i--) {
       this.next_links[i].addEventListener('click', ()=> {this.pageHandler(true);});
@@ -9,7 +9,21 @@ module.exports = class Next {
     document.addEventListener('change_page_key', this.keyHandler.bind(this));
     this.setMousewheelHandler();
   }
+  checkOpacity() {
+    let next_link = document.querySelector('.page.show .next-link');
+    if(next_link) {
+      let next_link_style = next_link.currentStyle || window.getComputedStyle(next_link, false);
+      let opacity = next_link_style.opacity;
+      if(opacity < 1) {
+        return false;
+      }
+    }
+    return true;
+  }
   pageHandler(direction = true) {
+    if(!this.checkOpacity()) {
+      return false;
+    }
     let current = document.querySelector('.page.show');
     if(!current) {
       return false;
@@ -72,14 +86,6 @@ module.exports = class Next {
     let current = document.querySelector('.page.show');
     if(modal || !current) {
       return false;
-    }
-    let next_link = document.querySelector('.page.show .next-link');
-    if(next_link) {
-      let next_link_style = next_link.currentStyle || window.getComputedStyle(next_link, false);
-      let opacity = next_link_style.opacity;
-      if(opacity < 1) {
-        return false;
-      }
     }
     if(direction > 0) {
       let scroll = document.querySelector('body > .gm-scroll-view');
