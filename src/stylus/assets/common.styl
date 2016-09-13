@@ -74,6 +74,7 @@ textarea
     display inline-block
 
 #background
+  min-height 720px
   overflow hidden
   relative false
   width 100%
@@ -118,6 +119,15 @@ textarea
     opacity 1
     visibility visible
 
+@keyframes fade-out
+  0%
+    opacity 1
+  99%
+    opacity 0
+  100%
+    opacity 0
+    visibility hidden
+
 @keyframes scale-in
   0%
     opacity 0
@@ -127,6 +137,20 @@ textarea
   100%
     opacity 1
     transform scale(1)
+
+@keyframes slide-down-centered
+  0%
+    opacity 0
+    top 45%
+  50%
+    opacity 0
+  100%
+    top 50%
+    opacity 1
+
+
+
+
 
 @keyframes scale-in-centered
   0%
@@ -145,16 +169,6 @@ textarea
   0%
     opacity 0
     top 100%
-  50%
-    opacity 0
-  100%
-    top 50%
-    opacity 1
-    
-@keyframes slide-down-centered
-  0%
-    opacity 0
-    top -50%
   50%
     opacity 0
   100%

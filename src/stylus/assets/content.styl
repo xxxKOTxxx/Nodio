@@ -32,7 +32,7 @@
 .page
   opacity 0
   max-height 0
-  overflow hidden
+  // overflow hidden
   transition opacity $content-show-transition-time linear,
              max-height 0s linear $content-show-transition-time,
              overflow 0s linear $content-show-transition-time
@@ -47,12 +47,13 @@
   &.show
     z-index 2
 .page
-  overflow-y hidden
+  overflow hidden
   // overflow-x hidden !important
   relative false
   box-sizing border-box
   &.show
     z-index 1
+    overflow visible
   p
     text-align left
 

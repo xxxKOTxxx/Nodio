@@ -17,20 +17,20 @@
     
   &.show
     .number
-      animation slide-right 0.5s linear forwards
+      animation fade-in 0.5s linear forwards
     .illustrations
       opacity 1
       .illustration
         &.device
-          animation slide-down-centered 0.7s linear 0.5s forwards
+          animation slide-down-centered 1.5s linear 0.3s forwards
         &.border
-          animation blink $content-blink-animation-time linear 1s forwards
+          animation blink $content-blink-animation-time linear 1.7s forwards
     .title
-      animation slide-right 0.5s linear 2.5s forwards
+      animation fade-in 0.5s linear 1.3s forwards
     .text
-      animation slide-left 0.5s linear 3s forwards
+      animation fade-in 0.5s linear 1.5s forwards
     .next-link
-      animation fade-in 1s linear 3.5s forwards
+      animation fade-in 1s linear 2.7s forwards
 
 $start = 720px
 $step = 60px

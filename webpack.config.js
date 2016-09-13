@@ -85,7 +85,7 @@ module.exports = {
     //   compress: true,
     //   mangle: true,
     //   comments: false,
-    //   sourceMap: false,
+    //   sourceMap: true,
     //   compressor: { warnings: false }
     // }),
 

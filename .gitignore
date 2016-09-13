@@ -9,3 +9,9 @@ TMP/
 www/
 # Ignore node link
 /Node.lnk
+
+
+# Ignore node link
+/.phpintel
+# Ignore node link
+/src/php/send.php

@@ -15,29 +15,36 @@
     .bold
       font-size 75px
   .illustrations
+    top 70px
     left -1px
     z-index 0
     size 700px 760px
-    opacity 0
     overflow visible
-    transition opacity 1.5s linear 2s
       
     .illustration
       overflow hidden
       size 100%
-      // transition opacity $product-illustration-1-opacity-time linear $product-illustration-1-delay
       &.show
         opacity 1
       &.hover-1
         max-height 0
+        z-index 3
+      &.image-1
+        z-index 2
       &.image-1
       &.hover-1
         retina-image('~images/pages/product-1.png', 100% auto, "@2x")
       &.image-2
-        retina-image('~images/pages/product-2.png', 100% auto, "@2x")
       &.image-3
+        size 1004px 1006px
+        transform translate3d(-50%, -50%, 0) scale(0.694)
         transform-origin 50% 50%
-        retina-image('~images/pages/product-3.png', 100% auto, "@2x")
+      &.image-2
+        z-index 1
+        retina-image('~images/pages/product-2.png', 1004px 1006px, "@2x")
+      &.image-3
+        z-index 0
+        retina-image('~images/pages/product-3.png', 1004px 1006px auto, "@2x")
   .texts
     opacity 0
     absolute 415px 0 0
@@ -56,63 +63,50 @@
     text-align center
   .next-link
     animation fade-in 0.2s linear reverse forwards
-
-  &.slide-1
-  &.slide-2
-    .illustrations
-      opacity 1
+    
   &.slide-1
     .title
-      opacity 1
-      transition opacity 1s linear 0.5s
+      animation fade-in 1s linear 0.5s forwards
     .illustrations 
       .image-1
-        opacity 1
-        transition opacity 1.5s linear 1s
+        animation fade-in 1.5s linear 1s forwards
+      .image-2
+      .image-3
+        animation fade-out 0s linear forwards
       .hover-1
-        max-height 901px
+        max-height 1006px
         transition opacity 0.5s linear,
-                   max-height 0s linear 2.5s
+                   max-height 0s linear 3.5s
         &.hover
           cursor pointer
           &:hover
             opacity 1
-      .image-2
-      .image-3
-        opacity 0
-        transition opacity 0s linear
-        transform translate3d(-50%, -50%, 0) scale(1)
     .next-link
-      animation fade-in 1s linear 3s forwards
+      animation fade-in 1s linear 2.5s forwards
       
   &.slide-2
     .title
-      opacity 0
-      transition opacity 1s linear
+      animation fade-out 2s linear forwards
     .illustrations
+      .hover-1
+        animation fade-out 2s linear forwards
       .image-1
-        opacity 0
-        transition opacity 1s linear
+        animation fade-out 2s linear forwards
+      .image-2
+        animation fade-out 2s linear reverse forwards, fade-out 1s linear 2.5s forwards
+        transition transform 1s ease-in-out 2.5s
+      .image-3
+        animation fade-in 1s linear 2.5s forwards
+        transition transform 1s ease-in-out 2.5s
       .image-2
       .image-3
-        height 660px
-        opacity 1
-        transform translate3d(-50%, -50%, 0) scale(1.434)
-      .image-2
-        transition transform 0.5s linear 1s,
-                   opacity 0.5s linear,
-                   height 0.5s linear 1s
-      .image-3
-        transition transform 0.5s linear 1s,
-                   opacity 0.5s linear 1s,
-                   height 0.5s linear 1s
+        transform translate3d(-50%, -50%, 0) scale(1)
     .texts
     .text
-      opacity 1
-      transition opacity 1s linear 1s
+      animation fade-in 1s linear 3.5s forwards
     .next-link
       animation fade-in 0.2s linear reverse forwards,
-                fade-in 1s linear 2s forwards
+                fade-in 1s linear 4.5s forwards
     
 $start = 720px
 $step = 60px

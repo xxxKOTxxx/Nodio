@@ -10,12 +10,17 @@
   .illustrations
     left 6px
     position relative
-    size 413px 500px
+    size 413px 484px
     display inline-block
     vertical-align top
     .illustration
       size 100%
-      retina-image('~images/pages/product-tech.png', 100% auto, "@2x")
+      &.device
+        z-index 1
+        retina-image('~images/pages/product-tech.png', 100% auto, "@2x")
+      &.border
+        z-index 0
+        retina-image('~images/pages/product-tech-border.png', 100% auto, "@2x")
   
   .right-side
     width 390px
@@ -31,16 +36,22 @@
   .delimiter
     margin 0 39px
   &.show
-    .title
+    .number
+      animation fade-in 0.5s linear forwards
     .illustrations
       opacity 1
       .illustration
-        opacity 1
-    .texts
+        &.device
+          animation slide-down-centered 1.5s linear 0.3s forwards
+        &.border
+          animation blink $content-blink-animation-time linear 1.7s forwards
+    .title
+      animation fade-in 0.5s linear 1.3s forwards
     .text
-      opacity 1
-      transition opacity $product-text-opacity-time linear $product-text-delay
-        
+      animation fade-in 0.5s linear 1.5s forwards
+    .next-link
+      animation fade-in 1s linear 2.7s forwards
+      
 $start = 720px
 $step = 60px
 for $i in 0..30

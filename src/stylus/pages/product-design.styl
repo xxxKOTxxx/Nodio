@@ -6,26 +6,30 @@
     .illustration
       &.device
         retina-image('~images/pages/product-design.png', 100% auto, "@2x")
+      &.phone
+        retina-image('~images/pages/product-design-phone.png', 100% auto, "@2x")
       &.border
         retina-image('~images/pages/product-design-border.png', 100% auto, "@2x")
   .next-link
     margin-top 19px
   &.show
     .number
-      animation slide-down 0.5s linear forwards
+      animation fade-in 0.5s linear forwards
     .illustrations
       opacity 1
       .illustration
         &.device
-          animation fade-in 0.7s linear 0.5s forwards
+          animation slide-down-centered 1s linear 0.3s forwards
+        &.phone
+          animation fade-in 0.5s linear 2.3s forwards
         &.border
-          animation blink $content-blink-animation-time linear 1s forwards
+          animation blink $content-blink-animation-time linear 2.8s forwards
     .title
-      animation slide-left 0.5s linear 2.5s forwards
+      animation fade-in 0.5s linear 1.3s forwards
     .text
-      animation slide-right 0.5s linear 3s forwards
+      animation fade-in 0.5s linear 1.8s forwards
     .next-link
-      animation fade-in 1s linear 3.5s forwards
+      animation fade-in 1s linear 3.8s forwards
       
 $start = 720px
 $step = 60px
