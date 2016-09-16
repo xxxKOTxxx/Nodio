@@ -5,12 +5,12 @@
   .page-header
     margin-bottom -96px
   .page-content
-    padding-bottom 51px
+    padding-bottom 21px
     font-size 0
   .illustrations
     left 6px
     position relative
-    size 413px 484px
+    size 413px 498px
     display inline-block
     vertical-align top
     .illustration
@@ -29,28 +29,14 @@
     margin 12px 0 0 38px
   .title
     margin-bottom 60px
-    transition opacity $product-title-transition-time linear
   .links
     text-align left
     margin-top 83px
   .delimiter
     margin 0 39px
   &.show
-    .number
-      animation fade-in 0.5s linear forwards
-    .illustrations
-      opacity 1
-      .illustration
-        &.device
-          animation slide-down-centered 1.5s linear 0.3s forwards
-        &.border
-          animation blink $content-blink-animation-time linear 1.7s forwards
-    .title
-      animation fade-in 0.5s linear 1.3s forwards
-    .text
-      animation fade-in 0.5s linear 1.5s forwards
-    .next-link
-      animation fade-in 1s linear 2.7s forwards
+    .illustrations .illustration.border
+      animation-delay 2.3s
       
 $start = 720px
 $step = 60px

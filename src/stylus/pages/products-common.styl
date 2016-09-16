@@ -2,24 +2,74 @@
 
 /* Products common styles */
 .product
+  .number
+  .illustrations
+  .illustration
+  .title
+  .text
+  .links
+  .next-link
+    animation-name fade-out
+    animation-duration 0.5s
+    animation-timing-function linear
+    animation-delay 0s
+    animation-fill-mode forwards
+    opacity 0
+  &.show
+    .number
+      animation-name fade-in
+      animation-duration 0.5s
+    .illustrations
+      animation-name fade-in
+      animation-duration 0s
+    .illustration
+      &.device
+        animation-name slide-down-centered
+        animation-duration 1s
+      &.phone
+        animation-name fade-in
+        animation-duration 1s
+        animation-delay 1s
+      &.border
+        animation-name blink
+        animation-duration 0.5s
+        animation-delay 0.9s
+    .title
+      animation-name fade-in
+      animation-duration 1.5s
+      animation-delay 1.5s
+    .text
+      animation-name fade-in
+      animation-duration 1.5s
+      animation-delay 2s
+    .links
+      animation-name fade-in
+      animation-duration 1s
+      animation-delay 2s
+    .next-link
+      animation-name fade-in
+      animation-duration 0.5s
+      animation-delay 2s
+    
+    
   .page-header
     relative false
     height 150px
     margin 60px 0 -18px
-    .number
-      absolute -3px false false -4px
-      z-index -1
-      font-size 200px
-      line-height 150px
-      font-weight 700
-      color rgba(23, 229, 178, 0.1)
-      letter-spacing 15px
-      opacity 0
+  .number
+    absolute -3px false false -4px
+    z-index -1
+    font-size 200px
+    line-height 150px
+    font-weight 700
+    color rgba(23, 229, 178, 0.1)
+    letter-spacing 15px
     
   .page-content
     relative false
     min-height 330px
     padding-bottom 5px
+    transition margin-top 0.2s linear
     
   .illustrations
     size 901px
@@ -30,20 +80,18 @@
     overflow hidden
   .illustration
     absolute 50% false false 50%
-    transform translate(-50%, -50%)
+    transform translate3d(-50%, -50%, 0)
     transform-origin 50% 50%
     margin auto
     size 901px
     background-position 50% 50%
     background-size 100% auto
     background-repeat no-repeat
-    opacity 0
     
   .title
   .text
     display inline-block
-    vertical-align middle
-    opacity 0
+    vertical-align baseline
     color $white
   .title
     width 390px
@@ -54,9 +102,7 @@
       font-size 66px
       font-weight 700
       line-height 68px
-  // .texts
-  //   text-align right
-
+      
   .dot
     display inline-block
     size 9px
@@ -71,3 +117,14 @@
     font-weight 300
     line-height 30px
     letter-spacing 0.5px
+    
+  .next-link
+    margin-top 32px
+      
+  .page-footer .texts
+    &:before
+    &:after
+      content ''
+      display block
+      size 100% 0
+      transition height 0.2s linear

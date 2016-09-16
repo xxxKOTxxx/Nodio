@@ -14,13 +14,15 @@
     fill rgba(255, 255, 255, 1)
     transition fill 0.2s linear
   .logo-text
+    height 12px
     absolute 0 false 0 90px
     margin auto
     text-transform uppercase
     color #FFF
     font-size 12px
-    line-height 60px
+    line-height 12px
     font-weight 600
+    white-space nowrap
     
 .menu
   margin-top 151px
@@ -77,6 +79,11 @@
         .line
           background-color rgba(23, 229, 178, 1)
     &:hover
+      min-width 41px
       .line
         background-color rgba(255, 255, 255, 1)
           
++media-query(only screen, max-width 1080px)
+  .logo-text
+  .menu-link .print-character
+    display none

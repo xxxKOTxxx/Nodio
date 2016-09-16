@@ -8,34 +8,18 @@
         retina-image('~images/pages/product-steady.png', 100% auto, "@2x")
       &.border
         retina-image('~images/pages/product-steady-border.png', 100% auto, "@2x")
-  .title
-    transition opacity $product-title-transition-time linear
-  .next-link
-    margin-top 32px
-  &.show
-    .number
-      animation fade-in 0.5s linear forwards
-    .illustrations
-      opacity 1
-      .illustration
-        &.device
-          animation slide-down-centered 1.5s linear 0.3s forwards
-        &.border
-          animation blink $content-blink-animation-time linear 1.7s forwards
-    .title
-      animation fade-in 0.5s linear 1.3s forwards
-    .text
-      animation fade-in 0.5s linear 1.5s forwards
-    .next-link
-      animation fade-in 1s linear 2.7s forwards
-        
+      
 $start = 720px
 $step = 60px
-$delta = 390px
 for $i in 0..30
   $height = $start + $i * $step
-  $before = $height - $delta
+  $content = floor($i / 2) * $step
+  $texts = floor(($i + 1) / 2) * $step / 2
   +media-query(only screen, min-height $height)
-    #product-steady .page-content
-      &:before
-        height $before
+    #product-steady 
+      .page-content
+        margin-top $content
+      .texts
+        &:before
+        &:after
+          height $texts

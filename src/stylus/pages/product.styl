@@ -7,6 +7,7 @@
     relative false
     min-height 660px
     padding-bottom 5px
+    margin-bottom -32px
   .title
     height 110px
     absolute 50px 0 0
@@ -27,6 +28,7 @@
       &.show
         opacity 1
       &.hover-1
+        animation none
         max-height 0
         z-index 3
       &.image-1
@@ -89,11 +91,15 @@
       animation fade-out 2s linear forwards
     .illustrations
       .hover-1
-        animation fade-out 2s linear forwards
+        max-height 1006px
+        transition opacity 0.5s linear,
+                   max-height 0s linear 3.5s
+        // animation fade-out 2s linear 0.5s forwards
       .image-1
         animation fade-out 2s linear forwards
       .image-2
-        animation fade-out 2s linear reverse forwards, fade-out 1s linear 2.5s forwards
+        animation fade-in 2s linear 0s normal forwards,
+                  fade-out 1s linear 2.5s normal forwards
         transition transform 1s ease-in-out 2.5s
       .image-3
         animation fade-in 1s linear 2.5s forwards
@@ -113,7 +119,10 @@ $step = 60px
 for $i in 0..30
   $height = $start + $i * $step
   $before = $height - $step
+  $padding = $i * $step
   +media-query(only screen, min-height $height)
     #product .page-content
       &:before
         height $before
+     #product .texts
+       padding-top $padding

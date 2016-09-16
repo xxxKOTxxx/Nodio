@@ -40,3 +40,11 @@
     &:nth-child(even)
       margin-left 30px
       
+$start = 720px
+$step = 60px
+for $i in 0..30
+  $height = $start + $i * $step
+  $margin = floor($i / 2) * $step
+  +media-query(only screen, min-height $height)
+    #pagination
+      margin-top $margin
