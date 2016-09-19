@@ -51,6 +51,8 @@
     font-weight 300
     line-height 30px
     color rgba(255, 255, 255, 0.5)
+    &.right
+      text-align right
   .link
     color rgba(23, 229, 178, 0.5)
     text-decoration none
@@ -89,7 +91,7 @@
       counter-reset alpha
       li
         &:before
-          content "(" counter(alpha, lower-alpha) ") "
+          content "(" counter(alpha, upper-alpha) ") "
           counter-increment alpha
         
     #modal-policy &
@@ -98,7 +100,9 @@
         &:before
           margin-right 26px
     #modal-terms &
+    #modal-policy &
       &.article > li
+        color $white
         margin-bottom 45px
         text-transform uppercase
         font-weight 700

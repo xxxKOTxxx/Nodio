@@ -1,7 +1,7 @@
 @import "../variables.styl"
 
 /* Apps styles */
-#apps
+#dapps
   .page-header
     padding 71px 0 30px
   .page-content
@@ -39,7 +39,7 @@
     display inline-block
     vertical-align top
     size 483px 470px
-    retina-image('~images/pages/apps.png', 100% auto, "@2x")
+    retina-image('~images/pages/dapps.png', 100% auto, "@2x")
     background-size 100% auto
     background-position 50% 50%
     background-repeat no-repeat
@@ -79,7 +79,7 @@ for $i in 0..30
     $after = floor(($i + 2) / 2) * $step
     
   +media-query(only screen, min-height $height)
-    #apps .page-content
+    #dapps .page-content
       &:before
         height $before
       &:after

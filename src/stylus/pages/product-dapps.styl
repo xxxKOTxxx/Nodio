@@ -1,13 +1,13 @@
 @import "../variables.styl"
 
 /* Product open styles */
-#product-open
+#product-dapps
   .illustrations
     .illustration
       &.device
-        retina-image('~images/pages/product-open.png', 100% auto, "@2x")
+        retina-image('~images/pages/product-dapps.png', 100% auto, "@2x")
       &.border
-        retina-image('~images/pages/product-open-border.png', 100% auto, "@2x")
+        retina-image('~images/pages/product-dapps-border.png', 100% auto, "@2x")
         .line
           absolute false 0
           margin auto
@@ -30,17 +30,15 @@
             top 61px
           &.bottom
             top 180px
-  .next-link
-    margin-top 19px
 
 $start = 720px
-$step = 60px
+$step = 61px
 for $i in 0..30
   $height = $start + $i * $step
   $content = floor($i / 2) * $step
-  $texts = floor(($i + 1) / 2) * $step / 2
+  $texts = ceil(floor(($i + 1) / 2) * $step / 2)
   +media-query(only screen, min-height $height)
-    #product-open
+    #product-dapps
       .page-content
         margin-top $content
       .texts

@@ -90,7 +90,10 @@
     .title
       animation fade-out 2s linear forwards
     .illustrations
+      .animation
+        animation none
       .hover-1
+        z-index -1
         max-height 1006px
         transition opacity 0.5s linear,
                    max-height 0s linear 3.5s
@@ -98,8 +101,8 @@
       .image-1
         animation fade-out 2s linear forwards
       .image-2
-        animation fade-in 2s linear 0s normal forwards,
-                  fade-out 1s linear 2.5s normal forwards
+        animation fade-in 2s linear 0s forwards,
+                  fade-in 1s linear 2.5s forwards reverse
         transition transform 1s ease-in-out 2.5s
       .image-3
         animation fade-in 1s linear 2.5s forwards

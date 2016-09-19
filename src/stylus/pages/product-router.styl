@@ -10,11 +10,11 @@
         retina-image('~images/pages/product-router-border.png', 100% auto, "@2x")
 
 $start = 720px
-$step = 60px
+$step = 61px
 for $i in 0..30
   $height = $start + $i * $step
   $content = floor($i / 2) * $step
-  $texts = floor(($i + 1) / 2) * $step / 2
+  $texts = ceil(floor(($i + 1) / 2) * $step / 2)
   +media-query(only screen, min-height $height)
     #product-router
       .page-content

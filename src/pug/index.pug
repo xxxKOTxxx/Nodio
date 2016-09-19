@@ -6,8 +6,9 @@ html
     include ../images/svg-sprite.pug
     #background
       #glow
-        svg
-          use(xlink:href="#glow-svg")
+        .glow-container
+          svg
+            use(xlink:href="#glow-svg")
       .container
         include media/audio.pug
         include media/video.pug
@@ -18,11 +19,11 @@ html
           include pages/product.pug
           include pages/product-router.pug
           include pages/product-steady.pug
-          include pages/product-open.pug
+          include pages/product-dapps.pug
           include pages/product-design.pug
           include pages/product-tech.pug
           include pages/xana.pug
-          include pages/apps.pug
+          include pages/dapps.pug
           include pages/team.pug
           include pages/contacts.pug
       include pages/modal/modal.pug

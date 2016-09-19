@@ -3,21 +3,23 @@ const webpack = require("webpack");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const koutoSwiss = require('kouto-swiss');
 
 // const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
   context: path.resolve('src'),
-  entry: [
+  entry: {
     // 'babel-polyfill',
-    "./js/index"
-  ],
+    index: "./js/index",
+    account: "./js/account"
+  },
   output: {
     publicPath: './',
     path: path.join(__dirname, "www"),
-    filename: 'build.js',
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[id].chunk.js'
   },
 
   path: path.resolve('./www'),
@@ -117,10 +119,34 @@ module.exports = {
         to: path.resolve('www/php')
       },
     ]),
-    new ExtractTextPlugin("css/styles.css"),
+    new ExtractTextPlugin("css/[name].css"),
+    // new ExtractTextPlugin({
+    //   filename: 'css/[name].css'
+    // }),
     new HtmlWebpackPlugin({
-      template: 'pug-html!src/pug/index.pug'
+      filename: 'index.html',
+      template: 'pug-html!src/pug/index.pug',
+      inject: 'body',
+      cache: true,
+      // files: {
+      //   css: [ 'styles.css' ]
+      // },
+      chunks: ['index']
     }),
+    new HtmlWebpackPlugin({
+      filename: 'account.html',
+      template: 'pug-html!src/pug/account.pug',
+      inject: 'body',
+      cache: true,
+      // files: {
+      //   css: [ 'account.css' ]
+      // },
+      chunks: ['account']
+    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   filename: 'js/commons.js',
+    //   name: 'commons'
+    // }),
   ],
   reslove: {
     modulesDirectorises: ['node_modules', 'src'],
