@@ -18,15 +18,49 @@
     vertical-align top
     margin-bottom 31px
   
-    &.message
+    &.message-form
       size 361px 299px
       margin-right 59px
-    &.subscribe
+      .send
+        margin-top -1px
+    &.subscribe-form
       size 421px 299px
+    &.error
+      .send
+        border-color $torch_red
+        .error-message
+          opacity 1
+          z-index 0
+        button
+          opacity 0
+    &.sent
+      .form-content-wrap
+        border-color $turquoise
+      input
+      textarea
+        color $turquoise
+        -webkit-text-fill-color $turquoise
+        border-color $turquoise
+      .send
+        border-color $turquoise
+        .send-message
+          opacity 1
+          z-index 0
+        button
+          opacity 0
+    &.hide-text
+      input
+      textarea
+        color transparent
+        -webkit-text-fill-color transparent
+      
+        
+
   .form-content-wrap
     relative false
     padding 30px 30px 19px
     border 1px solid $contacts-button-border-color
+    transition border-color 0.2s linear
     border-bottom 0 none
     
   .input-wrap
@@ -53,16 +87,24 @@
     outline none
     background-color transparent
     color $contacts-input-color
+    -webkit-text-fill-color $contacts-input-color
     letter-spacing 1px
     border 1px solid $contacts-input-border-color
-    transition border-color 0.2s linear
+    transition border-color 0.2s linear,
+               color 0.2s linear,
+               -webkit-text-fill-color 0.2s linear,
+               background-color  50000s ease-in-out 50000s
     +placeholder()
       color $contacts-input-placeholder-color
       opacity 1 !important
     &:hover
     &:focus
       border-color $white
-    
+    &.error
+      color $torch_red
+      -webkit-text-fill-color $torch_red
+      border-color $torch_red
+      
       
   input
     size 100% 61px
@@ -76,24 +118,61 @@
     border-top 1px solid transparent
     border-bottom 1px solid transparent
     
-  button
+  .send
     relative false
     size 100% 61px
     box-sizing border-box
-    padding 0 0 0 27px
-    outline none
+    border 1px solid $contacts-button-border-color
+    transition border-color 0.2s linear
+    &:hover
+      border-color $contacts-button-color
+
+  .send-message
+  .error-message
+    absolute 0
+    z-index -1
+    box-sizing border-box
+    transition opacity 0.2s linear
+    opacity 0
+  .send-message
+    padding 21px 0 21px 27px
     font-size 18px
     font-weight 600
     letter-spacing 3px
-    color $contacts-button-color
-    text-align left
     text-transform uppercase
+    color $contacts-button-color
+  .error-message
+    padding 12px 0 12px 27px
+    font-size 14px
+    line-height 18px
+    color $torch_red
+    .error-title
+    .error-text
+      display block
+    .error-title
+      text-transform uppercase
+      font-weight 600
+    .error-text
+      font-weight 400
+        
+    
+  button
+    size 100%
+    box-sizing border-box
+    padding 0 0 0 27px
+    outline none
+    text-align left
+    font-size 18px
+    font-weight 600
+    letter-spacing 3px
+    text-transform uppercase
+    color $contacts-button-color
     background-color transparent
-    border 1px solid $contacts-button-border-color
-    transition border-color 0.2s linear
+    border 0 none
     cursor pointer
-    &:hover
-      border-color $contacts-button-color
+    transition opacity 0.2s linear
+    &.error
+      opacity 0
     
   h2
     font-size 30px

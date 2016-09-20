@@ -3,7 +3,7 @@
     h1.header Contact us
 
   .page-content
-    form.message.send-form(name="message" action="/php/send.php" method="post")
+    form.message-form.send-form(name="message" action="/php/send.php" method="post")
       .input-wrap
         input(
           type="email"
@@ -18,13 +18,22 @@
         name="message"
         placeholder="Message"
       )
-      button(type="submit") Send
+      .send
+        button(
+          name="submit"
+          type="submit"
+          data-text="Send"
+        ) Send
+        .send-message(data-text="Message sent")
+        .error-message
+          .error-title
+          .error-text
         .point.top.left
         .point.top.right
         .point.bottom.left
         .point.bottom.right
 
-    form.subscribe.send-form(name="subscribe" method="post" action="/php/send.php")
+    form.subscribe-form.send-form(name="subscribe" method="post" action="/php/send.php")
       .form-content-wrap
         .point.top.left
         .point.top.right
@@ -41,7 +50,16 @@
           .point.bottom.right
         p.text Subscribe to receive an occasional newsletter about Nodio. We value your privacy and guarantee to keep your email address safe.
 
-      button.subscribe(type="submit") SUBSCRIBE FOR A NEWSLETTER
+      .send
+        button.subscribe(
+          name="submit"
+          type="submit"
+          data-text="Subscribe for a newsletter"
+        ) Subscribe for a newsletter
+        .send-message(data-text="Subscribe success")
+        .error-message
+          .error-title
+          .error-text
         .point.top.left
         .point.top.right
         .point.bottom.left

@@ -14,4 +14,4 @@ www/
 # Ignore node link
 /.phpintel
 # Ignore node link
-/src/php/send.php
+/src/php/config.php
