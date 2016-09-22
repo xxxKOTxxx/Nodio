@@ -4,7 +4,6 @@ module.exports = class Hotkeys {
     document.addEventListener('keyup', this.keyupHandler.bind(this));
   }
   keyupHandler(event) {
-// console.log(event.target.tagName)
     if(event.target.tagName == 'INPUT' || event.target.tagName == 'TEXTAREA') {
       return false;
     }
@@ -27,7 +26,6 @@ module.exports = class Hotkeys {
         event_detail.direction = -1;
         break;
     }
-// console.log(key, event_name, event_detail)
     if(event_name) {
       document.dispatchEvent(new CustomEvent(event_name, {detail: event_detail}));
     }

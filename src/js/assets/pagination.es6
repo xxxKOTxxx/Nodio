@@ -33,7 +33,7 @@ module.exports = class Pagination {
   }
   selectItemHandler(event) {
     event.preventDefault();
-    let item = event.target.closest('.pagination-item');
+    let item = event.currentTarget;
     if(item.classList.contains('active')) {
       return false;
     }

@@ -80,7 +80,6 @@ module.exports = class Router {
       }
       return false;
     }
-console.log('changePage',page)
     if(page == '#product') {
       if(event.detail.source == 'menu' || event.detail.source == 'init' || event.detail.source == 'history') {
         this.active = this.default_page;
@@ -93,7 +92,6 @@ console.log('changePage',page)
     }
     this.active = page;
     // this.active = this.checkPage(page);
-console.log('changePage',this.active)
     this.hidePages();
 
     if(!this.menu_visible) {
@@ -110,7 +108,6 @@ console.log('changePage',this.active)
   }
 
   setSlide(slide = false) {
-console.log('setSlide',slide)
     if(!slide) {
       this.slide++;
       slide = this.slide;

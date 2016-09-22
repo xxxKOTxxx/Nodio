@@ -41,7 +41,8 @@ module.exports = class Menu {
     }
   }
   showItem(item) {
-    item.classList.add('blink', 'show');
+    item.classList.add('show');
+    item.classList.add('blink');
   }
   checkActive(page) {
     if(page == '/') {
@@ -54,7 +55,7 @@ module.exports = class Menu {
   }
   selectItemHandler(event) {
     event.preventDefault();
-    let page = event.target.closest('.menu-link').getAttribute('href');
+    let page = event.currentTarget.getAttribute('href');
     if(this.checkActive(page)) {
       let event_detail = {
         detail: {

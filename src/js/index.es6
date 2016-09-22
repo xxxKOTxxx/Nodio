@@ -1,5 +1,6 @@
 require('../stylus/index');
 require('utilities/ie_fixes');
+
 (function () {
 'use strict';
 let initialize = function() {

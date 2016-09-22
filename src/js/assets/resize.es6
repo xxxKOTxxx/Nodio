@@ -19,9 +19,6 @@ module.exports = class Router {
       bottom = window_height % this.cell_size + 'px';
     }
     this.container.style.paddingBottom = bottom;
-console.log('window_height',window_height)
-console.log('container_height',container_height)
-console.log('bottom',bottom)
   }
   widthHandler() {
     let window_width = window.innerWidth;

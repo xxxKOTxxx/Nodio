@@ -129,7 +129,6 @@ module.exports = class Mail {
     this.printString(button, text, options);
   }
   responceHandler(responce) {
-console.log('responce',responce)
     if(responce.errors.length) {
       this.errorHandler(responce);
     }

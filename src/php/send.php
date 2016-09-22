@@ -45,6 +45,49 @@
     return $errors;
   }
 
+  function checkSubscribe($email, $errors, $file_name) {
+    if(!file_exists($file_name)) {
+      return $errors;
+    }
+    $error = array(
+      target => 'email',
+      title => 'Already subscribed',
+      text => 'This email is already subscribed'
+    );
+    $subscribers = Array();
+    $file = fopen($file_name, 'r');
+    while(!feof($file)) {
+      $row = fgetcsv($file, 0, ';');
+      $subscriber = $row[1];
+      if($subscriber != 'E-mail' && !empty($subscriber)) {
+        array_push($subscribers, $subscriber);
+      }
+    }
+    fclose($file);
+    if(in_array($email, $subscribers)) {
+      array_push($errors, $error);
+    };
+    return $errors;
+  }
+
+  function addSubscriber($email, $file_name) {
+    $data = Array();
+    if(!file_exists($file_name)) {
+      $headers = Array('Date', 'E-mail', 'Language', 'Timestamp');
+      $data[] = $headers;
+    }
+    $timestamp = time();
+    $date = date('Y-m-d H:m:s');
+    $language = 'en';
+    $subscriber = Array($date, $email, $language, $timestamp);
+    $data[] = $subscriber;
+    $file = fopen($file_name, 'a');
+    foreach($data as $row) {
+      fputcsv($file, $row, ';');
+    }
+    fclose($file);
+  };
+
   $type = $_POST['type'];
   $email = $_POST['email'];
   $msg = $_POST['message'];
@@ -52,9 +95,13 @@
 
   switch($type) {
     case 'subscribe':
-      $subject = 'New subscriber in Nodio!';
-      $message = 'New subscriber in Nodio!<br>E-mail: '.$email;
-      $responce = 'Subscribed!';
+      $errors = checkSubscribe($email, $errors, $file_name);
+      if(!count($errors)) {
+        addSubscriber($email, $file_name);
+        $subject = 'New subscriber in Nodio!';
+        $message = 'New subscriber in Nodio!<br>E-mail: '.$email;
+        $responce = 'Subscribed!';
+      }
       break;
     case 'message':
       $errors = checkMessage($msg, $errors);
