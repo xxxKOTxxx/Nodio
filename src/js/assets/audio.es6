@@ -8,6 +8,7 @@ module.exports = class Audio {
     this.visuzlization_animation_time = 150;
     this.visuzlization_intervals = [];
     this.audio = document.querySelector('#audio');
+    this.support = this.checkSupport();
     this.switcher = document.querySelector('.audio_switcher');
     this.visuzlization_bars = document.querySelectorAll('.vizualizer-bar');
     this.Storage = Storage;
@@ -15,6 +16,10 @@ module.exports = class Audio {
     this.mute = this.storage.getItem('mute') == 'true';
     this.setAudio(this.mute);
     this.switcher.addEventListener('click', this.toggle.bind(this), false);
+  }
+  checkSupport() {
+console.log('canPlayType', typeof this.audio.canPlayType);
+    return typeof this.audio.canPlayType == 'undefined';
   }
   on() {
     this.switcher.classList.remove('muted');
