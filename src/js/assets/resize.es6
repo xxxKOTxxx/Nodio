@@ -4,6 +4,7 @@ module.exports = class Router {
     this.cell_size = 60;
     this.left_delta = 1;
     this.container = document.querySelector('.container');
+    this.navigation_content = document.querySelector('.navigation-content');
     this.resizeHandler();
     window.addEventListener('resize', this.resizeHandler.bind(this));
   }
@@ -22,34 +23,45 @@ module.exports = class Router {
   }
   widthHandler() {
     let window_width = window.innerWidth;
-    let window_cells = Math.floor(window_width / this.cell_size);
-    let container_width = this.container.clientWidth;
-    let container_style = this.container.currentStyle || window.getComputedStyle(this.container, false);
+    if(1020 >= window_width) {
+      this.container.style.paddingLeft = 0;
+      this.container.style.paddingRight = 0;
+      this.container.style.width = Math.floor(window_width / (this.cell_size * 2)) * 2 * this.cell_size + 1 + 'px';
+      this.navigation_content.style.width = Math.floor(window_width / (this.cell_size * 2)) * 2 * this.cell_size + 1 + 'px';
+    }
+    else {
+      this.container.style.width = '841px'
+      this.navigation_content.style.width = 'none'
+      let window_cells = Math.floor(window_width / this.cell_size);
+      let container_width = this.container.clientWidth;
+      let container_style = this.container.currentStyle || window.getComputedStyle(this.container, false);
 
-    let container_left = parseInt(container_style.paddingLeft) || 0;
-    let container_right = parseInt(container_style.paddingRight) || 0;
-    let container_inner_width = container_width - container_left - container_right;
-    let container_cells = Math.floor(container_inner_width / this.cell_size);
-    let free_cells = window_cells - container_cells;
-    let left = 2;
-    let right = 1;
-    free_cells = free_cells - left - right;
-    if(free_cells > 0) {
-      right = 2;
-      free_cells--;
-    }
-    free_cells = Math.floor(free_cells / 2);
-    for(let i = free_cells - 1; i >= 0; i--) {
-      left++;
-      right++;
-    }
-    left = (left * this.cell_size) - this.left_delta + 'px';
-    right = (right * this.cell_size) + 'px';
-    if(left !== container_left) {
-      this.container.style.paddingLeft = left;
-    }
-    if(right !== container_right) {
-      this.container.style.paddingRight = right;
+      let container_left = parseInt(container_style.paddingLeft) || 0;
+      let container_right = parseInt(container_style.paddingRight) || 0;
+      let container_inner_width = container_width - container_left - container_right;
+      let container_cells = Math.floor(container_inner_width / this.cell_size);
+      let free_cells = window_cells - container_cells;
+      let left = 2;
+      let right = 1;
+      free_cells = free_cells - left - right;
+      if(free_cells > 0) {
+        right = 2;
+        free_cells--;
+      }
+      free_cells = Math.floor(free_cells / 2);
+      for(let i = free_cells - 1; i >= 0; i--) {
+        left++;
+        right++;
+      }
+      left = (left * this.cell_size) - this.left_delta + 'px';
+      right = (right * this.cell_size) + 'px';
+      if(left !== container_left) {
+        this.container.style.paddingLeft = left;
+      }
+      if(right !== container_right) {
+        this.container.style.paddingRight = right;
+      }
+      
     }
   }
 }

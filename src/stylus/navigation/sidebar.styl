@@ -8,7 +8,10 @@
 .logo
   size 61px
   absolute 29px false false 29px
-    
+  transition width 0.2s linear,
+             height 0.2s linear,
+             top 0.2s linear,
+             left 0.2s linear
   svg
     size 100%
     fill rgba(255, 255, 255, 1)
@@ -52,14 +55,14 @@
       absolute false 0 0
       size 100% 1px
       display block
-      background-color rgba(255, 255, 255, 0.2)
+      background-color $turquoise-20
       transition background-color $sidebar-line-transition-time linear
       &:before
       &:after
         content ''
         absolute 0 false
         size 1px
-        background-color #fff
+        background-color $white
         transition background-color $sidebar-line-transition-time linear
       &:before
         left 0
@@ -67,23 +70,31 @@
         right 0
     &.active
       min-width 41px
-      color rgba(23, 229, 178, 1)
+      color $turquoise
       cursor default
       transition min-width $sidebar-transition-time linear
       .line
-        background-color rgba(23, 229, 178, 0.2)
+        background-color $turquoise-20
         &:before
         &:after
-          background-color rgba(23, 229, 178, 1)
+          background-color $turquoise
       &:hover
         .line
-          background-color rgba(23, 229, 178, 1)
+          background-color $turquoise
     &:hover
       min-width 41px
       .line
-        background-color rgba(255, 255, 255, 1)
+        background-color $turquoise
           
 +media-query(only screen, max-width 1080px)
   .logo-text
   .menu-link .print-character
+    display none
++media-query(only screen, max-width $mobileWidth)
+  #sidebar
+    size 60px
+  .logo
+    size 31px
+    absolute 0 false false 0
+  .menu
     display none

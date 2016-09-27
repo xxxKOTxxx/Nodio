@@ -1,17 +1,19 @@
 @import "../variables.styl"
 
 /* Content styles */
-  
 .container
   relative false
   width 841px
   min-height 736px
   margin auto
   padding 0 60px 0 119px
-  transition padding-left 0.3s linear,
+  transition width 0.3s linear,
+             padding-left 0.3s linear,
              padding-right 0.3s linear
   .preloader-mode &
     overflow hidden
+  .navigation
+    absolute 0 0 false
   
   .pages
     size 100%
@@ -32,13 +34,11 @@
 .page
   opacity 0
   max-height 0
-  // overflow hidden
   transition opacity $content-show-transition-time linear,
              max-height 0s linear $content-show-transition-time,
              overflow 0s linear $content-show-transition-time
   &.show
     opacity 1
-    // overflow initial
     max-height 10000px
     transition opacity $content-show-transition-time linear,
                max-height 0s linear,
@@ -48,7 +48,6 @@
     z-index 2
 .page
   overflow hidden
-  // overflow-x hidden !important
   relative false
   box-sizing border-box
   &.show
@@ -59,3 +58,20 @@
 
 .blink.show
   animation blink $content-blink-animation-time linear forwards
+  
++media-query(only screen, max-width $mobileWidth)
+  .container
+    width 100%
+    max-width 841px
+    padding 0
+    .navigation
+      fixed 0 0 false
+      z-index 2
+      size 100% 60px
+      background-image url('~images/background.svg'), linear-gradient(180deg, rgba(0,0,0,1),  rgba(0,0,0,1) 70%,  rgba(0,0,0,0))
+      background-position 50% 8px, 0 0
+      background-size 60px 60px, 100% 100%
+      background-repeat repeat, no-repeat
+    .navigation-content
+      absolute 7px 0 0
+      margin auto 

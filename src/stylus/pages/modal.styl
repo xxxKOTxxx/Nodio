@@ -34,6 +34,33 @@
       
     &.show
       display block
+.mobile-menu
+  width 200px
+  padding 0
+  margin 0 auto
+  list-style none
+  .mobile-menu-item
+    size 100% 90px
+    &:before
+      display none
+  .menu-link
+  .modal-link
+    relative false
+    color $white
+    font-size 30px
+    font-weight 700
+    text-transform uppercase
+    text-decoration none
+    &.active
+      color $turquoise
+      .line
+        background-color $turquoise-20
+    .line
+      absolute false 0 0
+      size 100% 1px
+      display block
+      background-color $white
+      transition background-color $sidebar-line-transition-time linear
 .modal-content
   size 100%
   overflow auto

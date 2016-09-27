@@ -18,7 +18,6 @@ module.exports = class Audio {
     this.switcher.addEventListener('click', this.toggle.bind(this), false);
   }
   checkSupport() {
-console.log('canPlayType', typeof this.audio.canPlayType);
     return typeof this.audio.canPlayType == 'undefined';
   }
   on() {

@@ -48,18 +48,21 @@ input:-webkit-autofill:active
   absolute false
   size 1px
   background-color $common-point-background-color
-  &.top
-    top -1px
-  &.bottom
-    bottom -1px
-  &.left
-    left -1px
-  &.right
-    right -1px
   &.center
     absolute 0
     margin auto
-    
+  &.top
+    top -1px
+    bottom auto
+  &.bottom
+    bottom -1px
+    top auto
+  &.left
+    left -1px
+    right auto
+  &.right
+    right -1px
+    left auto
 
 .links
   display block

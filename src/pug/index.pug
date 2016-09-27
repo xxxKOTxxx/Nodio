@@ -10,9 +10,11 @@ html
           svg
             use(xlink:href="#glow-svg")
       .container
-        include media/audio.pug
         include media/video.pug
-        include navigation/sidebar.pug
+        .navigation
+          .navigation-content
+            include navigation/sidebar.pug
+            include media/audio.pug
         include navigation/pagination.pug
         include navigation/faq.pug
         .pages

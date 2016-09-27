@@ -9,7 +9,7 @@ module.exports = class Modal {
     this.links = document.querySelectorAll('.modal-link');
     this.links_length = this.links.length;
     this.modals = document.querySelectorAll('.modal');
-    this.modals_length = this.links.length;
+    this.modals_length = this.modals.length;
     this.Scroll = GeminiScrollbar;
     for(let i = this.links_length - 1; i >= 0; i--) {
       this.links[i].addEventListener('click', this.setModal.bind(this), false);
@@ -19,10 +19,11 @@ module.exports = class Modal {
     }
     this.close.addEventListener('click', this.closeModal.bind(this), false);
     document.addEventListener('close_modal', this.closeModal.bind(this), false);
+    document.addEventListener('set_navigation', this.closeModalHandler.bind(this));
   }
   setModal(event) {
     event.preventDefault();
-    let active = event.target.getAttribute('href').substr(1);
+    let active = event.currentTarget.getAttribute('href').substr(1);
     let modal = null;
     for(let i = this.modals_length - 1; i >= 0; i--) {
       if(this.modals[i].id == active) {
@@ -42,7 +43,6 @@ module.exports = class Modal {
   }
   closeModal() {
     this.modal.classList.remove('show');
-    // this.scroll.destroy();
     let scroll = this.scroll;
     function destroy() {
       if(scroll) {
@@ -52,5 +52,10 @@ module.exports = class Modal {
     setTimeout(function() {
       destroy();
     }, 300);
+  }
+  closeModalHandler() {
+    if(this.modal.classList.contains('show')) {
+      setTimeout(this.closeModal.bind(this), 300);
+    }
   }
 }
