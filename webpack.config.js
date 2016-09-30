@@ -115,6 +115,10 @@ module.exports = {
         to: path.resolve('www/images')
       },
       {
+        from: path.resolve('src/downloads'),
+        to: path.resolve('www/downloads')
+      },
+      {
         from: path.resolve('src/php'),
         to: path.resolve('www/php')
       },

@@ -2,46 +2,52 @@
 
 /* Product open styles */
 #product-dapps
+  .page-content
+    min-height 470px
   .illustrations
     .illustration
-      &.device
-        retina-image('~images/pages/product-dapps.png', 100% auto, "@2x")
+      // &.device
+      //   retina-image('~images/pages/product-dapps.png', 100% auto, "@2x")
       &.border
-        retina-image('~images/pages/product-dapps-border.png', 100% auto, "@2x")
-        .line
-          absolute false 0
-          margin auto
-          height 240px
-          relative false
-          width 1px
-          background-color $turquoise-20
-          &:before
-          &:after
-            content ''
-            display block
-            margin auto
-            size 1px
-            background-color $turquoise
-          &:before
-            absolute 0 0 false
-          &:after
-            absolute false 0 0
-          &.top
-            top 61px
-          &.bottom
-            top 180px
+        // retina-image('~images/pages/product-dapps-border.png', 100% auto, "@2x")
+    .line
+      absolute false 0
+      margin auto
+      height 240px
+      relative false
+      width 1px
+      background-color $turquoise-20
+      &:before
+      &:after
+        content ''
+        display block
+        margin auto
+        size 1px
+        background-color $turquoise
+      &:before
+        absolute 0 0 false
+      &:after
+        absolute false 0 0
+      &.top
+        top 61px
+      &.bottom
+        top 180px
 
-$start = 720px
-$step = 61px
-for $i in 0..30
-  $height = $start + $i * $step
-  $content = floor($i / 2) * $step
-  $texts = ceil(floor(($i + 1) / 2) * $step / 2)
-  +media-query(only screen, min-height $height)
-    #product-dapps
-      .page-content
-        margin-top $content
-      .texts
-        &:before
-        &:after
-          height $texts
++media-query(only screen, max-width $mobileWidth)
+  #product-dapps
+    .page-content
+      min-height auto
+// $start = 720px
+// $step = 61px
+// for $i in 0..30
+//   $height = $start + $i * $step
+//   $content = floor($i / 2) * $step
+//   $texts = ceil(floor(($i + 1) / 2) * $step / 2)
+//   +media-query(only screen, min-height $height)
+//     #product-dapps
+//       .page-content
+//         margin-top $content
+//       .texts
+//         &:before
+//         &:after
+//           height $texts

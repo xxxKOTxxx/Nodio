@@ -52,9 +52,13 @@
     
     
   .page-header
-    relative false
-    height 150px
-    margin 60px 0 -18px
+    size 100% 0
+    max-width 841px
+    absolute 60px 0 false 
+    margin auto
+    // relative false
+    // height 150px
+    // margin 60px 0 -18px
   .number
     absolute -3px false false -4px
     z-index -1
@@ -66,26 +70,34 @@
     
   .page-content
     relative false
-    min-height 330px
-    padding-bottom 14px
-    transition margin-top 0.2s linear
+    // min-height 330px
+    // padding-bottom 14px
+    // transition margin-top 0.2s linear
     
   .illustrations
-    size 901px
-    absolute -10px 0 0 -31px
-    z-index -1
-    margin auto
-    transform-origin 50% 50%
+    relative false
+    size 100% auto
+    font-size 0
+    // size 901px
+    // absolute -10px 0 0 -31px
+    // z-index -1
+    // margin auto
+    // transform-origin 50% 50%
     overflow hidden
   .illustration
-    absolute 50% false false 50%
-    transform translate3d(-50%, -50%, 0)
-    transform-origin 50% 50%
-    margin auto
-    size 901px
-    background-position 50% 50%
-    background-size 100% auto
-    background-repeat no-repeat
+    size 100% auto
+    &.border
+    &.phone
+      absolute 0
+      z-index 1
+    // absolute 50% false false 50%
+    // transform translate3d(-50%, -50%, 0)
+    // transform-origin 50% 50%
+    // margin auto
+    // size 901px
+    // background-position 50% 50%
+    // background-size 100% auto
+    // background-repeat no-repeat
     
   .texts
     min-height 98px
@@ -113,6 +125,12 @@
     background-color $common-dot-background-color
     transform rotate(45deg)
     
+
+  .page-footer
+    size 100% 180px
+    max-width 841px
+    // absolute false 0 0 
+    margin -180px auto 0
   // .texts
   //   min-height 98px
   .text
@@ -124,36 +142,45 @@
     letter-spacing 0.5px
     
   .next-link
-    margin-top 32px
+    absolute false 0 25px
+    margin auto
+    // margin-top 32px
       
-  .page-footer
-    .texts
-      &:before
-      &:after
-        content ''
-        display block
-        size 100% 0
-        transition height 0.2s linear
+  // .page-footer
+  //   .texts
+  //     &:before
+  //     &:after
+  //       content ''
+  //       display block
+  //       size 100% 0
+  //       transition height 0.2s linear
       
 
 +media-query(only screen, max-width $mobileWidth)
   .product 
     
     .page-header
+      relative 0 0 false
+      height 90px
+      
       .number
         display none
-    .illustrations
-      size 100%
-      height 100vw
-      absolute 0
-    .illustration
-      size 100%
+    // .illustrations
+    //   size 100%
+    //   height 100vw
+    //   absolute 0
+    // .illustration
+    //   size 100%
     
-  .texts
     .title
-      absolute 0 false false 30px
-    .text
-      width 100%
-      padding 0 30px
-      box-sizing border-box
-      text-align center
+      absolute 31px false false 27px
+    .texts
+      .text
+        width 100%
+        padding 0 30px
+        box-sizing border-box
+        text-align center
+        
+    .page-footer
+      position static
+      margin -53px auto 0

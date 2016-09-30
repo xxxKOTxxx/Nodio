@@ -10,20 +10,20 @@ html
           svg
             use(xlink:href="#glow-svg")
       .container
-        include media/video.pug
+        //- include media/video.pug
         .navigation
           .navigation-content
             include navigation/sidebar.pug
             include media/audio.pug
-        include navigation/pagination.pug
         include navigation/faq.pug
+        include navigation/pagination.pug
         .pages
-          include pages/product.pug
-          include pages/product-router.pug
-          include pages/product-steady.pug
-          include pages/product-dapps.pug
-          include pages/product-design.pug
-          include pages/product-tech.pug
+          include pages/product/product.pug
+          include pages/product/product-router.pug
+          include pages/product/product-steady.pug
+          include pages/product/product-dapps.pug
+          include pages/product/product-design.pug
+          include pages/product/product-tech.pug
           include pages/xana.pug
           include pages/dapps.pug
           include pages/team.pug

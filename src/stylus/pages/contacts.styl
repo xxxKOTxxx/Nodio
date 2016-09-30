@@ -7,11 +7,11 @@
           
   .page-header
     padding 71px 0 78px
-  .header
-    font-size 60px
-    font-weight 700
-    color $contacts-header-color
-    letter-spacing 4px
+  // .header
+  //   font-size 60px
+  //   font-weight 700
+  //   color $contacts-header-color
+  //   letter-spacing 4px
     
   form
     display inline-block
@@ -173,6 +173,8 @@
     transition opacity 0.2s linear
     &.error
       opacity 0
+    .mobile
+      display none
     
   h2
     font-size 30px
@@ -228,17 +230,68 @@
           z-index 0
           size 120px 61px
     .nodio
-      font-size 16px
-      font-weight 300
       margin-left 8px
       display inline-block
       vertical-align middle
+      span
+        font-size 16px
+        font-weight 300
+        transition text-shadow 0.3s linear
+        &:hover
+          text-shadow 0 0 2px $white
   .links
     margin-top 38px
     padding 10px 0 20px 5px
     text-align center
     
 
++media-query(only screen, max-width 480px)
+  #contacts
+    button
+      .full
+        display none
+      .mobile
+        display block
+    
++media-query(only screen, max-width $mobileWidth)
+  #contacts
+    .page-header
+      padding-top 30px
+      padding-left 30px
+    form
+      &.message-form
+      &.subscribe-form
+        display block
+        width 100%
+        max-width 421px
+        margin-left auto
+        margin-right auto
+    .socials
+      relative false
+      size 305px 230px
+      margin auto
+      .social
+        padding 0
+        &:after
+        &:before
+          display none
+      .facebook
+        absolute 0 false false 0
+      .twitter
+        absolute 0 false false 122px
+      .slack
+        absolute 0 false false 244px
+      .reddit
+        absolute 61px false false 61px
+      .github
+        absolute 61px false false 183px
+      .btt
+        absolute 122px false false 122px
+      .nodio
+        absolute false 0 0
+        text-align center
+        margin 0 auto
+        
 $start = 720px
 $step = 60px
 for $i in 0..30
@@ -251,3 +304,4 @@ for $i in 0..30
         height $before
       &:after
         height $after
+        

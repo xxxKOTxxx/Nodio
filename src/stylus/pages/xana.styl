@@ -67,27 +67,10 @@
         background-position 50% 50%
         background-repeat no-repeat
     
-$start = 720px
-$step = 60px
-for $i in 0..30
-  $height = $start + $i * $step
-  if $i < 3
-    $before = 0 * $step
-    $after = $i * $step
-  else 
-    $before = floor(($i - 1) / 2) * $step
-    $after = floor(($i + 2) / 2) * $step
-    
-  +media-query(only screen, min-height $height)
-    #xana .page-content
-      &:before
-        height $before
-      &:after
-        height $after
-
 +media-query(only screen, max-width $mobileWidth)
   #xana
     .page-header
+      padding-top 30px
       .header
       .text-right
         padding-left 30px
@@ -117,3 +100,21 @@ for $i in 0..30
         margin 0 auto
         &.illustration
           display none
+          
+$start = 720px
+$step = 60px
+for $i in 0..30
+  $height = $start + $i * $step
+  if $i < 3
+    $before = 0 * $step
+    $after = $i * $step
+  else 
+    $before = floor(($i - 1) / 2) * $step
+    $after = floor(($i + 2) / 2) * $step
+    
+  +media-query(only screen, min-height $height)
+    #xana .page-content
+      &:before
+        height $before
+      &:after
+        height $after

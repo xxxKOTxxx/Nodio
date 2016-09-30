@@ -3,11 +3,6 @@
 /* Product styles */
 #product
   overflow visible
-  .page-content
-    relative false
-    min-height 660px
-    padding-bottom 5px
-    margin-bottom -32px
   .title
     height 110px
     absolute 50px 0 0
@@ -16,37 +11,34 @@
     .bold
       font-size 75px
   .illustrations
-    top 70px
-    left -1px
     z-index 0
-    size 700px 760px
     overflow visible
-      
     .illustration
-      overflow hidden
-      size 100%
       &.show
         opacity 1
       &.hover-1
         animation none
         max-height 0
         z-index 3
+        background-position 50% 0%
+        background-size 100% auto
+        background-repeat no-repeat
       &.image-1
         z-index 2
-      &.image-1
+      &.hover-1
+      &.image-2
+      &.image-3
+        absolute 0
       &.hover-1
         retina-image('~images/pages/product-1.png', 100% auto, "@2x")
       &.image-2
       &.image-3
-        size 1004px 1006px
-        transform translate3d(-50%, -50%, 0) scale(0.694)
+        transform scale(1)
         transform-origin 50% 50%
       &.image-2
         z-index 1
-        retina-image('~images/pages/product-2.png', 1004px 1006px, "@2x")
       &.image-3
         z-index 0
-        retina-image('~images/pages/product-3.png', 1004px 1006px auto, "@2x")
   .texts
     opacity 0
     absolute 415px 0 0
@@ -63,6 +55,10 @@
     width 100%
     font-size 16px
     text-align center
+    
+  .page-footer
+    size 100% 33px
+    margin -85px auto 0
   .next-link
     animation fade-in 0.2s linear reverse forwards
     
@@ -83,6 +79,8 @@
           cursor pointer
           &:hover
             opacity 1
+    .texts
+      display none
     .next-link
       animation fade-in 1s linear 2.5s forwards
       
@@ -97,7 +95,6 @@
         max-height 1006px
         transition opacity 0.5s linear,
                    max-height 0s linear 3.5s
-        // animation fade-out 2s linear 0.5s forwards
       .image-1
         animation fade-out 2s linear forwards
       .image-2
@@ -109,23 +106,29 @@
         transition transform 1s ease-in-out 2.5s
       .image-2
       .image-3
-        transform translate3d(-50%, -50%, 0) scale(1)
+        transform scale(1.44)
     .texts
     .text
       animation fade-in 1s linear 3.5s forwards
     .next-link
       animation fade-in 0.2s linear reverse forwards,
                 fade-in 1s linear 4.5s forwards
-    
-$start = 720px
-$step = 60px
-for $i in 0..30
-  $height = $start + $i * $step
-  $before = $height - $step
-  $padding = $i * $step
-  +media-query(only screen, min-height $height)
-    #product .page-content
-      &:before
-        height $before
-     #product .texts
-       padding-top $padding
+                
+
++media-query(only screen, max-width $mobileWidth)
+  #product
+    .page-content
+      transform translateY(-30px)
+    .illustrations
+      margin-bottom -120px
+    .title
+      width 335px
+      absolute 170px 0 false
+      margin 0 auto
+    .texts
+      relative 0
+    .next-link
+      relative false 0 30px
+    &.slide-1 
+      .next-link
+        fixed false 0 30px

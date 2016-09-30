@@ -1,0 +1,34 @@
+#product-tech.product.page(data-title="Product: World-Changing Technologies")
+  
+  .page-header
+    .number 05
+
+  .page-content
+    .illustrations
+      img.illustration.device(
+        width="901"
+        height="901"
+        src="/images/pages/product-tech.png"
+        srcset="/images/pages/product-tech@2x.png 2x"
+      )
+      img.illustration.border(
+        width="901"
+        height="901"
+        src="/images/pages/product-tech-border.png"
+        srcset="/images/pages/product-tech-border@2x.png 2x"
+      )
+    .right-side
+      h1.title
+        .bold World-
+          br
+          | Changing
+        | Technologies
+      .texts
+        p.text Nodio was designed using the most advanced existing technologies.  Top blockchains, TOR, P2P and mesh networking protect your data and keep all your connections private. The source code of our solution is open so that you could see the safety with your own eyes.
+        .links
+          a.link(href="/downloads/Nodio_whitepaper.pdf" download="Nodio_whitepaper.pdf") Whitepaper
+          .delimiter
+          a.link.modal-link(href="#modal-specs") Tech Specs
+
+  .page-footer
+    include ../../navigation/next.pug

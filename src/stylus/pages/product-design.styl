@@ -2,30 +2,30 @@
 
 /* Product design styles */
 #product-design
-  .illustrations
-    .illustration
-      &.device
-        retina-image('~images/pages/product-design.png', 100% auto, "@2x")
-      &.phone
-        retina-image('~images/pages/product-design-phone.png', 100% auto, "@2x")
-      &.border
-        retina-image('~images/pages/product-design-border.png', 100% auto, "@2x")
+  // .illustrations
+  //   .illustration
+      // &.device
+      //   retina-image('~images/pages/product-design.png', 100% auto, "@2x")
+      // &.phone
+      //   retina-image('~images/pages/product-design-phone.png', 100% auto, "@2x")
+      // &.border
+      //   retina-image('~images/pages/product-design-border.png', 100% auto, "@2x")
         
   &.show
     .illustrations .illustration.border
       animation-delay 1.8s
 
-$start = 720px
-$step = 61px
-for $i in 0..30
-  $height = $start + $i * $step
-  $content = floor($i / 2) * $step
-  $texts = ceil(floor(($i + 1) / 2) * $step / 2)
-  +media-query(only screen, min-height $height)
-    #product-design
-      .page-content
-        margin-top $content
-      .texts
-        &:before
-        &:after
-          height $texts
+// $start = 720px
+// $step = 61px
+// for $i in 0..30
+//   $height = $start + $i * $step
+//   $content = floor($i / 2) * $step
+//   $texts = ceil(floor(($i + 1) / 2) * $step / 2)
+//   +media-query(only screen, min-height $height)
+//     #product-design
+//       .page-content
+//         margin-top $content
+//       .texts
+//         &:before
+//         &:after
+//           height $texts

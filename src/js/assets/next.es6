@@ -7,9 +7,9 @@ module.exports = class Next {
       this.next_links[i].addEventListener('click', ()=> {this.pageHandler(true);});
     }
     document.addEventListener('change_page_key', this.keyHandler.bind(this));
-    window.addEventListener('scroll', this.scrollHandler());
-    window.addEventListener('touchstart', (event)=> this.touchstartHandler(event));
-    window.addEventListener('touchmove', (event)=> this.touchmoveHandler(event));
+    // window.addEventListener('scroll', this.scrollHandler());
+    // window.addEventListener('touchstart', (event)=> this.touchstartHandler(event));
+    // window.addEventListener('touchmove', (event)=> this.touchmoveHandler(event));
     this.setMousewheelHandler();
     this.ready_prev = true;
     this.ready_next = false;
