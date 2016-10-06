@@ -20,6 +20,8 @@
       margin-right 59px
       .send
         margin-top -1px
+        .point
+          z-index -1
     &.subscribe-form
       size 421px 299px
     &.error
@@ -28,6 +30,9 @@
         .error-message
           opacity 1
           z-index 0
+        .point
+          background-color $torch_red
+          transition background-color 0.2s linear
         button
           opacity 0
     &.sent
@@ -64,8 +69,12 @@
     size 100% 61px
     relative false
     box-sizing border-box
+    
+    .error ~ .point
+      background-color $torch_red
     .point
       background-color $contacts-input-point-color
+      transition background-color 0.2s linear
       &.top
         top 0
       &.left
@@ -101,7 +110,6 @@
       color $torch_red
       -webkit-text-fill-color $torch_red
       border-color $torch_red
-      
       
   input
     size 100% 61px
@@ -248,7 +256,7 @@
       .full
         display none
       .mobile
-        display block
+        display inline
     
 +media-query(only screen, max-width $mobileWidth)
   #contacts

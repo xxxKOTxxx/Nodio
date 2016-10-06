@@ -76,17 +76,18 @@
   .page-footer
     padding-top 80px
         
-+media-query(only screen, max-width 480px)
-  #dapps
-    .center-capture
-      top 0px
-    .left-capture
-    .right-capture
-      top 13px
+// +media-query(only screen, max-width 480px)
+//   #dapps
+//     .center-capture
+//       top 0px
+//       width 30%
+//     .left-capture
+//     .right-capture
+//       top 13px
 +media-query(only screen, max-width $mobileWidth)
   #dapps
     .page-header
-      padding 0 0 30px
+      padding 0 0 50px
     .page-content
       padding-bottom 0
     .illustration
@@ -103,6 +104,12 @@
         text-align justify
     .page-footer
       padding-top 0
+    .center-capture
+      top 0px
+      width 30%
+    .left-capture
+    .right-capture
+      top 30px
     
 $start = 720px
 $step = 60px

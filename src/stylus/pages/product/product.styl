@@ -104,21 +104,33 @@
       .image-1
         animation fade-out 2s linear forwards
       .image-2
-        animation fade-in 2s linear 0s forwards,
-                  fade-in 1s linear 2.5s forwards reverse
-        transition transform 1s ease-in-out 2.5s
-      .image-3
-        animation fade-in 1s linear 2.5s forwards
-        transition transform 1s ease-in-out 2.5s
+        animation fade-in 2s linear 0s forwards
       .image-2
       .image-3
-        transform scale(1)
+        transform scale(0.694)
     .texts
     .text
       animation fade-in 1s linear 3.5s forwards
     .next-link
-      animation fade-in 0.2s linear reverse forwards,
-                fade-in 1s linear 4.5s forwards
+      animation fade-out 0.2s linear 0s forwards
+  &.slide-3
+    .title
+      animation fade-out 0s linear forwards
+    .illustrations
+      .image-2
+      .image-3
+        transform scale(1)
+      .image-2
+        animation fade-out 1s linear 0s forwards
+        transition transform 1s ease-in-out 0s
+      .image-3
+        animation fade-in 1s linear 0s forwards
+        transition transform 1s ease-in-out 0s
+    .texts
+    .text
+      animation fade-in 0s linear 0s forwards
+    .next-link
+      animation fade-in 1s linear 2s forwards
                 
 
 +media-query(only screen, max-width $mobileWidth)

@@ -25,8 +25,9 @@
     letter-spacing 0.75px
     color $white-50
   .subheader
-    margin-bottom 54px
+    margin-bottom 49px
     font-size 18px
+    line-height 24px
     font-weight 300
     letter-spacing 1px
     .bold
@@ -56,11 +57,10 @@
       text-align-last center
     &.illustration
       relative false
-      height 96px
+      height 94px
       .illustration
         absolute 50% false false 50%
         transform translate(-50%, -50%)
-        margin-left: -1px;
         size 421px 211px
         retina-image('~images/pages/xana.png', 100% auto, "@2x")
         background-size 100% auto
@@ -70,14 +70,19 @@
 +media-query(only screen, max-width $mobileWidth)
   #xana
     .page-header
+      width 100%
       padding 0 0 60px
       .header
       .text-right
         box-sizing border-box
       .header
+        margin-top 8px
         margin-bottom 40px
+        margin-left 0
       .text-right
         width 100%
+        // max-width 480px
+        margin 0 auto
         text-align justify
         -moz-text-align-last center
         text-align-last center
@@ -89,9 +94,10 @@
       .feature
         display block
         width 100%
+        // max-width 480px
+        margin 0 auto
         padding-bottom 60px
         box-sizing border-box
-        margin 0 auto
         &.illustration
           display none
           

@@ -24,7 +24,7 @@ module.exports = class Router {
     if(window_height > 720) {
       Math.floor(window_height / (2 * this.cell_size)) * (2 * this.cell_size) + 'px';
     }
-    this.container.style.height = height;
+    this.container.style.height = height + 'px';
   }
   widthHandler() {
     let window_width = window.innerWidth;

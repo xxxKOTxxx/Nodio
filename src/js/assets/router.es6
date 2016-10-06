@@ -115,8 +115,8 @@ module.exports = class Router {
     else {
       this.slide = slide;
     }
-    if(slide > 2) {
-      this.slide = 2;
+    if(slide > 3) {
+      this.slide = 3;
       let page = '#' + document.querySelector('.page.show').nextSibling.id;
       this.glow.classList.add('show');
       let event_detail = {
@@ -128,7 +128,21 @@ module.exports = class Router {
       document.dispatchEvent(new CustomEvent('change_page', event_detail));
       return false;
     }
-    this.product.classList.remove('slide-1','slide-2');
+    if(slide == 2) {
+      setTimeout(
+        function() {
+          let event_detail = {
+            detail: {
+              page: window.location.hash,
+              source: 'next'
+            }
+          };
+          document.dispatchEvent(new CustomEvent('change_page', event_detail));
+        }
+        , 2500
+      );
+    }
+    this.product.classList.remove('slide-1','slide-2','slide-3');
     this.product.classList.add('slide-'+this.slide);
     this.glow.classList.remove('show');
     let event_detail = {

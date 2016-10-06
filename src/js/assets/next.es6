@@ -7,21 +7,21 @@ module.exports = class Next {
       this.next_links[i].addEventListener('click', ()=> {this.pageHandler(true);});
     }
     document.addEventListener('change_page_key', this.keyHandler.bind(this));
-    // window.addEventListener('scroll', this.scrollHandler());
-    // window.addEventListener('touchstart', (event)=> this.touchstartHandler(event));
-    // window.addEventListener('touchmove', (event)=> this.touchmoveHandler(event));
-    // this.setMousewheelHandler();
+    window.addEventListener('scroll', this.scrollHandler());
+    window.addEventListener('touchstart', (event)=> this.touchstartHandler(event));
+    window.addEventListener('touchmove', (event)=> this.touchmoveHandler(event));
+    this.setMousewheelHandler();
     this.ready_prev = true;
     this.ready_next = false;
     this.touch_start = null;
-    this.move_distance = 10;
+    this.move_distance = 50;
   }
   checkOpacity() {
     let next_link = document.querySelector('.page.show .next-link');
     if(next_link) {
       let next_link_style = next_link.currentStyle || window.getComputedStyle(next_link, false);
       let opacity = next_link_style.opacity;
-      if(opacity < 1) {
+      if(opacity < 0.9) {
         return false;
       }
     }

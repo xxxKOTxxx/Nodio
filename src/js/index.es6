@@ -9,35 +9,35 @@ let initialize = function() {
 
   let ImageHover = require('assets/image_hover');
   new ImageHover('#hoverable', '.hover-1');
-console.log('ImageHover')
+// console.log('ImageHover')
 
   let Hotkeys = require('assets/hotkeys');
   new Hotkeys();
-console.log('Hotkeys')
+// console.log('Hotkeys')
 
   let Audio = require('assets/audio');
   new Audio();
-console.log('Audio')
+// console.log('Audio')
 
   let Next = require('assets/next');
   new Next();
-console.log('Next')
+// console.log('Next')
 
   let Faq = require('assets/faq');
   new Faq();
-console.log('Faq')
+// console.log('Faq')
 
   let Modal = require('assets/modal');
   new Modal();
-console.log('Modal')
+// console.log('Modal')
 
   let Router = require('assets/router');
   new Router();
-console.log('Router')
+// console.log('Router')
 
   let Mail = require('assets/mail');
   new Mail();
-console.log('Mail')
+// console.log('Mail')
 
 }
 document.addEventListener('DOMContentLoaded', initialize);

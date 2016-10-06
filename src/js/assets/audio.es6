@@ -12,7 +12,6 @@ module.exports = class Audio {
     if(this.support) {
       return false;
     }
-console.log('this.support',this.support)
     this.switcher = document.querySelector('.audio_switcher');
     this.visuzlization_bars = document.querySelectorAll('.vizualizer-bar');
     this.Storage = Storage;
