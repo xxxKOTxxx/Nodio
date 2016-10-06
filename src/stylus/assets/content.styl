@@ -1,84 +1,65 @@
 @import "../variables.styl"
 
 /* Content styles */
+#background
+  overflow hidden
+  relative false
+  width 100%
+  background-image url('~images/background.svg')
+  background-position 50% 0
+  background-size 60px 60px
+  background-repeat repeat
+
+#glow
+  fixed 0
+  z-index 0
+  overflow hidden
+  opacity 0
+  transition opacity 1s linear
+  &.show
+    opacity 1
+  .glow-container
+    absolute 50% false false 50%
+    transform translate(-50%, -50%)
+    size 100%
+    size 100vmax
+    
 .container
   relative false
-  // width 841px
   width auto
   min-width 360px
   min-height 736px
   margin auto
-  padding 0 60px 0 119px
+  padding 0 90px 0 89px
   box-sizing border-box
   transition width 0.3s linear,
              padding-left 0.3s linear,
              padding-right 0.3s linear
-  .preloader-mode &
-    overflow hidden
   .navigation
     absolute 0 0 false
-  
-  .pages
-    size 100%
-    min-height 100vh
-    relative false
-.page-footer
-  relative false
-  padding-bottom 30px
-  
-.page-content
-  &:before
-  &:after
-    content ''
-    display block
-    size 100% 0
-    transition height 0.2s linear
 
 #sidebar
-.page
   opacity 0
   max-height 0
   transition opacity $content-show-transition-time linear,
              max-height 0s linear $content-show-transition-time,
              overflow 0s linear $content-show-transition-time
   &.show
+    z-index 2
     opacity 1
     max-height 10000px
     transition opacity $content-show-transition-time linear,
                max-height 0s linear,
                overflow 0s linear
-#sidebar
-  &.show
-    z-index 2
-.page
-  overflow hidden
-  relative false
-  box-sizing border-box
-  &.show
-    z-index 1
-    overflow visible
-  p
-    text-align left
     
-  .page-header
-    .header
-      font-size 60px
-      font-weight 700
-      color $white
-      letter-spacing 4px
-
-.blink.show
-  animation blink $content-blink-animation-time linear forwards
-  
 +media-query(only screen, max-width $mobileWidth)
+  #background
+    background-image none
+    min-height 100%
   .container
+    min-height 100%
     width 100%
-    max-width 841px
-    min-height auto
-    padding 0
-    .pages
-      padding 60px 0 0
-      box-sizing border-box
+    padding 90px 0 0
     .navigation
       fixed 0 0 false
       z-index 2
@@ -89,6 +70,10 @@
       background-repeat no-repeat
     .navigation-content
       relative 7px 0 0
-      margin auto 
-      
-      
+      margin auto
++media-query(only screen, min-width 1020px, max-width 1080px)
+  .container
+    padding 0 30px 0 89px
++media-query(only screen, max-width 1080px)
+  #background
+    background-position calc("50% - 30px", 50%) 0

@@ -2,42 +2,48 @@
 
 /* Product styles */
 #product
+  padding 0
   overflow visible
   .title
     height 110px
     absolute 50px 0 0
-    z-index 1
+    z-index 4
     margin auto 0
     .bold
       font-size 75px
   .illustrations
     z-index 0
     overflow visible
+    &:before
+      padding-top 95%
     .illustration
+      height 1006px
       &.show
         opacity 1
       &.hover-1
+      &.image-1
+      &.image-2
+      &.image-3
+        max-width 144%
+        absolute 0 -22%
+        transform scale(0.694)
+        transform-origin 50% 50%
+        background-position 50%  50%
+        background-size 100% auto
+        background-repeat no-repeat
+      &.hover-1
+        retina-image('~images/pages/product-1.png', 100% auto, "@2x")
         animation none
         max-height 0
         z-index 3
-        background-position 50% 0%
-        background-size 100% auto
-        background-repeat no-repeat
       &.image-1
-        z-index 2
-      &.hover-1
-      &.image-2
-      &.image-3
-        absolute 0
-      &.hover-1
         retina-image('~images/pages/product-1.png', 100% auto, "@2x")
+        z-index 2
       &.image-2
-      &.image-3
-        transform scale(1)
-        transform-origin 50% 50%
-      &.image-2
+        retina-image('~images/pages/product-2.png', 100% auto, "@2x")
         z-index 1
       &.image-3
+        retina-image('~images/pages/product-3.png', 100% auto, "@2x")
         z-index 0
   .texts
     opacity 0
@@ -106,7 +112,7 @@
         transition transform 1s ease-in-out 2.5s
       .image-2
       .image-3
-        transform scale(1.44)
+        transform scale(1)
     .texts
     .text
       animation fade-in 1s linear 3.5s forwards
@@ -117,14 +123,16 @@
 
 +media-query(only screen, max-width $mobileWidth)
   #product
-    .page-content
-      transform translateY(-30px)
+    // .page-content
+    //   transform translateY(-30px)
     .illustrations
-      margin-bottom -120px
+      margin-bottom -30%
+      &:before
+        padding-top 100%
     .title
       width 335px
-      absolute 170px 0 false
-      margin 0 auto
+      absolute 0
+      margin auto
     .texts
       relative 0
     .next-link

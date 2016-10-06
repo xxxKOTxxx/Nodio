@@ -10,7 +10,7 @@ module.exports = class Next {
     // window.addEventListener('scroll', this.scrollHandler());
     // window.addEventListener('touchstart', (event)=> this.touchstartHandler(event));
     // window.addEventListener('touchmove', (event)=> this.touchmoveHandler(event));
-    this.setMousewheelHandler();
+    // this.setMousewheelHandler();
     this.ready_prev = true;
     this.ready_next = false;
     this.touch_start = null;

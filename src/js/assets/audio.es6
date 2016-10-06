@@ -9,6 +9,10 @@ module.exports = class Audio {
     this.visuzlization_intervals = [];
     this.audio = document.querySelector('#audio');
     this.support = this.checkSupport();
+    if(this.support) {
+      return false;
+    }
+console.log('this.support',this.support)
     this.switcher = document.querySelector('.audio_switcher');
     this.visuzlization_bars = document.querySelectorAll('.vizualizer-bar');
     this.Storage = Storage;

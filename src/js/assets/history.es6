@@ -10,9 +10,10 @@ module.exports = class History {
   popstateHandler(event) {
     if(this.states !== event.state) {
       this.replace = true;
+      let page = event.state.page || '#product';
       let event_detail = {
         detail: {
-          page: event.state.page,
+          page: page,
           source: 'history'
         }
       };
@@ -21,7 +22,6 @@ module.exports = class History {
   }
   getStateData(page) {
     let state = {};
-
     state.data = {
       page: page
     };

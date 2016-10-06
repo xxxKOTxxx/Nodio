@@ -19,8 +19,6 @@ body
   // text-size-adjust none
   -webkit-backface-visibility hidden
   letter-spacing $common-body-letter-spacing
-  &.preloader-mode
-    overflow hidden
 svg
   size 100%
   display block
@@ -84,38 +82,9 @@ input:-webkit-autofill:active
     background-color $common-delimiter-background-color
     display inline-block
 
-#background
-  overflow hidden
-  relative false
-  width 100%
-  background-image url('~images/background.svg')
-  background-position 50% 0
-  background-size 60px 60px
-  background-repeat repeat
-
-#glow
-  fixed 0
-  z-index 0
-  overflow hidden
-  opacity 0
-  transition opacity 1s linear
-  &.show
-    opacity 1
-.glow-container
-  absolute 50% false false 50%
-  transform translate(-50%, -50%)
-  size 100%
-  size 100vmax
-
-+media-query(only screen, max-width 1080px)
-  #background
-    background-position calc("50% - 30px", 50%) 0
-+media-query(only screen, max-width $mobileWidth)
-  #background
-    background-image none
-    
-
-
+.blink.show
+  animation blink $content-blink-animation-time linear forwards
+  
 @keyframes blink
   0%
     opacity 0
