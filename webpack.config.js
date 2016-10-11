@@ -129,7 +129,7 @@ module.exports = {
     // }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'pug-html!src/pug/index.pug',
+      template: 'pug/index.pug',
       inject: 'body',
       cache: true,
       // files: {
@@ -139,7 +139,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'account.html',
-      template: 'pug-html!src/pug/account.pug',
+      template: 'pug/account.pug',
       inject: 'body',
       cache: true,
       // files: {
